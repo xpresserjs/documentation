@@ -1,0 +1,13 @@
+{
+  "development": {
+    "main": "app.js",
+    "server": "nodemon",
+    "console": "node"
+  },
+  "production": {
+    "main": "{{main}}",
+    "server": "forever start",
+    "console": "node"
+  },
+  "jobsPath": "jobs"
+}

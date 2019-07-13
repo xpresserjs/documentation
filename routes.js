@@ -1,0 +1,1 @@
+$.router.all('/*', 'App@index');

@@ -1,0 +1,7 @@
+*.text-danger {
+    color: hsl(348, 100%, 61%) !important;
+}
+
+*.text-primary {
+    color: hsl(171, 100%, 41%) !important;
+}

@@ -1,0 +1,10 @@
+{
+    "scripts": {
+        "docs:dev": "vuepress dev",
+        "docs:build": "vuepress build"
+    },
+    "dependencies": {
+        "dotenv": "^8.0.0",
+        "xpresser": "^0.0.70"
+    }
+}
