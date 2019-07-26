@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@xpresser/router@^0.0.12":
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/@xpresser/router/-/router-0.0.12.tgz#78b50052e994b9729ecc4826f56f711a5aa84bd7"
-  integrity sha512-XcBNjDjHtf8yAg+BwR7D7eUlZnYV3rxwnc+ARbpDJBLiSgCSGMg5COVo++TShunXD6HVZRgx56G28435nImBWA==
+"@xpresser/router@^0.0.14":
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/@xpresser/router/-/router-0.0.14.tgz#7b6831f2166f52bc2000153640c905770e17fd36"
+  integrity sha512-NL76DpQfB5vfkkphYDUg1ld9SPdCq2jI90bC90+NmR+Y3WzdMP37usiDRqLf+zsadQJAWGK/isFQsXoyPJvGAQ==
   dependencies:
     lodash.clone "^4.5.0"
 
@@ -1589,10 +1589,10 @@ object-assign@^4, object-assign@^4.1.0:
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
   integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
 
-object-collection@^1.0.11:
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/object-collection/-/object-collection-1.0.11.tgz#2417de93f21774173eafca9a43b418535e11164a"
-  integrity sha512-eUp93eDvUzlCdhTnStu6uKkai/6DQDyT2048AnD4I7vFHafkEB9JMYiW9N2YPLKQfa3l/XrapV4tDLAMNLBU7A==
+object-collection@^1.0.13:
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/object-collection/-/object-collection-1.0.13.tgz#b8a518cdb49bb323864141091e6fb8f1a2ee46fe"
+  integrity sha512-1iYHo5O6Xm4il8J+4NKxkGJzoO391TKiCrZ39w52qiJEElvWm0O6HUkxmhE3Oltf1o4HpOzzGIU40LcL+ij22g==
   dependencies:
     lodash "^4.17.14"
 
@@ -2413,12 +2413,12 @@ x-xss-protection@1.1.0:
   resolved "https://registry.yarnpkg.com/x-xss-protection/-/x-xss-protection-1.1.0.tgz#4f1898c332deb1e7f2be1280efb3e2c53d69c1a7"
   integrity sha512-rx3GzJlgEeZ08MIcDsU2vY2B1QEriUKJTSiNHHUIem6eg9pzVOr2TL3Y4Pd6TMAM5D5azGjcxqI62piITBDHVg==
 
-xpresser@^0.0.70:
-  version "0.0.70"
-  resolved "https://registry.yarnpkg.com/xpresser/-/xpresser-0.0.70.tgz#2b5502030efe989a80d57111faa60d8d07d426e3"
-  integrity sha512-poTRANpZ8jRV9x4Cm/piAoMqmHnNZhVqLl8EaX4nKFnJ1UZRl5HUnPHKnC248tTLoKXiWLBlXJFHjP0fCsQfzQ==
+xpresser@^0.0.82:
+  version "0.0.82"
+  resolved "https://registry.yarnpkg.com/xpresser/-/xpresser-0.0.82.tgz#7cbf856ee9fbf4347cba5d590bd7bc937e4e2fbf"
+  integrity sha512-K1OG+PTE/o38sOZAU4hG4cO+9A2tqhQog1dJrYPpKHCdJAI8aNGUBxjhQzTHbxqRqqQXZDHCuKGo6ZedZbKU7A==
   dependencies:
-    "@xpresser/router" "^0.0.12"
+    "@xpresser/router" "^0.0.14"
     body-parser "^1.19.0"
     build-url "^1.3.3"
     chalk "^2.4.2"
@@ -2435,7 +2435,7 @@ xpresser@^0.0.70:
     knex "0.18.0"
     mkdirp "^0.5.1"
     moment "^2.24.0"
-    object-collection "^1.0.11"
+    object-collection "^1.0.13"
     object-validator-pro "^1.0.19"
     objection "^1.6.9"
     pluralize "^8.0.0"

@@ -4,21 +4,30 @@ const StartXpresser = require('xpresser');
 
 
 const config = {
-    name: "Xpresser Docs",
+    name: 'Xpresser Docs',
+
     server: {
+        startOnBoot: false,
         domain: env.APP_DOMAIN,
         port: env.APP_PORT
     },
+
     paths: {
         // Base Folder (MUST).
         base: __dirname,
-        // Controller Folder
-        controllers: 'base://',
         // Public Folder
         public: '.vuepress/dist',
-        // Routes File
-        routesFile: 'routes.js'
     },
 };
 
-StartXpresser(config);
+const $ = StartXpresser(config);
+
+// Run IfNotConsole
+$.ifNotConsole(() => {
+    $.router.all('/*', (x) => {
+        return x.res.sendFile($.path.base('.vuepress/dist/index.html'));
+    });
+});
+
+// Start Server
+$.startHttpServer();

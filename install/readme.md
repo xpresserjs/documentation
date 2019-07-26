@@ -40,7 +40,7 @@ const config = {
 StartXpresser(config);
 ```
 
-**base://** in Xpresser simple means path to `paths.base`
+**base://** in Xpresser simply means path to `paths.base`
 
 Create a Controller: **AppController.js**
 ```javascript
