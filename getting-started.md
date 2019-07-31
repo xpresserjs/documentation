@@ -49,7 +49,7 @@ Run ```nodemon app.js``` and you will see your server started in console.
 ```
 
 ## Using MVC Structure.
-When creating a real world application **You need Structure**.
+When creating a real world applications **You need Structure**.
 Xpresser provides MVC (**Model, View & Controller**) support out of the box.
 
 To get started we need 3 files to achieve same **Hello World**.
