@@ -2,7 +2,7 @@
 home: true
 heroImage: /images/logo.png
 actionText: Get Started →
-actionLink: /install/
+actionLink: /getting-started
 features:
   - title: Write Less, Do more.
     details: Built with the best helpers to enable your team get projects done faster.
@@ -14,10 +14,10 @@ features:
     details: Xpresser gives you the best enviroment to structure your apps just the way you want and also extend your apps using plugins.
 
   - title: Smart Named Routes.
-    details: "You must agree that named routes is a must when building large apps and xpresser makes routing and naming very easy.  You write less and todo more."
+    details: "You must agree that named routes is a must when building large apps and xpresser makes routing and naming very easy.  You write less and do more."
 
   - title: Supports your favorite database.
-    details: "Using knexjs, xpresser is able to support: Postgres, MSSQL, MySQL, MariaDB, SQLite3, Oracle, and Amazon Redshift"
+    details: "Using KnexJs, xpresser is able to support: Postgres, MSSQL, MySQL, MariaDB, SQLite3, Oracle, and Amazon Redshift"
 
   - title: Cli Support.
     details: "Xjs cli provides great commands to genarate Controllers, middlewares, views e.t.c"

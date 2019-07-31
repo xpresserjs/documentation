@@ -1589,10 +1589,10 @@ object-assign@^4, object-assign@^4.1.0:
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
   integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
 
-object-collection@^1.0.13:
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/object-collection/-/object-collection-1.0.13.tgz#b8a518cdb49bb323864141091e6fb8f1a2ee46fe"
-  integrity sha512-1iYHo5O6Xm4il8J+4NKxkGJzoO391TKiCrZ39w52qiJEElvWm0O6HUkxmhE3Oltf1o4HpOzzGIU40LcL+ij22g==
+object-collection@^1.0.15:
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/object-collection/-/object-collection-1.0.15.tgz#8a83a6d1fbc02cf3a1a951cc87958c0cc4080313"
+  integrity sha512-AZrc4ZwBGMNlUybpXORGSHA3+7HGNEP4rc9Yj0X1Ba3XO07Bco9bpdjVd5G2/TrSDoV40/Dxh2lFXyXTDdn41Q==
   dependencies:
     lodash "^4.17.14"
 
@@ -2413,10 +2413,10 @@ x-xss-protection@1.1.0:
   resolved "https://registry.yarnpkg.com/x-xss-protection/-/x-xss-protection-1.1.0.tgz#4f1898c332deb1e7f2be1280efb3e2c53d69c1a7"
   integrity sha512-rx3GzJlgEeZ08MIcDsU2vY2B1QEriUKJTSiNHHUIem6eg9pzVOr2TL3Y4Pd6TMAM5D5azGjcxqI62piITBDHVg==
 
-xpresser@^0.0.82:
-  version "0.0.82"
-  resolved "https://registry.yarnpkg.com/xpresser/-/xpresser-0.0.82.tgz#7cbf856ee9fbf4347cba5d590bd7bc937e4e2fbf"
-  integrity sha512-K1OG+PTE/o38sOZAU4hG4cO+9A2tqhQog1dJrYPpKHCdJAI8aNGUBxjhQzTHbxqRqqQXZDHCuKGo6ZedZbKU7A==
+xpresser@^0.0.85:
+  version "0.0.85"
+  resolved "https://registry.yarnpkg.com/xpresser/-/xpresser-0.0.85.tgz#5c1d86f307ae962b7267503612eee6e8f607b3d9"
+  integrity sha512-WdZxZH1GX7vLYwinfTlbtDmUY/whSWwIlDsO3AVekwZwUEgCfFdRxIh7VVkLIEFBclazo5DSSheMMP51lp0QFw==
   dependencies:
     "@xpresser/router" "^0.0.14"
     body-parser "^1.19.0"
@@ -2435,7 +2435,7 @@ xpresser@^0.0.82:
     knex "0.18.0"
     mkdirp "^0.5.1"
     moment "^2.24.0"
-    object-collection "^1.0.13"
+    object-collection "^1.0.15"
     object-validator-pro "^1.0.19"
     objection "^1.6.9"
     pluralize "^8.0.0"

@@ -5,6 +5,6 @@
     },
     "dependencies": {
         "dotenv": "^8.0.0",
-        "xpresser": "^0.0.82"
+        "xpresser": "^0.0.85"
     }
 }

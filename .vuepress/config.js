@@ -13,17 +13,36 @@ module.exports = {
     ],
 
     themeConfig: {
-        nav: [{
+        nav: [
+            {
                 text: 'Home',
                 link: '/'
             },
             {
                 text: 'Getting Started',
-                link: '/install/'
+                link: '/getting-started'
             },
             {
-                text: 'Router',
-                link: '/router/'
+                text: 'Core',
+                items: [
+                    {
+                        text: '$ (The Dollar Sign)',
+                        link: '/dollar-sign'
+                    }
+                ]
+            },
+            {
+                text: 'Http',
+                items: [
+                    {
+                        text: 'Routing',
+                        link: '/router/'
+                    }
+                ]
+            },
+            {
+                text: 'Xjs-Cli',
+                link: '/xjs-cli'
             }
         ],
         sidebar: 'auto'
