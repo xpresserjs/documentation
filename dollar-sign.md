@@ -1,6 +1,6 @@
 # $
-The `$` sign is a global variable exposed by **xpresser** and can be access by any file used in your project.
-It contains functions that are will serve as helpers in your project.
+The `$` sign is a global variable exposed by **xpresser** and can be accessed by any file used in your project.
+It contains functions that will serve as helpers in your project.
 
 ## Config
 

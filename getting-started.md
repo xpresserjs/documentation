@@ -18,7 +18,7 @@ yarn add xpresser
 ```
 
 ## Simple Hello World
-Create a file: **app.js** and paste the below codes.
+Create a file: **app.js** and paste the codes below.
 ```javascript
 // Require Xpresser
 const xpresser = require('xpresser');
