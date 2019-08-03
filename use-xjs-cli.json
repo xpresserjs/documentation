@@ -5,7 +5,7 @@
     "console": "node"
   },
   "production": {
-    "main": "{{main}}",
+    "main": "app.js",
     "server": "forever start",
     "console": "node"
   },

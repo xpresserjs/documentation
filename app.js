@@ -9,7 +9,17 @@ const config = {
     server: {
         startOnBoot: false,
         domain: env.APP_DOMAIN,
-        port: env.APP_PORT
+        port: env.APP_PORT,
+        root: '/',
+        includePortInUrl: isDev,
+        ssl: {
+            enabled: env.SSL === 'true',
+            port: env.SSL_PORT || 443,
+            files: {
+                cert: env.SSL_CERT,
+                key: env.SSL_KEY
+            }
+        }
     },
 
     paths: {
