@@ -43,4 +43,3 @@ $.ifNotConsole(() => {
 
 // Start Server
 $.startHttpServer();
-$.startHttpsServer();
