@@ -1,10 +1,12 @@
 require('dotenv').config();
 const env = process.env;
 const StartXpresser = require('xpresser');
-
+const isDev = env.NODE_ENV === 'development';
 
 const config = {
     name: 'Xpresser Docs',
+    env: env.NODE_ENV,
+
 
     server: {
         startOnBoot: false,
