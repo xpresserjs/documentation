@@ -49,7 +49,8 @@ Run ```nodemon app.js``` and you will see your server started in console.
 ```
 
 ## Using MVC Structure.
-When creating a real world applications **You need Structure**.
+When creating a real world application, **You need Structure**.
+
 Xpresser provides MVC (**Model, View & Controller**) support out of the box.
 
 To get started we need 3 files to achieve same **Hello World**.
@@ -92,7 +93,7 @@ $.router.get('/', 'AppController@index');
 // Send Requests to "/about" to {about} method in AppController
 $.router.get('/about', 'AppController@about');
 ```
-`$.router` is an instance of [**XpresserRouter**](https://www.npmjs.com/package/@xpresser/router) that provides a great api to create routes easily.
+`$.router` is an instance of [**XpresserRouter**](../router/readme.md).
 
 Create Controller: **controllers/AppController.js**
 ```javascript
@@ -115,6 +116,6 @@ Run `nodemon app.js` and visit [http://localhost:2000](http://localhost:2000) on
 
 ## What Next?
 
-1. Using Xpresser MVC structure is easier with [Xjs-Cli](https://www.npmjs.com/package/xjs-cli)
+1. [Xjs-Cli](./xjs-cli.md)
 2. [$ (The Dollar Sign)](./dollar-sign.md)
-3. [XpresserRouter](../router/readme.md)
+3. [Routing](../router/readme.md)
