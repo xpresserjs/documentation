@@ -3,6 +3,20 @@
 [**xjs-cli**](https://www.npmjs.com/package/xjs-cli) is a command-line interface made for xpresser. 
 It provides helpful commands that can assist you in building your application faster. 
 
+## Installation
+xjs-cli requires **global** installation.
+
+### Npm
+```shell script
+npm i xjs-cli -g
+```
+
+### Yarn
+```shell script
+yarn global add xjs-cli
+```
+
+## Usage
 To view list of available commands
 ```shell script
 xjs
