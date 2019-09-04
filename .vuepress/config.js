@@ -1,5 +1,5 @@
 module.exports = {
-    title: 'XpresserJs',
+    title: 'XpresserJs (Beta)',
     description: 'Express yourself more...',
 
     head: [
@@ -25,6 +25,10 @@ module.exports = {
             {
                 text: 'Core',
                 items: [
+                    {
+                        text: 'Configuration',
+                        link: '/configuration/'
+                    },
                     {
                         text: '$ (The Dollar Sign)',
                         link: '/dollar-sign'

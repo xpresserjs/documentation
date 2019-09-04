@@ -17,32 +17,37 @@ Our documentation will be using **Yarn**
 yarn add xpresser
 ```
 
-## Simple Hello World
+## Hello World (Single File)
 Create a file: **app.js** and paste the codes below.
 ```javascript
-// Require Xpresser
+//> 1
 const xpresser = require('xpresser');
 
-// Boot Xpresser With Your Config
-const $ = xpresser({
+//> 2
+xpresser({
     name: 'My Xpresser App',
     paths: {base: __dirname},
-    server: {
-        port: 2000,
-        startOnBoot: false,
-    }
+    server: {port: 2000, startOnBoot: false}
 });
 
-// Add Routes
+//> 3
 $.router.get('/', (x) => {
     return x.res.send('<h1>Hello World</h1>');
 });
 
-// Start Server
+//> 4
 $.startHttpServer();
 ```
-Run ```nodemon app.js``` and you will see your server started in console.
+
+1. Require **xpresser**.
+2. Boot xpresser with your **configuration**.
+    * `$` is exposed as a global variable on boot, meaning it can be used in every file booted in your project.
+3. Define **index** route.
+4. Start server.
+
+Run ```nodemon app.js``` and you should see your server started in console.
 ```sh
+===> xpresser v{Your xpresser version}
 ===> Starting {Your App Name}...
 ===> Server started and available on http://localhost:2000/
 ===> PORT:2000
@@ -83,14 +88,19 @@ const config = {
 xpresser(config);
 ```
 
+In our [single file example](#hello-world-single-file), notice `server.startOnBoot` was set to **false** but it's missing from the config above.
+This is because by default server starts on boot unless `server.startOnBoot=false`. When set to false you can start server manually using `$.startHttpServer()`
+
+See [Configuration](./configuration/) for more info.
+
 Create Routes file: **routes.js**
 
-`paths.routesFile` if defined will be required by xpresser when booting up and all routes defined in it will be registered.
+`paths.routesFile` if defined in **config**, will be required by xpresser when booting up and all routes defined in it will be registered.
 ```javascript
-// Send Requests to "/" to {index} method in AppController
+// "/"  => {index} method in AppController
 $.router.get('/', 'AppController@index');
 
-// Send Requests to "/about" to {about} method in AppController
+// "/about" => {about} method in AppController
 $.router.get('/about', 'AppController@about');
 ```
 `$.router` is an instance of [**XpresserRouter**](../router/readme.md).
@@ -116,6 +126,7 @@ Run `nodemon app.js` and visit [http://localhost:2000](http://localhost:2000) on
 
 ## What Next?
 
-1. [Xjs-Cli](./xjs-cli.md)
-2. [$ (The Dollar Sign)](./dollar-sign.md)
-3. [Routing](../router/readme.md)
+1. [Configuration](./configuration/)
+2. [Xjs-Cli](./xjs-cli.md)
+3. [$ (The Dollar Sign)](./dollar-sign.md)
+4. [Routing](./router/readme.md)

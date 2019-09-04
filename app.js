@@ -1,7 +1,6 @@
-require('dotenv').config();
-const env = process.env;
+const env = require('xpresser/env')(__dirname);
 const StartXpresser = require('xpresser');
-const isDev = env.NODE_ENV === 'development';
+const isDev = env.NODE_ENV !== 'production';
 
 const config = {
     name: 'Xpresser Docs',
@@ -32,7 +31,7 @@ const config = {
     },
 };
 
-const $ = StartXpresser(config);
+StartXpresser(config);
 
 // Run IfNotConsole
 $.ifNotConsole(() => {
