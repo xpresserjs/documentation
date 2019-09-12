@@ -1,3 +1,6 @@
+::: warning
+Xpresser is still under development.
+:::
 # Getting Started
 
 ## Requirements
@@ -27,7 +30,7 @@ const xpresser = require('xpresser');
 xpresser({
     name: 'My Xpresser App',
     paths: {base: __dirname},
-    server: {port: 2000, startOnBoot: false}
+    server: {port: 2000}
 });
 
 //> 3
@@ -36,14 +39,14 @@ $.router.get('/', (x) => {
 });
 
 //> 4
-$.startHttpServer();
+$.boot();
 ```
 
 1. Require **xpresser**.
 2. Boot xpresser with your **configuration**.
-    * `$` is exposed as a global variable on boot, meaning it can be used in every file booted in your project.
+    * `$` is exposed as a global variable on boot, meaning it can be used in every file required/loaded in your project.
 3. Define **index** route.
-4. Start server.
+4. Boot xpresser.
 
 Run ```nodemon app.js``` and you should see your server started in console.
 ```sh
@@ -85,11 +88,10 @@ const config = {
 };
 
 // Boot Server
-xpresser(config);
+xpresser(config).boot();
 ```
 
-In our [single file example](#hello-world-single-file), notice `server.startOnBoot` was set to **false** but it's missing from the config above.
-This is because by default server starts on boot unless `server.startOnBoot=false`. When set to false you can start server manually using `$.startHttpServer()`
+In our [single file example](#hello-world-single-file), we registered routes before calling `$.boot()`, well in this case we don't need that since we have specified a `routesFile` in our config.
 
 See [Configuration](./configuration/) for more info.
 
@@ -126,7 +128,7 @@ Run `nodemon app.js` and visit [http://localhost:2000](http://localhost:2000) on
 
 ## What Next?
 
-1. [Configuration](./configuration/)
+1. [Configuration](./configuration/readme.md)
 2. [Xjs-Cli](./xjs-cli.md)
 3. [$ (The Dollar Sign)](./dollar-sign.md)
 4. [Routing](./router/readme.md)

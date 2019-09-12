@@ -1,4 +1,8 @@
 module.exports = {
+    plugins: ['tabs'],
+    markdown: {
+        lineNumbers: true
+    },
     title: 'XpresserJs (Beta)',
     description: 'Express yourself more...',
 
@@ -17,6 +21,10 @@ module.exports = {
             {
                 text: 'Home',
                 link: '/'
+            },
+            {
+                text: 'About',
+                link: '/about'
             },
             {
                 text: 'Getting Started',

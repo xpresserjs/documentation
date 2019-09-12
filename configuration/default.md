@@ -15,11 +15,6 @@ If true, debugging is enabled.
 if true, xpresser will log any requests made to any registered controller action.
 
 ## Server
-### server.startOnBoot 
-**`Default: true`**
-
-If disabled, server will not start on boot and will require manual starting using `$.startHttpServer()`
-
 ### server.port
 **`Default: 2000`**
 

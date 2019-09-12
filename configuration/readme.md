@@ -40,7 +40,6 @@ const config = {
     },
 
     server: {
-        startOnBoot: true,
         port: 2000,
         protocol: "http",
         domain: "localhost",

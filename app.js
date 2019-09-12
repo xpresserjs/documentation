@@ -31,7 +31,7 @@ const config = {
     },
 };
 
-StartXpresser(config);
+StartXpresser(config, {autoBoot: false});
 
 // Run IfNotConsole
 $.ifNotConsole(() => {
@@ -40,5 +40,5 @@ $.ifNotConsole(() => {
     });
 });
 
-// Start Server
-$.startHttpServer();
+// Boot Xpresser
+$.boot();
