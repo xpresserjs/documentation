@@ -27,8 +27,21 @@ module.exports = {
                 link: '/about'
             },
             {
-                text: 'Getting Started',
-                link: '/getting-started'
+                text: 'Start',
+                items: [
+                    {
+                        text: 'Installation',
+                        link: '/installation'
+                    },
+                    {
+                        text: 'Create App',
+                        link: '/getting-started'
+                    },
+                    {
+                        text: 'Hello World',
+                        link: '/hello-world'
+                    }
+                ]
             },
             {
                 text: 'Core',
