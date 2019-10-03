@@ -32,10 +32,10 @@ Your new app structure.
 
 ![alt text](./images/cli/new-app-folder-structure.png)
 
-Xpresser does force any folder structure, all can be configured in your `config.js` file 
+Xpresser does not force any folder structure,folders path can be configured in your `config.js` file.
 
 In order not to mix your server side scripts with your frontend scripts xpresser provides a `backend` option in your config file.
-The specified backend file is where all your server scripts will be placed. It is also the folder auto generated files by [xjs-cli](./xjs-cli.md) will be stored.
+The specified backend file is where all your server scripts will be placed. It is also the folder where auto generated files by [xjs-cli](./xjs-cli.md) will be stored.
 
 if you are not comfortable with it, lets say you want **controllers** & **views** folders to be in the base directory, change `path.backend` in your config file.
 

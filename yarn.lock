@@ -1083,10 +1083,10 @@
     "@webassemblyjs/wast-parser" "1.8.5"
     "@xtuc/long" "4.2.2"
 
-"@xpresser/router@^0.0.15":
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/@xpresser/router/-/router-0.0.15.tgz#49a45b925e08a5e85823076e38d544af04a834c4"
-  integrity sha512-t1MVZKmOcvc2NgZnwRHjB94I8IvxwB9CuMSSr+UhLq+IjQLt9p+WfwE6KZsDexwIveBi/RurauksFuKv5AVmVw==
+"@xpresser/router@^0.0.16":
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/@xpresser/router/-/router-0.0.16.tgz#409f8239b725d771874fbdae4ec20f842f71f7b1"
+  integrity sha512-HIRPU1G75C4nLZpaZYH+2KJXQgm5y4Y9TXERh+vhriKSv+IKKfkO67DhPl7pIdziBhrVKvbtFtfxmgpvXEfvYA==
   dependencies:
     lodash.clone "^4.5.0"
 
@@ -7951,12 +7951,12 @@ x-xss-protection@1.3.0:
   resolved "https://registry.yarnpkg.com/x-xss-protection/-/x-xss-protection-1.3.0.tgz#3e3a8dd638da80421b0e9fff11a2dbe168f6d52c"
   integrity sha512-kpyBI9TlVipZO4diReZMAHWtS0MMa/7Kgx8hwG/EuZLiA6sg4Ah/4TRdASHhRRN3boobzcYgFRUFSgHRge6Qhg==
 
-xpresser@^0.1.30:
-  version "0.1.30"
-  resolved "https://registry.yarnpkg.com/xpresser/-/xpresser-0.1.30.tgz#64870e30561b35386833f10197dd4c9c32731779"
-  integrity sha512-ZMhq/OFsQrmijrRZ4wF6Lco1pswXDEZPs8oog2CZBQSZTjzx06yT7trXyVPFYd/HYxXGlpG+stmoMqa6n8QsLw==
+xpresser@^0.1.31:
+  version "0.1.31"
+  resolved "https://registry.yarnpkg.com/xpresser/-/xpresser-0.1.31.tgz#81304dd1b608d6a587bc0c4c33e2ed69141cba3f"
+  integrity sha512-xxW09OO8teIzQALoPmOmSjnQgYewDR1MWwn/kMmCdlh/C301tX4O89JN2pEEy/ZrNg3dY35vpLootJ7tijH0nw==
   dependencies:
-    "@xpresser/router" "^0.0.15"
+    "@xpresser/router" "^0.0.16"
     body-parser "^1.19.0"
     build-url "^1.3.3"
     chalk "^2.4.2"

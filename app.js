@@ -35,9 +35,16 @@ StartXpresser(config, {autoBoot: false});
 
 // Run IfNotConsole
 $.ifNotConsole(() => {
-    $.router.all('/*', (x) => {
+    /**
+     *
+     * @type {XpresserRouter}
+     */
+    const route = $.router;
+
+    route.all('/*', (x) => {
         return x.res.sendFile($.path.base('.vuepress/dist/index.html'));
     });
+
 });
 
 // Boot Xpresser
