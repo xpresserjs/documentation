@@ -16,9 +16,12 @@ xpresser({
 });
 
 //> 3
-$.router.get('/', (x) => {
-    return x.res.send('<h1>Hello World</h1>');
-});
+$.on.boot(next => {
+    // Register route.
+    $.router.get('/', http => http.res.send('<h1>Hello World</h1>'));
+    // Continue Boot    
+    return next();
+})
 
 //> 4
 $.boot();
@@ -27,7 +30,7 @@ $.boot();
 1. Require **xpresser**.
 2. Boot xpresser with your **configuration**.
     * `$` is exposed as a global variable on boot, meaning it can be used in every file required/loaded in your project.
-3. Define **index** route.
+3. Define **index** route in xpresser `$.on.boot` event 
 4. Boot xpresser.
 
 Run ```nodemon app.js``` and you should see your server started in console.

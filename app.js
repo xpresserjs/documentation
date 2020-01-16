@@ -31,10 +31,10 @@ const config = {
     },
 };
 
-StartXpresser(config, {autoBoot: false});
+const $ = StartXpresser(config);
 
 // Run IfNotConsole
-$.ifNotConsole(() => {
+$.on.boot((next) => {
     /**
      *
      * @type {XpresserRouter}
@@ -44,6 +44,8 @@ $.ifNotConsole(() => {
     route.all('/*', (x) => {
         return x.res.sendFile($.path.base('.vuepress/dist/index.html'));
     });
+
+    return next();
 
 });
 
