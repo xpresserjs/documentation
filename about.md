@@ -14,6 +14,15 @@ Xpresser is still under development.
 
 ### Request Example
 :::: tabs
+::: tab Xpresser
+```javascript
+$.router.get('/', (http) =>  {
+    return http.res.send("Hello World");
+});
+```
+The `http` variable carries express `req` and `res` with extra functions todo more.
+:::
+
 ::: tab Express
 ```javascript
 app.get('/', (req, res) =>  {
@@ -21,16 +30,11 @@ app.get('/', (req, res) =>  {
 })
 ```
 :::
-
-
-::: tab Xpresser
-```javascript
-$.router.get('/', (x) =>  {
-    return x.res.send("Hello World");
-});
-```
-:::
 ::::
 
-The `x` variable carries express `req` and `res` with extra codebase todo more.
+## Whats added?
+- MVC (Model, View, Controller) support out of the box
+- Helpers for faster development 
+- Events
+- Cron Jobs
 

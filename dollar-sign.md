@@ -10,7 +10,7 @@ Carries the config object of your application, Both default and defined.
 
 **Example**
 ```javascript
-if($.config.server.port===443){
+if($.config.server.port === 443){
     $.log("You are using https.");
 }
 ```
@@ -74,7 +74,7 @@ Require Controller using controller folder config specified in `paths.controller
 **Example**
 ```javascript
 const AppController = $.use.controller('AppController');
-// => Requires file: {/path/to/controller/folder/Auth.js}
+// => Requires file: {/path/to/controller/folder/AppController.js}
 ```
 
 ## Others
@@ -84,11 +84,11 @@ A collection for storing data at anywhere in your project.
 
 **Example**
 ```javascript
-$.engineData.set('someKey', '******')
+$.engineData.set('foo', 'bar')
 
 // Some where else in your app.
-$.engineData.get('someKey');
-// => ******
+$.engineData.get('foo');
+// => 'bar'
 ```
 
 

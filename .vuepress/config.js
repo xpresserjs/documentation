@@ -62,6 +62,10 @@ module.exports = {
                     {
                         text: 'Routing',
                         link: '/router/'
+                    },
+                    {
+                        text: 'Controllers',
+                        link: '/controllers/'
                     }
                 ]
             },
