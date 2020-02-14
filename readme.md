@@ -3,6 +3,7 @@ home: true
 heroImage: /images/logo.png
 actionText: Get Started →
 actionLink: /getting-started
+
 features:
   - title: Write Less, Do more.
     details: Built with the best helpers to enable your team get projects done faster.
@@ -24,3 +25,14 @@ features:
 
 footer: MIT Licensed | Copyright © 2018-present TrapCode
 ---
+
+## Play with XpresserJs
+<iframe
+     src="https://codesandbox.io/embed/xpresser-edge-app-1ct9h?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="xpresser-edge-app"
+     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+
+
+
