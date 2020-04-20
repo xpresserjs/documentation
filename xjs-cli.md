@@ -37,18 +37,23 @@ Your init file **use-xjs-cli.json** will be generated in current working directo
 
 ```json
 {
-  "development": {
+  "dev": {
     "main": "app.js",
-    "server": "nodemon",
-    "console": "node"
+    "start_cron": "node",
+    "start_server": "nodemon",
+    "start_console": "node"
   },
-  "production": {
+  "prod": {
     "main": "app.js",
-    "server": "forever start",
-    "console": "node"
+    "start_cron": "pm2 start",
+    "stop_cron": "pm2 stop",
+    "start_server": "pm2 start",
+    "stop_server": "pm2 stop",
+    "start_console": "node"
   },
-  "jobsPath": "jobs"
+  "jobs_path": "backend/jobs"
 }
+
 ```
 
 * **main**: Your boot file.
@@ -58,15 +63,11 @@ Your init file **use-xjs-cli.json** will be generated in current working directo
 
 
 ## Commands
-* [new](#new)
+* [new/create](#new-create)
 * [@/run](#run)
 * [cron](#cron)
 * [stop](#stop)
 * [restart](#restart)
-* [migrate](#migrate)
-* [migrate:make](#migratemake)
-* migrate:rollback
-* migrate:refresh
 * make:job
 * make:event
 * make:view
@@ -79,7 +80,7 @@ Your init file **use-xjs-cli.json** will be generated in current working directo
 **[option]:** optional <br>
 **&lt;option&gt;:** required
 
-### new
+### new/create
 Create new xjs project.
 ```shell script
 xjs new [name]
@@ -129,23 +130,6 @@ xjs stop <process>
 
 ```shell script
 xjs restart <process>
-```
-
-### migrate
-Migrate your database using [KnexJs](https://www.npmjs.com/package/knex), 
-
-
-Run `xjs install-prod-tools` to install knexJs on your machine.
-
-```shell script
-xjs migrate
-```
-
-### migrate:make
-Generates new migration file in **migrations** folder.
-
-```shell script
-xjs migrate:make <name>
 ```
 
 

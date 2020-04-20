@@ -14,7 +14,7 @@ const config = {
         root: '/',
         includePortInUrl: isDev,
         ssl: {
-            enabled: env.SSL === 'true',
+            enabled: env.SSL,
             port: env.SSL_PORT || 443,
             files: {
                 cert: env.SSL_CERT,
@@ -35,10 +35,7 @@ const $ = StartXpresser(config);
 
 // Run IfNotConsole
 $.on.boot((next) => {
-    /**
-     *
-     * @type {XpresserRouter}
-     */
+
     const route = $.router;
 
     route.all('/*', (x) => {

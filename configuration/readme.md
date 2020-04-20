@@ -51,23 +51,14 @@ const config = {
             port: 443,
         },
         use: {
+            cors: false,
             helmet: false,
+            session: false,
+            bodyParser: true
         },
-    },
-
-    database: {
-        startOnBoot: false,
-        timestampFormat: "YYYY-MM-DD H:mm:ss",
-        config: {
-            client: "sqlite",
-            connection: {
-                filename: "database.sqlite",
-            },
-            migrations: {
-                tableName: "migrations",
-            },
-            useNullAsDefault: true,
-        },
+        poweredBy: true,
+        servePublicFolder: true,
+        maintenanceMiddleware: 'MaintenanceMiddleware.js'
     },
 
     date: {
@@ -114,10 +105,10 @@ const config = {
         extension: "ejs",
         locals: {
             all: true,
-            __get: false,
-            __post: false,
-            __session: false,
-            __stackedScripts: false,
+            get: false,
+            post: false,
+            session: false,
+            stackedScripts: false,
         },
     },
 
@@ -131,9 +122,14 @@ const config = {
     },
 
     artisan: {
+        loadEvents: false,
         singleModelName: true,
         pluralizeModelTable: true,
     },
+
+    packages: {},
+
+    plugins: {}
 };
 ```
 See: [Detailed explanation of all default configurations](./default.md)
