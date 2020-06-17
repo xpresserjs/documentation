@@ -28,14 +28,10 @@ After you run all the commands your server should start like below
 Visit your server url and see your beautiful homepage waiting for you to dive in.
 
 ## Folder Structure.
-Your new app structure.
-
-![alt text](./images/cli/new-app-folder-structure.png)
-
-Xpresser does not force any folder structure,folders path can be configured in your `config.js` file.
+Xpresser does not force any folder structure, folders path can be configured in your `config.js` file.
 
 In order not to mix your server side scripts with your frontend scripts xpresser provides a `backend` option in your config file.
-The specified backend file is where all your server scripts will be placed. It is also the folder where auto generated files by [xjs-cli](./xjs-cli.md) will be stored.
+The specified backend folder is where all your server scripts will be placed. It is also the folder where auto generated files by [xjs-cli](./xjs-cli.md) will be stored.
 
 if you are not comfortable with it, lets say you want **controllers** & **views** folders to be in the base directory, change `path.backend` in your config file.
 
@@ -58,5 +54,5 @@ If you take a look a the [config.js](./configuration/default.md) page you will s
 
 
 
-#### .... To be continued ....
+#### Next: [Routing](./router/)
 

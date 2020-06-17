@@ -40,7 +40,7 @@ $.router.get('/', (x) => {
 });
 ```
 
-Functions works same way a controller action would but using the later would make your routes file look clean for your own readability.
+Using a Function works same way a controller action would but using the later would make your routes file look clean for your own readability.
 
 Assuming we have a controller named **PagesController** with 2 methods: **about** & **faq**
 ```javascript
@@ -49,9 +49,9 @@ $.router.get('/faq', 'PagesController@faq')
 ```
 
 Looks neat now right?
-It can even look neater with smart routing.
+It can look neater with smart routing.
 
-XpresserRouter does not require the word **`Controller`** in your controller name e.g
+**Note:** XpresserRouter does not require the word **`Controller`** in your controller name when routing e.g
 ```javascript
 $.router.get('/about', 'Pages@about')
 $.router.get('/faq', 'Pages@faq')
@@ -61,7 +61,7 @@ The above works exactly as the first.
 ## Named Routes
 Named routing is another amazing feature of XpresserRouter. Named routes allow referring to routes when generating redirects or Urls more comfortably.
 
-You can specify named routes by chaining the name method onto the route definition
+You can specify named routes by chaining the `name` method onto the route definition
 ```javascript
 $.router.post('/auth/login', 'Auth@login').name('login')
 ```
@@ -134,8 +134,8 @@ But it doesn't end here.
 
 The path function also provides amazing ways to make you write less when declaring routes.
 
-Notice that the url and the controller action is the same thing when declaring with path.
-if it feels stressful like you are writing same words twice then this next example will stress you less.
+Notice the url, and the controller action is the same when declaring with path.
+it kind of feels like a little redundancy is at work, well XpresserRouter provides a clean solution for situations like this.
 ```javascript
 // Instead of
 route.get('view', 'view');
@@ -169,7 +169,7 @@ route.path('/account', () => {
     route.get('@verify').name('account.verify');
 }).controller('Account');
 ```
-
+### As
 Instead of using `account.` repeatedly you can use the `as` helper like this
 ```javascript
 route.path('/account', () => {
@@ -181,6 +181,7 @@ route.path('/account', () => {
 }).controller('Account').as('account');
 ```
 The as function tells XpresserRouter to prefix any name in the given path with `account.`
+**Note:** If a route specifies `name` and `as` is also used in parent path the name will be used instead of the string specified in `as`
 
 ### Actions as Name
 Using the routes declared above as an example, you will notice the controller actions are the same with names of all the routes.
