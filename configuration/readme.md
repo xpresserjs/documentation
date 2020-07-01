@@ -84,7 +84,7 @@ const config = {
         models: "backend://models",
         middlewares: "backend://middlewares",
         views: "backend://views",
-        jsonConfigs: "base://",
+        jsonConfigs: "backend://",
     },
 
     session: {
@@ -133,3 +133,35 @@ const config = {
 };
 ```
 See: [Detailed explanation of all default configurations](./default.md)
+
+## Use.json
+When it comes to modifying or extending xpresser core files, the **use.json** comes in handy.
+The use.json simply tells xpresser path to files you want added to your project.
+
+Contents of the use.json varies depending on your project and what you want todo.
+
+**Note:** By default the use.json should be located in your `jsonConfigs` folder
+```json
+{
+  "extends": {
+    "RequestEngine": "path/to/RequestEngine.js"
+  },
+  "globalMiddlewares": [
+    "path/to/a/GlobalMiddleware.js"
+  ]
+}
+```
+
+The declaration above tells xpresser to extend its core `RequestEngine` file with yours and to add a global middleware to your project.
+
+## Plugins.json
+The plugins.json contains an array of plugins you want to add to your project.
+```json
+[
+  "npm://@xpresser/auth",
+  "npm://@xpresser/file-uploader"
+]
+```
+**Note:** `npm://` is a smart shorthand for your `node_modules` folder.
+
+
