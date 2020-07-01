@@ -138,7 +138,7 @@ See: [Detailed explanation of all default configurations](./default.md)
 When it comes to modifying or extending xpresser core files, the **use.json** comes in handy.
 The use.json simply tells xpresser path to files you want added to your project.
 
-Contents of the use.json varies depending on your project and what you want todo.
+Contents of the use.json depends on your project and what you want todo.
 
 **Note:** By default the use.json should be located in your `jsonConfigs` folder
 ```json
