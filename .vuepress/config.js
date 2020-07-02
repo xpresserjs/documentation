@@ -66,6 +66,10 @@ module.exports = {
                     {
                         text: 'Controllers',
                         link: '/controllers/'
+                    },
+                    {
+                        text: 'Middlewares',
+                        link: '/middlewares/'
                     }
                 ]
             },

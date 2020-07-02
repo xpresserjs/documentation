@@ -1,0 +1,66 @@
+# Middlewares
+Middleware functions are functions that have access to the current request  and can make changes that will be passed to the next request-response cycle. 
+
+**Note:** All express middlewares works on xpresser.
+
+## Defining a middleware.
+To create a middleware, use the xjs `make:middleware` command.
+```sh
+xjs make:middleware OnlyXhrRequests
+````
+```sh
+=>  OnlyXhrRequestsMiddleware created successfully. 
+=>  located @ backend/middlewares/OnlyXhrRequestsMiddleware.js
+```
+Notice the word `Middleware` is automatically added at the end of the specified name when creating the file for you.
+
+This middleware will check if the request is a **XmlHttpRequest**, if true it will move to the next request cycle else it will return an error to the user.
+
+```javascript
+/**
+* OnlyXhrRequestsMiddleware
+*/
+module.exports = {
+
+    /**
+     * Handle Incoming request
+     * @param {Xpresser.Http} http
+     * @return any
+     */
+    allow(http) {
+        
+        if (!http.req.xhr) {
+            return http.status(401).send({
+                error: "Only XmlHttpRequest requests allowed."
+            });
+        }
+
+        return http.next()   
+    }
+
+};
+```
+As you can see if `http.req.xhr` is false an error response is returned else the request proceeds to the next request-cycle when `http.next()` is called.
+
+## Types of middlewares
+* Router path middlewares
+* Controller action middlewares
+
+## Route path Middlewares
+The route path middleware are middlewares that can only be attached to `$.router.path()` routes.
+They affect all child routes defined in a particular router path.
+
+For example, we want to add the `OnlyXhrRequest` requests on `/api/*`
+```javascript
+$.router.path("/api/*", () => {
+
+    $.router.get('user', 'Api@user');
+    $.router.get('posts', 'Api@posts');
+
+}).middleware('OnlyXhrRequest');
+```
+`/api/user` and `/api/posts` will be guarded by the `OnlyXhrRequest` middleware.
+
+**Note:** Routes prefixed `/api/` **outside** and **after** the child routes function will also be guarded by the middleware.
+
+## Controller action middlewares
