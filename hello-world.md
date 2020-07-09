@@ -9,7 +9,7 @@ Create a file: **app.js** and paste the codes below.
 const xpresser = require('xpresser');
 
 //> 2
-xpresser({
+const $ = xpresser({
     name: 'My Xpresser App',
     paths: {base: __dirname},
     server: {port: 2000}
