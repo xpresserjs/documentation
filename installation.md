@@ -25,5 +25,6 @@ yarn add xpresser
 
 Next create: 
 
-1. [Your first Xpresser app](./getting-started.md)
-2. [Simple Hello World](./hello-world.md)
+
+1. [Simple Hello World](./hello-world.md)
+2. [Your first Xpresser app](./getting-started.md)

@@ -78,7 +78,7 @@ xpresser(config).boot();
 
 In our [single file example](#hello-world-single-file), we registered routes before calling `$.boot()`, well in this case we don't need that since we have specified a `routesFile` in our config.
 
-See [Configuration](./configuration/) for more info.
+See [Configuration](./configuration/readme.md) for more info.
 
 Create Routes file: **routes.js**
 
@@ -95,12 +95,12 @@ $.router.get('/about', 'AppController@about');
 Create Controller: **controllers/AppController.js**
 ```javascript
 class AppController extends $.controller {
-    index(x) {
-        return x.res.send("<h1>Hello World</h1>");
+    index(http) {
+        return http.res.send("<h1>Hello World</h1>");
     }
     
-    about(x) {
-        return x.res.send("<h1>About Page</h1>");
+    about(http) {
+        return http.res.send("<h1>About Page</h1>");
     }
 }
 
@@ -113,7 +113,7 @@ Run `nodemon app.js` and visit [http://localhost:2000](http://localhost:2000) on
 
 ## What Next?
 
-1. [Configuration](./configuration/readme.md)
-2. [Xjs-Cli](./xjs-cli.md)
+1. [Start a project using xjs-cli](./getting-started.md)
+2. [Configuration](./configuration/readme.md)
 3. [$ (The Dollar Sign)](./dollar-sign.md)
 4. [Routing](./router/readme.md)

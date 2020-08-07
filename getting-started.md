@@ -2,7 +2,7 @@
 Xpresser is still under development.
 :::
 
-# Create Your First App
+# Start a project using xjs-cli
 
 ### Requirement
 To create your first application in few seconds you need to have [xjs-cli](./xjs-cli.md) installed.
@@ -36,21 +36,21 @@ The specified backend folder is where all your server scripts will be placed. It
 if you are not comfortable with it, lets say you want **controllers** & **views** folders to be in the base directory, change `path.backend` in your config file.
 
 ```javascript
-        /**
-         * Xpresser has special string paths
-         * and base:// simply means xpresser should
-         * use base path.
-         *
-         * See file: xpresser/src/config.ts
-         * For all default Config options.
-         */
-        // BEFORE ---> backend: 'base://backend',
-        backend: __dirname,
+    /**
+     * Xpresser has special string paths
+     * and base:// simply means xpresser should
+     * use base path.
+     *
+     * See file: xpresser/src/config.ts
+     * For all default Config options.
+     */
+    // BEFORE ---> backend: 'base://backend',
+    backend: __dirname,
 ```
 
 Then move the all content in backend to your specified folder and everything should still work perfectly.
 
-If you take a look a the [config.js](./configuration/default.md) page you will see all the configurations available for you and how they work.
+If you take a look a the [config.js](./configuration/default.md) page you will see all the configurations available for you and how they function.
 
 
 

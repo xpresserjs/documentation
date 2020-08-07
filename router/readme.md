@@ -196,7 +196,7 @@ route.path('/account', () => {
     route.get('@verify');
 }).controller('Account').as('account').actionsAsName();
 ```
-With these simple looking codes your end result will be
+With these neat looking codes your end result will be
 
 | Method | Url | Controller@action | Name
 | ----- | -----| -----------------| -----
@@ -208,7 +208,7 @@ With these simple looking codes your end result will be
 
 
 ### External Controller
-Routes declared in path can make reference to external controllers
+Routes declared in path can make reference to external controllers but will be prefixed by path url.
 ```javascript
 route.path('/user/:id', () => {
     route.get('posts', 'Posts@user')

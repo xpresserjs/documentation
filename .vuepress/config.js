@@ -34,13 +34,13 @@ module.exports = {
                         link: '/installation'
                     },
                     {
-                        text: 'Create App',
-                        link: '/getting-started'
-                    },
-                    {
                         text: 'Hello World',
                         link: '/hello-world'
-                    }
+                    },
+                    {
+                        text: 'Xjs new',
+                        link: '/getting-started'
+                    },
                 ]
             },
             {
