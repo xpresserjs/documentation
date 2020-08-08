@@ -40,27 +40,66 @@ module.exports = {
 
 };
 ```
-As you can see if `http.req.xhr` is false an error response is returned else the request proceeds to the next request-cycle when `http.next()` is called.
+if `http.req.xhr` is false an error response is returned else the request proceeds to the next request-cycle when `http.next()` is called.
 
-## Types of middlewares
+## Using middlewares
+There are two ways your middleware can be used in your application
+ 
 * Router path middlewares
 * Controller action middlewares
 
-## Route path Middlewares
-The route path middleware are middlewares that can only be attached to `$.router.path()` routes.
-They affect all child routes defined in a particular router path.
+### Route path Middlewares
+When declaring routes using `$.router.path()` you can assign a middleware that will affect all requests that has the router path prefixed in it.
 
-For example, we want to add the `OnlyXhrRequest` requests on `/api/*`
+For example, we want to add the `OnlyXhrRequest` to requests prefixed with `/api`
 ```javascript
-$.router.path("/api/*", () => {
+$.router.path("/api", () => {
 
     $.router.get('user', 'Api@user');
     $.router.get('posts', 'Api@posts');
 
 }).middleware('OnlyXhrRequest');
+
+$.router.get('/api/comments', 'Api@comments');
 ```
 `/api/user` and `/api/posts` will be guarded by the `OnlyXhrRequest` middleware.
 
-**Note:** Routes prefixed `/api/` **outside** and **after** the child routes function will also be guarded by the middleware.
+**Note:** Routes prefixed `/api/` **outside** and **after** the child routes function will also be guarded by the middleware. e.g `/api/comments`
 
-## Controller action middlewares
+### Controller action middlewares
+Every controller has a middleware handler where you assign middlewares to actions in that controller.
+:::: tabs
+::: tab "Controller Class"
+```javascript
+class TestController extends $.controller {
+
+    /**
+    * middleware - Set Middleware
+    * @returns {Object}
+    */
+    static middleware(){
+        return {}
+    }
+
+}
+module.exports = TestController;
+```
+The object returned to the `middleware` function is where you assign middlewares to actions
+:::
+
+::: tab "Controller Object"
+```javascript
+const TestObjectController = {
+    // Controller Name
+    name: "TestObjectController",
+    // Controller Middlewares
+    middlewares: {},
+    // Controller Default Service Error Handler.
+    e: (http, error) => http.send({error}),
+};
+
+module.exports = TestObjectController;
+```
+The `middlewares` field is where you assign middlewares to action.
+:::
+::::

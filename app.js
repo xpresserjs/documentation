@@ -1,4 +1,4 @@
-const env = require('xpresser/env')(__dirname);
+const env = require('@xpresser/env')(__dirname);
 const StartXpresser = require('xpresser');
 const isDev = env.NODE_ENV !== 'production';
 

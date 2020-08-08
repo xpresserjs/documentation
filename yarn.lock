@@ -1310,6 +1310,14 @@
     "@webassemblyjs/wast-parser" "1.8.5"
     "@xtuc/long" "4.2.2"
 
+"@xpresser/env@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@xpresser/env/-/env-1.0.3.tgz#1a71b1de84cab4e002530921622c872ef4f58801"
+  integrity sha512-yUbcyh+XEpO8GbtN0EZHTxgdaBduHe4NbSWRUB1UyRqkYkIBIhpjMvHDIwfP9VBGEX9vVVOgseFIt5toRU1I5Q==
+  dependencies:
+    dotenv "^8.2.0"
+    dotenv-expand "^5.1.0"
+
 "@xpresser/router@^1.0.10":
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/@xpresser/router/-/router-1.0.10.tgz#fe7ca1d69734baf86f6a34c9da73f51242eb169e"
@@ -3058,6 +3066,16 @@ dot-prop@^5.1.0:
   integrity sha512-uEUyaDKoSQ1M4Oq8l45hSE26SnTxL6snNnqvK/VWx5wJhmff5z0FUVJDKDanor/6w3kzE3i7XZOk+7wC0EXr1A==
   dependencies:
     is-obj "^2.0.0"
+
+dotenv-expand@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/dotenv-expand/-/dotenv-expand-5.1.0.tgz#3fbaf020bfd794884072ea26b1e9791d45a629f0"
+  integrity sha512-YXQl1DSa4/PQyRfgrv6aoNjhasp/p4qs9FjJ4q4cQk+8m4r6k4ZSiEyytKG8f8W9gi8WsQtIObNmKd+tMzNTmA==
+
+dotenv@^8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
+  integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
 
 duplexer3@^0.1.4:
   version "0.1.4"
