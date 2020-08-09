@@ -55,23 +55,23 @@ For example, we want to add the `OnlyXhrRequest` to requests prefixed with `/api
 ```javascript
 $.router.path("/api", () => {
 
-    $.router.get('user', 'Api@user');
+    $.router.get('users', 'Api@users');
     $.router.get('posts', 'Api@posts');
 
-}).middleware('OnlyXhrRequest');
+}).controller('Api').middleware('OnlyXhrRequest');
 
 $.router.get('/api/comments', 'Api@comments');
 ```
-`/api/user` and `/api/posts` will be guarded by the `OnlyXhrRequest` middleware.
+`/api/users` and `/api/posts` will be guarded by the `OnlyXhrRequest` middleware.
 
 **Note:** Routes prefixed `/api/` **outside** and **after** the child routes function will also be guarded by the middleware. e.g `/api/comments`
 
 ### Controller action middlewares
-Every controller has a middleware handler where you assign middlewares to actions in that controller.
+Every controller has a middleware handler where you assign middlewares to actions.
 :::: tabs
 ::: tab "Controller Class"
 ```javascript
-class TestController extends $.controller {
+class ApiController extends $.controller {
 
     /**
     * middleware - Set Middleware
@@ -81,21 +81,41 @@ class TestController extends $.controller {
         return {}
     }
 
+    users(http){
+        return http.send({
+            users: [
+                {name: 'john', age: 21},
+                {name: 'Doe', age: 19}
+            ]       
+        })
+    }
 }
 module.exports = TestController;
 ```
-The object returned to the `middleware` function is where you assign middlewares to actions
+The object returned to the `middleware()` function is where you assign middlewares to actions
 :::
 
 ::: tab "Controller Object"
 ```javascript
-const TestObjectController = {
+const ApiController = {
+
     // Controller Name
-    name: "TestObjectController",
+    name: "ApiController",
+
     // Controller Middlewares
     middlewares: {},
+
     // Controller Default Service Error Handler.
     e: (http, error) => http.send({error}),
+
+    users(http){
+        return http.send({
+            users: [
+                {name: 'john', age: 21},
+                {name: 'Doe', age: 19}
+            ]       
+        })
+    }
 };
 
 module.exports = TestObjectController;
