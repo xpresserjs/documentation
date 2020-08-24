@@ -74,8 +74,17 @@ module.exports = {
                 ]
             },
             {
-                text: 'Xjs-Cli',
-                link: '/xjs-cli'
+                text: 'Packages',
+                items: [
+                    {
+                        text: 'Xjs-Cli',
+                        link: '/xjs-cli'
+                    },
+                    {
+                        text: 'xpress-mongo',
+                        link: '/xpress-mongo/'
+                    }
+                ]
             }
         ],
         sidebar: 'auto'
