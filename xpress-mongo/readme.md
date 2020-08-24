@@ -1,6 +1,6 @@
 # Xpress-Mongo
 **xpress-mongo** is a lightweight mongodb collection as model library.
-When using mongodb default client for nodejs which is the recommended most developers have to create a way to make modelling possible. 
+When using mongodb default client for nodejs (which is the recommended), most developers have to create a way to make modelling possible. 
 With xpress-mongo you get customizable modelling at it's peak.
 
 
