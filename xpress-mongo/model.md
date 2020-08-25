@@ -175,6 +175,49 @@ const numberOfAdults = await Users.count({
 `XmongoModel.countAggregate(query: [], options?: {})` is same as `count()` but used to count results from an aggregate query.
 
 
+### paginate()
+`XmongoModel.paginate(page: number, perPage: number, query: {}, options?: {})` is used to paginate results 
+```javascript
+// Assuming this is a controller action
+async function getAllUsers(http){
+
+    const page = http.query('page', 1);
+    const perPage = 30;
+
+    // Pagination of all users with age >= 18, sort by firstName
+    const users = await Users.paginate(page, perPage, {
+        age: {$gte: 18}
+    }, {
+        sort: {firstName: 1}
+    });
+
+    // Return response
+    return http.json({users});
+
+};
+```
+The result
+```json
+{
+  "total": 1,
+  "perPage": 20,
+  "page": 1,
+  "lastPage": 1,
+  "data": [
+    {
+      "_id": "5f43e78c9da24b1444d7c998",
+      "email": "john@doe.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "age": 18
+    }
+  ]
+}
+```
+
+### paginateAggregate()
+`XmongoModel.paginateAggregate(page: number, perPage: number, query: {}, options?: {})` is same with `XMongoModel.paginate` but works with aggregation query.
+
 
 ## Instance Methods
 ### changes()
@@ -222,7 +265,7 @@ const lastName = john.get('lastName');
 `this.idEqualTo(to: any, key: '_id')` is used to Compare model id with a string or ObjectId type variable.
 ```javascript
 /**
-* Assuming Data is {
+* Data: {
 *     _id: 5f43e78c9da24b1444d7c998,
 *     firstName: 'John',
 *     lastName: 'Doe',
@@ -247,3 +290,54 @@ console.log(john.idEqualTo('5f43e78c9da24b1444d7c998', 'userId'));
 console.log(john.idEqualTo('5e0ee7f56a5df504e669f876', 'userId'));
 // True
 ```
+
+### pushToArray()
+`this.pushToArray(key: string, value: any, strict?: boolean = false)` is used to push an item to an array in the current data held by the model.
+```javascript
+/**
+* Data: {
+*     _id: 5f43e78c9da24b1444d7c998,
+*     firstName: 'John',
+*     lastName: 'Doe',
+*     userId: 5e0ee7f56a5df504e669f876,
+*     about: {
+*         brothers: ['Paul', 'Peter'],
+*         hobbies: ['Eat', 'Code', 'Sleep']
+*     }
+* }
+*/
+const user = await User.findById('5f43e78c9da24b1444d7c998');
+
+// Push hobby 'BasketBall` to hobbies array
+user.pushToArray('about.hobbies', 'Basketball')
+
+await user.save();
+```
+**Note:** if the key requested for does not exist or is not an array, an error is throwed.
+
+### save()
+`this.save()` updates a document if model has **_id** in its data object. if **_id** is missing it creates the document and saves the new **_id** to the model instance.
+Can be used when creating or when updating a document.
+
+##### Creating
+```javascript
+const user = new User().set({
+    firstName: 'Paul',
+    lastName: 'Dean'
+});
+
+await user.save();
+```
+`user.save()` will create a new document because the model data has no _id
+
+##### Updating
+```javascript
+const user = await User.findById('5f43e78c9da24b1444d7c998');
+
+user.set('about.address','no 44 billboard avenue.')
+
+await user.save();
+```
+`user.save()` will update the document using its _id
+
+### set()

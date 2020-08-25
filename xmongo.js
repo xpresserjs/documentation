@@ -31,11 +31,13 @@ async function run() {
         }
     }
 
-    const user = await User.findById('5f43e78c9da24b1444d7c998');
+    const users = await User.paginate(1, 20, {
+        age: {$gte: 18}
+    }, {
+        sort: {firstName: 1}
+    });
 
-    user.set('lastName', 'Joe')
-
-    console.log(user.changes());
+    console.log(users)
 }
 
 run().catch(error => console.log(error))
