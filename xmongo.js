@@ -31,28 +31,11 @@ async function run() {
         }
     }
 
-    // Find first user in users connection
-    let user = await User.findOne({});
+    const user = await User.findById('5f43e78c9da24b1444d7c998');
 
-    // If user is found
-    if (user) {
-        // Log user data and full name
-        console.log(user);
-        return console.log(`FirstName: ${user.fullName()}`)
-    }
+    user.set('lastName', 'Joe')
 
-    console.log('No user found, creating one....');
-
-    // Create new user
-    user = await User.new({
-        firstName: 'John',
-        lastName: 'Doe'
-    })
-
-    // Log user data and full name
-    console.log(user);
-    return console.log(`FirstName: ${user.fullName()}`)
-
+    console.log(user.changes());
 }
 
 run().catch(error => console.log(error))

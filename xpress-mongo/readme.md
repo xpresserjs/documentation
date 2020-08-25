@@ -155,6 +155,11 @@ const user = await User.findOne({email: 'john@doe.com'});
 await user.delete();
 ```
 
+<div style="margin-top: 50px; text-align: right">
+<a href="/xpress-mongo/model"><b>Next Model</b></a>
+</div>
+
+
 
 
 
