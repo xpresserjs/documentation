@@ -37,7 +37,7 @@ await Users.thisCollection().insertOne({
 });
 ```
 
-### new()
+### new() - `async`
 `XMongoModel.new(data: {}, save: boolean = true)` is used to add a new document to the collection.
 ```javascript
 await Users.new({
@@ -119,7 +119,7 @@ if (Users.isValidId('5f43e78c9da24b1444d7c998'))
     return true;
 ```
 
-### find()
+### find() - `async`
 `XMongoModel.find(query: {}, options?: {}, raw?: false)`
 This method is used to find documents in a collection, this does not return results as model instances
 ```javascript
@@ -149,19 +149,19 @@ const users = await Users.find({
 }, true).limit(1).skip(10).toArray();
 ```
 
-### findOne()
+### findOne() - `async`
 `XMongoModel.findOne(query: {}, options?: {}, raw?: false)` same as `find()` but returns only one document as model instance.
 ```javascript
 const john = await Users.findOne({firstName: 'John'});
 ```
 
-### findById()
+### findById() - `async`
 `XMongoModel.findById(_id: any, options?: {})` is used to find one document using the `_id`
 ```javascript
 const user = await Users.findById('5f43e78c9da24b1444d7c998')
 ```
 
-### count()
+### count() - `async`
 `XMongoModel.count(query?: {})` is used to count documents that matches the query passed.
 if no query is passed, it counts all elements.
 ```javascript
@@ -171,11 +171,11 @@ const numberOfAdults = await Users.count({
 })
 ```
 
-### countAggregate()
+### countAggregate() - `async`
 `XmongoModel.countAggregate(query: [], options?: {})` is same as `count()` but used to count results from an aggregate query.
 
 
-### paginate()
+### paginate() - `async`
 `XmongoModel.paginate(page: number, perPage: number, query: {}, options?: {})` is used to paginate results 
 ```javascript
 // Assuming this is a controller action
@@ -215,7 +215,7 @@ The result
 }
 ```
 
-### paginateAggregate()
+### paginateAggregate() - `async`
 `XmongoModel.paginateAggregate(page: number, perPage: number, query: {}, options?: {})` is same with `XMongoModel.paginate` but works with aggregation query.
 
 
@@ -240,7 +240,7 @@ console.log(user.changes());
 // => {lastName: 'Joe'}
 ```
 
-### delete()
+### delete() - `async`
 `this.delete()` is used to delete the current document from the collection.
 ```javascript
 const john = await Users.findOne({firstName: 'John'});
@@ -315,7 +315,7 @@ await user.save();
 ```
 **Note:** if the key requested for does not exist or is not an array, an error is throwed.
 
-### save()
+### save() - `async`
 `this.save()` updates a document if model has **_id** in its data object. if **_id** is missing it creates the document and saves the new **_id** to the model instance.
 Can be used when creating or when updating a document.
 
@@ -341,3 +341,181 @@ await user.save();
 `user.save()` will update the document using its _id
 
 ### set()
+`this.set(key: string | {}, value: any)` is used to add or update fields and value to the model's data.
+This data does not save to database until `save()` is called.
+
+```javascript
+const user = new User();
+
+user.set('firstName', 'John')
+user.set('lastName', 'Doe')
+
+await user.save();
+```
+
+if the first argument is an object and `value===undefined` each key and value in the object will be set as fields and value respectively.
+
+The above code can also be written like this:
+```javascript
+const user = new User();
+
+user.set({
+    firstName: 'John',
+    lastName: 'Doe'
+})
+
+await user.save();
+```
+
+### toCollection()
+`this.toCollection()` returns an [object-collection](https://www.npmjs.com/package/object-collection) instance of models data, giving you all the functions of the object-collection library.
+
+Below are some examples.
+```javascript
+/**
+* Data: {
+*     _id: 5f43e78c9da24b1444d7c998,
+*     firstName: 'John',
+*     lastName: 'Doe',
+*     userId: 5e0ee7f56a5df504e669f876,
+*     about: {
+*         brothers: ['Paul', 'Peter'],
+*         hobbies: ['Eat', 'Code', 'Sleep']
+*     }
+* }
+*/
+const user = await User.findById('5f43e78c9da24b1444d7c998');
+const userCollection = user.toCollection();
+
+userCollection.pick(['firstName', 'lastName']);
+// => {firstName: 'John', lastName: 'Doe'}
+
+// add `address` in about object
+userCollection.path('about').set('address', 'No 10, some street avenue.')
+
+// Read `address`
+userCollection.get('about.address')
+// => No 10, some street avenue.
+```
+
+### toJson()
+`this.tojson(replacer?: any, spacing?: number)` simple returns the data of the model as json string.
+It uses: `JSON.stringify()` in the background.
+```javascript
+const user = await User.findOne({firstName: 'John'});
+console.log(user.toJson(null, 2));
+```
+
+### unset() - `async`
+`this.unset(keys: string | string[], options?: UpdateOneOptions)` unsets key or keys passed from the database and model data.
+```javascript
+/**
+* Data: {
+*     _id: 5f43e78c9da24b1444d7c998,
+*     firstName: 'John',
+*     lastName: 'Doe',
+*     userId: 5e0ee7f56a5df504e669f876,
+*     about: {
+          address: 'No 10, some street avenue.',
+*         brothers: ['Paul', 'Peter'],
+*         hobbies: ['Eat', 'Code', 'Sleep']
+*     }
+* }
+*/
+const user = await User.findById('5f43e78c9da24b1444d7c998');
+
+await user.unset('userId');
+await user.unset(['about.brothers', 'about.hobbies'])
+
+console.log(user)
+
+/**
+* User {
+    data {
+*     _id: 5f43e78c9da24b1444d7c998,
+*     firstName: 'John',
+*     lastName: 'Doe',
+*     about: {
+*       address: 'No 10, some street avenue.',
+*     }
+*   }
+* }
+*/
+```
+
+### update() - `async`
+`this.update(data?: {})` is a shortcut for **set** and **save**, it will throw an error if there is no _id in  the model's data.
+```javascript
+await user.update({
+    firstName: "Lorem",
+    lastName: "Ipsum"
+})
+
+// Same as
+await user.set({
+    firstName: "Lorem",
+    lastName: "Ipsum"
+}).save();
+```
+Note: Updates will not occur if there are no changes in data.
+
+### updateRaw() - `async`
+`this.updateRaw(updateQuery: {}, options?: UpdateOneOptions)` unlike `this.update()` allows you to perform other operations other than {$set} operations.
+<br/> The updateQuery has to be a mongo native query syntax.
+
+Example: Let's increment orders of John Doe's profile
+```javascript
+/**
+*   Data {
+*       firstName: 'John',
+*       lastName: 'Doe',
+*       orders: 10,
+*   }
+*/
+const john = await user.findOne({firstName: 'John'});
+
+await john.updateRaw({
+    $inc: {orders: 1}
+})
+```
+
+### useSchema()
+`this.useSchema(schema: {})` is used to register the model's schema, with schemas you get a validation check and auto generated fields.
+
+**Note:** `useSchema` must be in the constructor()
+```javascript
+// Import Xpress-Mongo Schema builder.
+const {is} = require('xpress-mongo');
+
+// Build Schema
+const UserSchema = {
+    firstName: is.String().required(),
+    lastName: is.String().required(),
+    orders: is.Number(0),
+    updatedAt: is.Date().required(),
+    createdAt: is.Date().required()
+}
+
+class Users extends connection.model('users') {
+    constructor(){
+        super()
+        this.useSchema(UserSchema);
+    }
+}
+
+module.exports = Users;
+```
+
+### validate()
+`this.validate()` is used internally to validate model's data against model schema whenever you call `this.update()`, `this.save()` and `Model.new()`
+Throws error if validation fails.
+
+Eg. using the schema defined in [useSchema](#useschema)
+```javascript
+const user = await User.findById('5f43e78c9da24b1444d7c998');
+
+user.set('firstName', ['an array instead of string']);
+
+console.log(user.validate())
+// TypeError: (firstName) is not a String
+```

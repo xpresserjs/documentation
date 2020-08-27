@@ -156,7 +156,7 @@ await user.delete();
 ```
 
 <div style="margin-top: 50px; text-align: right">
-<a href="/xpress-mongo/model.html"><b>Next Model</b></a>
+<a href="/xpress-mongo/schema.html"><b>Next &gt;&gt; Schema</b></a>
 </div>
 
 

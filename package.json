@@ -8,10 +8,10 @@
         "@xpresser/env": "^1.0.3",
         "vue-tabs-component": "^1.5.0",
         "vuepress-plugin-tabs": "^0.3.0",
-        "xpress-mongo": "^0.0.34",
-        "xpresser": "^0.2.44"
+        "xpress-mongo": "^0.0.35",
+        "xpresser": "^0.2.47"
     },
     "devDependencies": {
-        "vuepress": "^1.5.3"
+        "vuepress": "^1.5.4"
     }
 }

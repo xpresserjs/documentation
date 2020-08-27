@@ -1,4 +1,4 @@
-const {Client} = require('xpress-mongo');
+const {Client, is} = require('xpress-mongo');
 
 async function run() {
     // Initialise connection
@@ -19,8 +19,22 @@ async function run() {
         throw e;
     }
 
+// Build Schema
+    const UserSchema = {
+        firstName: is.String().required(),
+        lastName: is.String().required(),
+        orders: is.Number(0),
+        updatedAt: is.Date().isOptional(),
+        createdAt: is.Date().isOptional()
+    }
+
     // Your Model extends a class for your collection
     class User extends connection.model('users') {
+
+        constructor(){
+            super();
+            this.useSchema(UserSchema);
+        }
 
         /**
          * Returns the full name of the user.
@@ -31,13 +45,13 @@ async function run() {
         }
     }
 
-    const users = await User.paginate(1, 20, {
-        age: {$gte: 18}
-    }, {
-        sort: {firstName: 1}
-    });
+    const user = await User.findById('5f43e78c9da24b1444d7c998');
 
-    console.log(users)
+    user.set('firstName', 'an array instead of string');
+
+    console.log(user.validate())
+
+    // TypeError: (firstName) is not a String
 }
 
 run().catch(error => console.log(error))
