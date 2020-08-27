@@ -89,6 +89,11 @@ module.exports = {
                             },
 
                             {
+                                text: 'Schema',
+                                link: '/xpress-mongo/schema'
+                            },
+
+                            {
                                 text: 'Model',
                                 link: '/xpress-mongo/model'
                             }
