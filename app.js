@@ -8,7 +8,6 @@ const config = {
 
 
     server: {
-        startOnBoot: false,
         domain: env.APP_DOMAIN,
         port: env.APP_PORT,
         root: '/',
