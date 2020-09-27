@@ -13,7 +13,15 @@ module.exports = {
                 rel: "stylesheet",
                 href: "/style.css"
             }
-        ]
+        ],
+        //
+        // [
+        //     "link",
+        //     {
+        //         rel: "stylesheet",
+        //         href: "https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap"
+        //     }
+        // ],
     ],
 
     themeConfig: {
@@ -98,6 +106,16 @@ module.exports = {
                                 link: '/xpress-mongo/model'
                             }
                         ]
+                    }
+                ]
+            },
+
+            {
+                text: 'Plugins',
+                items: [
+                    {
+                        text: '@xpresser/file-uploader',
+                        link: '/plugins/@xpresser/file-uploader/'
                     }
                 ]
             }

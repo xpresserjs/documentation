@@ -162,6 +162,6 @@ The plugins.json contains an array of plugins you want to add to your project.
   "npm://@xpresser/file-uploader"
 ]
 ```
-**Note:** `npm://` is a smart shorthand for your `node_modules` folder.
+**Note:** `npm://` is a shorthand for your `node_modules` folder.
 
 

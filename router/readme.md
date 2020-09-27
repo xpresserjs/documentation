@@ -135,7 +135,7 @@ But it doesn't end here.
 The path function also provides amazing ways to make you write less when declaring routes.
 
 Notice the url, and the controller action is the same when declaring with path.
-it kind of feels like a little redundancy is at work, well XpresserRouter provides a clean solution for situations like this.
+it kind of feels like  there is a little redundancy there, well XpresserRouter provides a clean solution for situations like this.
 ```javascript
 // Instead of
 route.get('view', 'view');

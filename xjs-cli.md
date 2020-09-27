@@ -1,6 +1,6 @@
 # Xjs-Cli
 
-[**xjs-cli**](https://www.npmjs.com/package/xjs-cli) is a command-line interface made for xpresser. 
+[**xjs-cli**](https://www.npmjs.com/package/xjs-cli) is a command-line tool made for xpresser. 
 It provides helpful commands that can assist you in building your application faster. 
 
 ## Installation
@@ -62,23 +62,77 @@ Your init file **use-xjs-cli.json** will be generated in current working directo
 * **console**:  command to execute your main file when running console commands.
 
 
-## Commands
-* [new/create](#new-create)
+## Project Commands
+Project commands are only available when there is a valid `use-xjs-cli.json` in the current working directory.
+
+* up
+* down
+* start
+* routes
 * [@/run](#run)
-* [cron](#cron)
-* [stop](#stop)
-* [restart](#restart)
 * make:job
 * make:event
 * make:view
 * make:model
 * make:controller
+* make:controllerService
 * make:middleware
-* install-prod-tools
+* [cron](#cron)
+* [stop](#stop)
+* [restart](#restart)
 * check-for-update
+* [new/create](#new-create)
+* install-prod-tools
 
-**[option]:** optional <br>
-**&lt;option&gt;:** required
+---
+Commands can have arguments that are required or optional
+
+**`[optional]`** Square braces represents the optional arguments
+<br>
+**`<required>`** Less _&&_ Greater Than signs represents the required arguments
+
+---
+
+### up
+Removes app from maintenance mode.
+```shell script
+xjs up
+```
+
+### down
+Put App in maintenance mood.
+```shell script
+xjs down
+```
+
+### start
+Start main file defined in use-xjs-cli.json
+```shell script
+xjs start
+```
+
+By default the `development` init config will be used.
+To start script in production **xjs-cli** uses [forever](https://www.npmjs.com/package/forever) to start your main file.
+
+Run `xjs install-prod-tools` to install forever on your machine.
+```shell script
+xjs start prod
+``` 
+
+### routes
+Show all registered routes in your project.
+```
+xjs routes [search] [query]
+```
+
+```
+┌─────────┬────────┬──────┬────────────┬──────┐
+│ (index) │ method │ path │ controller │ name │
+├─────────┼────────┼──────┼────────────┼──────┤
+│    0    │ 'ALL'  │ '/*' │ [Function] │ null │
+└─────────┴────────┴──────┴────────────┴──────┘
+```
+
 
 ### new/create
 Create new xjs project.
@@ -100,36 +154,18 @@ Run jobs that have the `schedule` property defined.
 xjs cron
 ```
 
-### start
-Start main file defined in use-xjs-cli.json
-```shell script
-xjs start
-```
-
-By default the `development` init config will be used.
-To start script in production **xjs-cli** uses [forever](https://www.npmjs.com/package/forever) to start your main file.
-
-Run `xjs install-prod-tools` to install forever on your machine.
-```shell script
-xjs start prod
-``` 
-
 ### stop
-* all
-* cron
-* server
-
 ```shell script
-xjs stop <process>
+xjs stop all   ## Stop all services.
+xjs stop cron   ## Stop cron service.
+xjs stop server   ## Stop server
 ```
 
 ### restart
-* all
-* cron
-* server
-
 ```shell script
-xjs restart <process>
+xjs stop all   ## Restart all services.
+xjs stop cron   ## Restart cron service.
+xjs stop server   ## Restart server
 ```
 
 
