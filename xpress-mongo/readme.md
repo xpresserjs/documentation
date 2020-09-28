@@ -1,6 +1,6 @@
 # Xpress-Mongo
 **xpress-mongo** is a lightweight mongodb collection as model library.
-When using mongodb default client for nodejs (which is the recommended), most developers have to create a way to make modelling possible. 
+When using mongodb default client for nodejs (which is recommended), most developers have to create a way to make modelling possible. 
 With xpress-mongo you get customizable modelling at it's peak.
 
 
@@ -13,7 +13,7 @@ yarn add xpress-mongo
 ```
 
 ## Usage 
-create file **xmongo.js**
+create file **mongodb.js**
 ```javascript
 const {Client} = require('xpress-mongo');
 
@@ -48,14 +48,14 @@ async function run() {
         }
     }
 
-    // Find first user in users connection
+    // Find one user in users connection
     let user = await User.findOne({});
 
     // If user is found
     if (user) {
-        // Log user data and full name
+        // Log user and full name
         console.log(user);
-        return console.log(`FirstName: ${user.fullName()}`)
+        return console.log(`Fullname: ${user.fullName()}`)
     }
 
     console.log('No user found, creating one....');

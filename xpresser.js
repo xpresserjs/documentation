@@ -42,7 +42,6 @@ $.on.boot((next) => {
     });
 
     return next();
-
 });
 
 // Boot Xpresser
