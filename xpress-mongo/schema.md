@@ -129,6 +129,27 @@ const VideoSchema = {
 ```
 
 ### is.Types()
+Set a field to multiple `Types`. Inherits default value of the first type if any.
+
+```javascript
+const CommentSchema = {
+    // String or ObjectId (Default: 'admin')
+    author: is.Types([
+        is.String('admin'),
+        is.ObjectId()
+    ]),
+    
+    // Number or ObjectId (Default: 1)
+    published: is.Types([
+        is.Boolean(true),
+        is.Number()
+    ]).default(1)
+}
+```
+The properties of the first type in the array will be inherited by `is.Types()`.
+The default string defined on **line 4** `admin` will be inherited.
+
+Default variables can also be defined using `.default(value)`
 
 <div style="margin-top: 50px; text-align: right">
 <a href="/xpress-mongo/model.html"><b>Next &gt;&gt; Model</b></a>

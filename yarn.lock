@@ -8687,10 +8687,10 @@ xdg-basedir@^4.0.0:
   resolved "https://registry.yarnpkg.com/xdg-basedir/-/xdg-basedir-4.0.0.tgz#4bc8d9984403696225ef83a1573cbbcb4e79db13"
   integrity sha512-PSNhEJDejZYV7h50BohL09Er9VaIefr2LMAf3OEmpCkjOi34eYyQYAXUTjEQtZJTKcF0E2UKTh+osDLsgNim9Q==
 
-xpress-mongo@^0.0.39:
-  version "0.0.39"
-  resolved "https://registry.yarnpkg.com/xpress-mongo/-/xpress-mongo-0.0.39.tgz#c9fbc80f513a6a967fbd0b867d944873d3a35a5f"
-  integrity sha512-5Z0okGwhdJyfE6n3j7nvKHKGi1FDZhk0C9XFO+HBaPZvcLjylDde0d/R7iTeWtzXsqt16tNcomSr8QeJLqRz8w==
+xpress-mongo@^0.0.40:
+  version "0.0.40"
+  resolved "https://registry.yarnpkg.com/xpress-mongo/-/xpress-mongo-0.0.40.tgz#6b742f902ceba702aa54aa837274b2e4de50dfe2"
+  integrity sha512-zlWVpN41FbDl8zoXttLYvL7Kugp7OEYXgZ0p+UvOggSP/WZcuAKwXBWLp2OGca0FpSkVh5n54xBma2gdJwnbdg==
   dependencies:
     deep-object-diff "^1.1.0"
     mongodb "^3.5.9"
