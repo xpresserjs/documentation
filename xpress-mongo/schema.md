@@ -1,4 +1,4 @@
-# Xpress-Mongo Schema
+# xpress-mongo Schema
 Mongodb is a schemaless database, so you have the choice to use without schema.
 The schema xpress-mongo provides does not force any type unless defined. it also serves a structure for your models, gives you insight on what your data should look like in the database.
 
@@ -150,6 +150,170 @@ The properties of the first type in the array will be inherited by `is.Types()`.
 The default string defined on **line 4** `admin` will be inherited.
 
 Default variables can also be defined using `.default(value)`
+
+## Type Instance Methods
+Methods available on `XMongoDataType` instance are:
+
+### cast()
+##### Args: `(cast: Function)`
+Sets/Overrides the cast function of the schema. The cast function receives two arguments when it's been called. 
+Whatever is returned by the cast function is sent to the database.
+
+##### **`value` -** Value of the current field. **`key` -** Key of the current field.
+
+```javascript
+const stringToDate = (value, key) => {
+    return new Date(value);
+}
+
+new XMongoDataType('ValidDateString', true).cast(stringToDate)
+```
+
+### default()
+##### Args: `($default: any | function)`
+Set/Override the default value of a schema. When default values are defined, xpress-mongo uses them and **won't throw any error** when a field is **required** but **undefined**.
+
+**Note:** if a `function` is passed as a default value, it will be executed, and the return value will be used.
+```javascript
+is.String('pending');
+// is same with
+is.String().default('pending');
+// is same with
+is.String().default(() => 'pending');
+```
+usage depends on your preference, for readability you can decide to use `.default()`
+Can also be used to override any previous default values
+```javascript
+// Default value overwriten to '404'
+is.Number(200).default(404);
+```
+
+### isOptional()
+Sets required to `false`. When a field **isOptional** xpress-mongo does not throw any error when it's `undefined` but will validate when a value is **defined**.
+```javascript
+is.String().isOptional()
+// is same with
+is.String().required(false);
+```
+
+### isUndefined()
+Sets default value to `undefined`. if value of field is **undefined** and **required** xpress-mongo will throw an **error**.
+
+```javascript
+is.Number() // default value = 0
+
+is.Number().isUndefined() // default value = undefined
+
+is.Number().default(undefined) // default value = undefined
+```
+
+### required()
+##### Args: `(value?: boolean)`
+The required method sets if a particular field required or not.
+```javascript
+is.String().required()
+// set to false
+is.String().required(false)
+```
+**Note:** if schema has a default value, the schema validator will use the default value instead of throwing an error.
+
+### validator()
+Sets/Overrides the validator function/functions of the schema. 
+
+#### Single Validator Function
+The validation function receives the current value of the field being validated and can return either: `true|false`
+```javascript
+new XMongoDataType('adultOnly').validator(age => {
+    return age > 18
+});
+```
+
+#### Multiple Validators (and|or)
+xpress-mongo also provides a method for you to validate against multiple functions using the `and` or `or` object rules
+
+**`and`** - All functions must return true  
+**`or`** - Any of the functions must return true
+
+Only one of the keys can be defined. if both is defined `or` will be used.
+```javascript
+new XMongoDataType('name').validator({
+    or: [function1, function2]
+});
+
+new XMongoDataType('name').validator({
+    and: [function1, function2]
+});
+```
+
+### validatorError()
+##### Args: `(errorFn: Function)`
+Set/Override schema validation error. The function received given passed the current name of the field being validated as first argument.
+ 
+```javascript
+new XMongoDataType('name').validatorError(() => "Error Message")
+// or with key
+new XMongoDataType('name').validatorError(key => `${Key} is not valid!`)
+```
+
+## Custom Schema Type
+Custom schema types can be created by making a function that returns new instance of  `XMongoDataType` class and providing the following:
+- Name of schema.
+- Validator function.
+- Validator error message.
+- Cast function _(optional)_.
+- Default value _(optional)_.
+
+The default types above were all created same way and bundled with the package.
+```javascript
+function customSchema(defaultValue) {
+    return new XMongoDataType('SchemaName', defaultValue)
+        .validator(currentFieldValue => {
+            // do something with currentFieldValue
+            return true | false;
+        })
+        .validatorError(currentField => `${currentField} is not what we want!`)
+}
+
+const modelSchema = {
+    field: customSchema('A default value.').required()
+}
+```
+Below are examples of how `is.String()` && `is.Array()` was created.
+```javascript
+const is = {
+    String(def = undefined) {
+        return new XMongoDataType('String', def)
+            .validator(str => typeof str === "string")
+            .validatorError((key) => `(${key}) is not a String`);
+    },
+
+    Array(def = () => []){
+        return new XMongoDataType('Array', def)
+            .validator(array => Array.isArray(array))
+            .validatorError((key) => `(${key}) is not an Array`);
+    }
+}
+```
+
+
+### Examples
+**`isAnAdult`** - checks if the age passed is old enough <br/> **`isSixNumbers`** - checks if the ticket number is a valid ticket number.
+```javascript
+const isAnAdult = new XMongoDataType('isAnAdult')
+    .validator(age => age >= 18)
+    .validatorError(() => `Too young to see this movie.`)
+
+const isValidTicket = new XMongoDataType('isValidTicket')
+    .validator(str => str && !isNaN(str) && str.length === 6)
+    // with key - Name of current field being validated
+    .validatorError((key) => `${key} is not a six digits number.`)
+
+const AdultMovieTicketSchema = {
+    name: is.String().required(),
+    age: isAnAdult.required(),
+    ticketNumber: isValidTicket.required()
+}
+```
 
 <div style="margin-top: 50px; text-align: right">
 <a href="/xpress-mongo/model.html"><b>Next &gt;&gt; Model</b></a>
