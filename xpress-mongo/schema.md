@@ -314,7 +314,3 @@ const AdultMovieTicketSchema = {
     ticketNumber: isValidTicket.required()
 }
 ```
-
-<div style="margin-top: 50px; text-align: right">
-<a href="/xpress-mongo/model.html"><b>Next &gt;&gt; Model</b></a>
-</div>

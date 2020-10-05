@@ -24,18 +24,21 @@ user.save().catch(e => throw e)
 ```
 
 ## Static Methods
-### thisCollection()
-`XMongoModel.thisCollection()` returns mongodb native collection instance for you to run any mongodb native queries.
+### native()
+`XMongoModel.native()` returns mongodb native collection instance for you to run any mongodb native queries.
 
 
 Adding a document using mongodb native
 ```javascript
-await Users.thisCollection().insertOne({
+await Users.native().insertOne({
     email: 'john@doe.com', 
     firstName: 'John',
     lastName: 'Doe'
 });
 ```
+
+### thisCollection() - Deprecated
+Use [.native()](#native) instead - `v0.0.40`
 
 ### new() - `async`
 `XMongoModel.new(data: {}, save: boolean = true)` is used to add a new document to the collection.
@@ -249,12 +252,15 @@ if (john) await john.delete();
 ```
 
 ### get()
-`this.get(key: string)` is used to get fields value from the current document.
+`this.get(key: string, $default: any)` is used to get fields value from the current document.
 ```javascript
 const john = await Users.findOne({firstName: 'John'});
 
-const firstName = john.get('firstName');
-const lastName = john.get('lastName');
+john.get('firstName');
+john.get('lastName');
+
+// Set defualt value if key is not found.
+john.get('verified', false);
 ```
 
 

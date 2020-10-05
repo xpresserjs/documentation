@@ -915,11 +915,6 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/lodash@^4.14.159":
-  version "4.14.159"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.159.tgz#61089719dc6fdd9c5cb46efc827f2571d1517065"
-  integrity sha512-gF7A72f7WQN33DpqOWw9geApQPh4M3PxluMtaHxWHXEGSN12/WbcEk/eNSqWNQcQhF66VSZ06vCF94CrHwXJDg==
-
 "@types/lodash@^4.14.161":
   version "4.14.161"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.161.tgz#a21ca0777dabc6e4f44f3d07f37b765f54188b18"
@@ -1728,10 +1723,10 @@ bindings@^1.5.0:
   dependencies:
     file-uri-to-path "1.0.0"
 
-bl@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/bl/-/bl-2.2.0.tgz#e1a574cdf528e4053019bb800b041c0ac88da493"
-  integrity sha512-wbgvOpqopSr7uq6fJrLH8EsvYMJf9gzfo2jCsL2eTy75qXPukA4pCgHamOQkZtY5vmfVtjB+P3LNlMHW5CEZXA==
+bl@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/bl/-/bl-2.2.1.tgz#8c11a7b730655c5d56898cdc871224f40fd901d5"
+  integrity sha512-6Pesp1w0DEX1N550i/uGV/TqucVL4AM/pgThFSN/Qq9si1/DF9aIHs1BxD8V/QU0HoeHO6cQRTAuYnLPKq1e4g==
   dependencies:
     readable-stream "^2.3.5"
     safe-buffer "^5.1.1"
@@ -4936,6 +4931,27 @@ knex@^0.21.5:
     uuid "^7.0.3"
     v8flags "^3.2.0"
 
+knex@^0.21.6:
+  version "0.21.6"
+  resolved "https://registry.yarnpkg.com/knex/-/knex-0.21.6.tgz#3e80ae38199c41e2dfe7d1d1a38470b1de1c93e7"
+  integrity sha512-gFB2q4MamYCEqzCPNgK7DMcyyAxoHhhSDnPsNDJo50Gor5ibI2n5bNRW768IG5S06k6nE3Gik5/kcoTmbsYbZw==
+  dependencies:
+    colorette "1.2.1"
+    commander "^5.1.0"
+    debug "4.1.1"
+    esm "^3.2.25"
+    getopts "2.2.5"
+    inherits "~2.0.4"
+    interpret "^2.2.0"
+    liftoff "3.1.0"
+    lodash "^4.17.20"
+    mkdirp "^1.0.4"
+    pg-connection-string "2.3.0"
+    tarn "^3.0.0"
+    tildify "2.0.0"
+    uuid "^7.0.3"
+    v8flags "^3.2.0"
+
 last-call-webpack-plugin@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/last-call-webpack-plugin/-/last-call-webpack-plugin-3.0.0.tgz#9742df0e10e3cf46e5c0381c2de90d3a7a2d7555"
@@ -5479,12 +5495,12 @@ moment@^2.29.0:
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.0.tgz#fcbef955844d91deb55438613ddcec56e86a3425"
   integrity sha512-z6IJ5HXYiuxvFTI6eiQ9dm77uE0gyy1yXNApVHqTcnIKfY9tIwEjlzsZ6u1LQXvVgKeTnv9Xm7NDvJ7lso3MtA==
 
-mongodb@^3.5.9:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.6.0.tgz#babd7172ec717e2ed3f85e079b3f1aa29dce4724"
-  integrity sha512-/XWWub1mHZVoqEsUppE0GV7u9kanLvHxho6EvBxQbShXTKYF9trhZC2NzbulRGeG7xMJHD8IOWRcdKx5LPjAjQ==
+mongodb@^3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.6.2.tgz#1154a4ac107bf1375112d83a29c5cf97704e96b6"
+  integrity sha512-sSZOb04w3HcnrrXC82NEh/YGCmBuRgR+C1hZgmmv4L6dBz4BkRse6Y8/q/neXer9i95fKUBbFi4KgeceXmbsOA==
   dependencies:
-    bl "^2.2.0"
+    bl "^2.2.1"
     bson "^1.1.4"
     denque "^1.4.1"
     require_optional "^1.0.1"
@@ -5797,14 +5813,6 @@ object-assign@^4, object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
   integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
-
-object-collection@^1.0.25:
-  version "1.0.28"
-  resolved "https://registry.yarnpkg.com/object-collection/-/object-collection-1.0.28.tgz#77f6cba004aa6804386049b6ccc889a7b9447e43"
-  integrity sha512-SGtNMv7gI/78y1XbGuw056i33CFgB7ibNm3U+9Jt1/snpvKBcQdMYDdPZThJndqKTQoX5pEcZQyHYsTxkpk6ww==
-  dependencies:
-    "@types/lodash" "^4.14.159"
-    lodash "^4.17.20"
 
 object-collection@^1.0.29:
   version "1.0.29"
@@ -8028,11 +8036,6 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^3.9.5:
-  version "3.9.7"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.7.tgz#98d600a5ebdc38f40cb277522f12dc800e9e25fa"
-  integrity sha512-BLbiRkiBzAwsjut4x/dsibSTB6yWpwT5qWmC2OfuCg3GgVQCSgMs4vEctYPhsaGtd0AeuuHMkjZ2h2WG8MSzRw==
-
 uc.micro@^1.0.1, uc.micro@^1.0.5:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/uc.micro/-/uc.micro-1.0.6.tgz#9c411a802a409a91fc6cf74081baba34b24499ac"
@@ -8687,20 +8690,19 @@ xdg-basedir@^4.0.0:
   resolved "https://registry.yarnpkg.com/xdg-basedir/-/xdg-basedir-4.0.0.tgz#4bc8d9984403696225ef83a1573cbbcb4e79db13"
   integrity sha512-PSNhEJDejZYV7h50BohL09Er9VaIefr2LMAf3OEmpCkjOi34eYyQYAXUTjEQtZJTKcF0E2UKTh+osDLsgNim9Q==
 
-xpress-mongo@^0.0.40:
-  version "0.0.40"
-  resolved "https://registry.yarnpkg.com/xpress-mongo/-/xpress-mongo-0.0.40.tgz#6b742f902ceba702aa54aa837274b2e4de50dfe2"
-  integrity sha512-zlWVpN41FbDl8zoXttLYvL7Kugp7OEYXgZ0p+UvOggSP/WZcuAKwXBWLp2OGca0FpSkVh5n54xBma2gdJwnbdg==
+xpress-mongo@^0.0.43:
+  version "0.0.43"
+  resolved "https://registry.yarnpkg.com/xpress-mongo/-/xpress-mongo-0.0.43.tgz#0b2a5d0f30ed6d72f8c4b5182c852a598665e97f"
+  integrity sha512-Qx6/K35xODGNaPC8kDjs+0n7qb7e3GmSOiX+59rWbH9pVLa7WF2RcpuHDrCPYDjMPXJqKvk07nBpWWjM5MErSg==
   dependencies:
     deep-object-diff "^1.1.0"
-    mongodb "^3.5.9"
-    object-collection "^1.0.25"
-    typescript "^3.9.5"
+    mongodb "^3.6.2"
+    object-collection "^1.0.29"
 
-xpresser@^0.2.56:
-  version "0.2.56"
-  resolved "https://registry.yarnpkg.com/xpresser/-/xpresser-0.2.56.tgz#82e15b2e1ba50a5f94110a5ddbaf559e12ffffff"
-  integrity sha512-ktPS9M+3pTiPrFWrq69PMB6SNCXb1/mK+Z2JXxAK2VqMjpZlwTSAkZnbbq7cbKRWFko4gwarY4KHLWYl9SdVSQ==
+xpresser@^0.2.63:
+  version "0.2.63"
+  resolved "https://registry.yarnpkg.com/xpresser/-/xpresser-0.2.63.tgz#65316f4218d08d3419c5457b49cad6b94fd6cec7"
+  integrity sha512-ghMiP794+MWKtq8fR1U+mq+n5apSzuzDdQylPP/oPywZEfUXdjOUL1pAeCFaAblfnyuiVeSSlIUqcwR6Q+LfjQ==
   dependencies:
     "@xpresser/router" "^1.0.12"
     body-parser "^1.19.0"
@@ -8715,7 +8717,7 @@ xpresser@^0.2.56:
     fs-extra "^9.0.1"
     handlebars "^4.7.6"
     helmet "^4.1.1"
-    knex "^0.21.5"
+    knex "^0.21.6"
     moment "^2.29.0"
     object-collection "^1.0.29"
     pluralize "^8.0.0"

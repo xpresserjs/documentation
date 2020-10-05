@@ -125,10 +125,19 @@ await user.save();
 
 ### Read document
 ```javascript
+// Find all, @returns Array
+const user = await User.find({verified: true});
+
+// Find One, @returns Model instance
 const user = await User.findOne({email: 'john@doe.com'});
+
+// Find by Id, @returns Model instance
+const user = await User.findById('ObjectID or ObjectID-string');
+
+// Log result.
 console.log(user)
 ```
-```
+```javascript
 User {
     data: {
       _id: ObjectID,
@@ -140,12 +149,16 @@ User {
 ```
 
 ### Update Document
+You can update a model instance document either by using the **buildup** or **instant** method.
 ```javascript
 const user = await User.findOne({email: 'john@doe.com'});
-// Add middlename
-user.set('middleName', 'donald')
-// Save Document
-await user.save();
+
+// Build Up
+user.set('middleName', 'Donald') // set middleName
+await user.save(); // save to database
+
+// Instant
+await user.update({middleName: 'Donald'});
 ```
 
 ### Delete Document
@@ -156,7 +169,7 @@ await user.delete();
 ```
 
 <div style="margin-top: 50px; text-align: right">
-<a href="/xpress-mongo/schema.html"><b>Next &gt;&gt; Schema</b></a>
+<a href="/xpress-mongo/model.html"><b>Next &gt;&gt; Model</b></a>
 </div>
 
 
