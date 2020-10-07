@@ -65,10 +65,10 @@ Your init file **use-xjs-cli.json** will be generated in current working directo
 ## Project Commands
 Project commands are only available when there is a valid `use-xjs-cli.json` in the current working directory.
 
-* up
-* down
-* start
-* routes
+* [up](#up)
+* [down](#down)
+* [start](#start)
+* [routes](#routes)
 * [@/run](#run)
 * make:job
 * make:event
@@ -81,8 +81,6 @@ Project commands are only available when there is a valid `use-xjs-cli.json` in 
 * [stop](#stop)
 * [restart](#restart)
 * check-for-update
-* [new/create](#new-create)
-* install-prod-tools
 
 ---
 Commands can have arguments that are required or optional
@@ -116,7 +114,7 @@ To start script in production **xjs-cli** uses [forever](https://www.npmjs.com/p
 
 Run `xjs install-prod-tools` to install forever on your machine.
 ```shell script
-xjs start prod
+xjs start --prod
 ``` 
 
 ### routes
@@ -131,13 +129,6 @@ xjs routes [search] [query]
 ├─────────┼────────┼──────┼────────────┼──────┤
 │    0    │ 'ALL'  │ '/*' │ [Function] │ null │
 └─────────┴────────┴──────┴────────────┴──────┘
-```
-
-
-### new/create
-Create new xjs project.
-```shell script
-xjs new [name]
 ```
 
 ### @/run
@@ -168,5 +159,29 @@ xjs stop cron   ## Restart cron service.
 xjs stop server   ## Restart server
 ```
 
+
+## Non-Project Commands
+These commands are only available when there is no **use-xjs-cli.json** file in the current working directory.
+
+* [new/create](#new-create)
+* [init](#init)
+* install-prod-tools
+
+
+
+### new/create
+Create new xjs project.
+```shell script
+xjs new [name]
+```
+
+### init
+Initialize xjs-cli in your project and creates a `use-xjs-cli.json`. You need to pass the name of your **xpresser boot file**.
+```shell script
+xjs init [xpresser_file]
+
+# If boot file is app.js
+xjs init app.js
+```
 
 
