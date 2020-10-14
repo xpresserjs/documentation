@@ -1,5 +1,8 @@
 module.exports = {
-    plugins: ['tabs'],
+    plugins: [
+        // 'tabs'
+        'vuepress-plugin-element-tabs'
+    ],
     markdown: {
         lineNumbers: true
     },
@@ -113,6 +116,10 @@ module.exports = {
             {
                 text: 'Plugins',
                 items: [
+                    {
+                        text: '@xpresser/auth',
+                        link: '/plugins/@xpresser/auth/'
+                    },
                     {
                         text: '@xpresser/file-uploader',
                         link: '/plugins/@xpresser/file-uploader/'
