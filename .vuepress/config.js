@@ -1,7 +1,7 @@
 module.exports = {
     plugins: [
-        // 'tabs'
-        'vuepress-plugin-element-tabs'
+        'tabs'
+        // 'vuepress-plugin-element-tabs'
     ],
     markdown: {
         lineNumbers: true

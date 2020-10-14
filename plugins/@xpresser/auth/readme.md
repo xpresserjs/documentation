@@ -4,11 +4,11 @@ Xpresser in-house built auth plugin to help you get started quickly with authent
 
 ## What is included?
 :::: tabs
-::: tab Login View
+::: tab "Login View"
 ![alt text](../../../images/auth/sign-in.png)
 :::
 
-::: tab Registration View
+::: tab "Registration View"
 ![alt text](../../../images/auth/sign-up.png)
 :::
 ::::
