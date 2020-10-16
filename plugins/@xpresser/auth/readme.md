@@ -3,12 +3,12 @@
 Xpresser in-house built auth plugin to help you get started quickly with authenticating users **(Login/Registration)**.
 
 ## What is included?
-:::: tabs
-::: tab "Login View"
+:::: xTabs Login View|Registration View
+::: xTab Login View
 ![alt text](../../../images/auth/sign-in.png)
 :::
 
-::: tab "Registration View"
+::: xTab Registration View
 ![alt text](../../../images/auth/sign-up.png)
 :::
 ::::
@@ -82,8 +82,8 @@ You have to add it to your project.
 
 Add to your use.json file. if you don't have one then create a use.json file in your backend folder.
 
-:::: tabs
-::: tab Javascript
+:::: xTabs Javascript|Typescript
+::: xTab Javascript
 ```json
 {
   "middlewares": {
@@ -95,7 +95,7 @@ Add to your use.json file. if you don't have one then create a use.json file in 
 }
 ```
 :::
-::: tab Typescript
+::: xTab Typescript
 When using **XpresserTs** complete path to url is required else xpresser will try to load the `.ts`
 ```json
 {

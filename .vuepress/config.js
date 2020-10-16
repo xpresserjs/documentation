@@ -1,12 +1,19 @@
+const extendMarkdown = require("./markDownIt");
+
 module.exports = {
     plugins: [
-        'tabs'
+        // 'tabs',
+        '@vuepress/register-components'
         // 'vuepress-plugin-element-tabs'
     ],
+
     markdown: {
         lineNumbers: true
     },
-    title: 'XpresserJs (Beta)',
+
+    extendMarkdown,
+
+    title: 'XpresserJs',
     description: 'Express yourself more...',
 
     head: [
@@ -34,8 +41,8 @@ module.exports = {
                 link: '/'
             },
             {
-                text: 'About',
-                link: '/about'
+                text: 'Typescript',
+                link: '/typescript'
             },
             {
                 text: 'Start',
@@ -128,5 +135,5 @@ module.exports = {
             }
         ],
         sidebar: 'auto'
-    }
+    },
 };

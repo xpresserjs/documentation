@@ -3,6 +3,8 @@ Xpresser is still under development.
 :::
 
 ## Hello World (Single File)
+:::: xTabs Javascript|Typescript
+::: xTab Javascript
 Create a file: **app.js** and paste the codes below.
 ```javascript
 //> 1
@@ -26,6 +28,37 @@ $.on.boot(next => {
 //> 4
 $.boot();
 ```
+:::
+
+::: xTab Typescript
+Create a file: **app.ts** and paste the codes below.
+```typescript
+//> 1
+import xpresser from "xpresser";
+
+//> 2
+const $ = xpresser({
+    name: 'My Xpresser App',
+    paths: {base: __dirname},
+    server: {port: 2000}
+});
+
+// Enable for Xpresser
+$.initializeTypescript(__filename);
+
+//> 3
+$.on.boot(next => {
+    // Register route.
+    $.router.get('/', http => http.res.send('<h1>Hello World</h1>'));
+    // Continue Boot    
+    return next();
+})
+
+//> 4
+$.boot();
+```
+:::
+::::
 
 1. Require **xpresser**.
 2. Boot xpresser with your **configuration**.
@@ -54,6 +87,9 @@ To get started we need 3 files to achieve same **Hello World**.
 
 
 ## Setup
+
+:::: xTabs Javascript|Typescript
+::: xTab Javascript
 Create Boot File: **app.js**
 ```javascript
 const xpresser = require('xpresser');
@@ -75,6 +111,34 @@ const config = {
 // Boot Server
 xpresser(config).boot();
 ```
+:::
+
+::: xTab Typescript
+Create Boot File: **app.ts**
+```javascript
+import xpresser from "xpresser";
+
+// Set Config
+const config = {
+    name: 'Xpresser App',
+    paths: {
+        // Base Folder (REQUIRED).
+        base: __dirname,
+        // Path to Controllers Folder
+        controllers: 'controllers',
+        // Routes File
+        routesFile: 'routes.js'
+    },
+    server: {port: 2000}
+};
+
+// Boot Server
+xpresser(config)
+    .initializeTypescript(__filename)
+    .boot();
+```
+:::
+::::
 
 In our [single file example](#hello-world-single-file), we registered routes before calling `$.boot()`, well in this case we don't need that since we have specified a `routesFile` in our config.
 
@@ -92,21 +156,42 @@ $.router.get('/about', 'AppController@about');
 ```
 `$.router` is an instance of [**XpresserRouter**](../router/readme.md).
 
-Create Controller: **controllers/AppController.js**
+Create Controller: **AppController**
+:::: xTabs Javascript|Typescript
+::: xTab Javascript
 ```javascript
-class AppController extends $.controller {
+module.exports =  {
+    name: "AppController",
+
     index(http) {
         return http.res.send("<h1>Hello World</h1>");
-    }
+    },
     
     about(http) {
         return http.res.send("<h1>About Page</h1>");
     }
 }
-
-module.exports = AppController;
 ```
-`$.controller` is Xpresser's base controller.
+:::
+
+::: xTab Typescript
+```typescript
+import {Http} from "xpresser/types/http";
+
+export =  {
+    name: "AppController",
+
+    index(http: Http): Http.Response {
+        return http.send("<h1>Hello World</h1>");
+    },
+    
+    about(http: Http): Http.Response {
+        return http.send("<h1>About Page</h1>");
+    }
+}
+```
+:::
+::::
 
 Run `nodemon app.js` and visit [http://localhost:2000](http://localhost:2000) on your browser, you should see **Hello World** and `/about` should show **About Page**
 

@@ -1,14 +1,14 @@
 ---
 home: true
-heroImage: /images/logo.png
-heroText: XpresserTs (Beta)
+heroImage: /images/logo-ts.png
+heroText: 
 tagline: Express yourself more using Typescript...
 actionText: Get Started →
 actionLink: /typescript/initialize-typescript
 
 features:
-  - title: Typed.
-    details: Enable types in your project.
+  - title: Type Support.
+    details: Enable Types in your project, so you always know the data you are working with.
 
   - title: Editor Intellisense
     details: With Typescript your I.D.E or Editor will have the best autocomplete support.

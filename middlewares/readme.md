@@ -68,8 +68,9 @@ $.router.get('/api/comments', 'Api@comments');
 
 ### Controller action middlewares
 Every controller has a middleware handler where you assign middlewares to actions.
-:::: tabs
-::: tab "Controller Class"
+
+:::: xTabs Controller Class| Controller Object
+::: xTab Controller Class
 ```javascript
 class ApiController extends $.controller {
 
@@ -95,7 +96,7 @@ module.exports = TestController;
 The object returned to the `middleware()` function is where you assign middlewares to actions
 :::
 
-::: tab "Controller Object"
+::: xTab Controller Object
 ```javascript
 const ApiController = {
 
