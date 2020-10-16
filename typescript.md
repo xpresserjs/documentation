@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /images/logo-ts.png
+heroImage: /images/logo-ts-white.png
 heroText: 
 tagline: Express yourself more using Typescript...
 actionText: Get Started →
