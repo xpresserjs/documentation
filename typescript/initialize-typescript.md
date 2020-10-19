@@ -100,7 +100,6 @@ export = {
         return http.send({
             url: http.req.url // Current Url
         })
-
     },
 }
 ```
@@ -108,4 +107,5 @@ export = {
 ## What next?
 Now you have known what typescript brings to the table, you can continue using xpresser the same way you know it but with Typescript support.
 
-#### NEXT: [HELLO WORLD](../hello-world.md)
+
+<Pagination/>

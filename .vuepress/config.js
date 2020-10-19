@@ -114,6 +114,11 @@ module.exports = {
                             {
                                 text: 'Model',
                                 link: '/xpress-mongo/model'
+                            },
+
+                            {
+                                text: 'Events',
+                                link: '/xpress-mongo/events'
                             }
                         ]
                     }

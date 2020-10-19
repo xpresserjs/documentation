@@ -54,5 +54,5 @@ If you take a look a the [config.js](./configuration/default.md) page you will s
 
 
 
-#### Next: [Routing](./router/)
+<Pagination/>
 

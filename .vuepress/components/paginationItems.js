@@ -13,4 +13,10 @@ export default {
         {name: 'Installation', url: '/xpress-mongo'},
         {name: 'Schema', url: '/xpress-mongo/schema.html'}
     ],
+    '/typescript/initialize-typescript': [
+        {type: 'next', name: 'Hello World', url: '/hello-world.html'}
+    ],
+    '/getting-started': [
+        {type: 'next', name: 'Routing', url: '/router/'}
+    ]
 }
