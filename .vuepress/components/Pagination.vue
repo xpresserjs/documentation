@@ -28,7 +28,7 @@ export default {
   props: {},
   computed: {
     page() {
-      const page = window.location.pathname;
+      const page = this.$route.path;
       if (page.endsWith('.html')) {
         return page.replace('.html', '');
       }
@@ -54,6 +54,10 @@ export default {
       }
     }
   },
+
+  mounted(){
+    console.log(this.$route)
+  }
 }
 </script>
 
