@@ -1,4 +1,5 @@
 # XMongoModel
+
 **xpress-mongo's** parent model class is [`XMongoModel`](https://github.com/xpresserjs/xpress-mongo/blob/master/src/XMongoModel.ts)
 <br/>
 
@@ -39,6 +40,16 @@ await Users.native().insertOne({
 
 ### thisCollection() - Deprecated
 Use [.native()](#native) instead - `v0.0.40`
+
+### on()
+`XMongoModel.on(event: string, run: function)` is used to listen **create, update or delete** events.
+See [Model Events](./events.md).
+```javascript
+Model.on('update', modelInstance => {
+    // Make changes
+})
+```
+
 
 ### new() - `async`
 `XMongoModel.new(data: {}, save: boolean = true)` is used to add a new document to the collection.

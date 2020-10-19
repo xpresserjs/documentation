@@ -1,9 +1,9 @@
-# xpress-mongo Events
+# Events & Getters
 **xpress-mongo** emits events on **Create, Update & Delete** queries ran by model instance functions.
 
 ## Model
 The code below shows a Model that has an `update` event registered to it. <br/>
-This model will also be made reference to in examples on this page.
+Examples made on this page will make reference ro this model. 
 ```javascript
 const {is} = require('xpress-mongo');
 const connection = require('path/to/your/connection');
@@ -25,7 +25,7 @@ User.on('update', (user) => {
 });
 ```
 
-**Note:** Your registered function will be passed the instance of the current model on execution.
+**Note:**  The instance of the current model will be passed to your event function on execution.
 
 ## Events
 - [create](#create)
@@ -84,7 +84,8 @@ User.on('update.updatedAt', (user) => {
     return user.hasChanges() ? new Date() : undefined
 });
 ```
-Notice the user of `.hasChanges()`, this is because all update event functions are called even if you have not made any changes.
+Notice the use of `.hasChanges()`, this is because all update event functions are called even when you have not made any real changes.
+
 ### delete
 This event **runs in background after** a document is deleted. <br/>
 **Note:** The **delete** event does not support using **dot** operator on fields.
@@ -119,3 +120,8 @@ await user.set({avatar: 'new avatar name'}).save(); // function is called
 ```
 
 
+## Getters
+Since fields can be modified using `update.fieldName` events before saving to the database we can call them setters. but what about getters?
+This is where `static append = []` model property comes in.
+
+<Pagination/>

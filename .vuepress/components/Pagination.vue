@@ -1,5 +1,5 @@
 <template>
-  <section v-if="pageHasData" style="margin-top: 50px">
+  <section v-if="pageHasData" :style="this.top ?'':'margin-top: 50px'">
     <div class="is-clearfix">
       <router-link v-if="isOnlyOneLink" :class="computedOneLink.class"
                    :to="{path: pageLinks[0].url}">
@@ -25,7 +25,7 @@
 import pages from "./paginationItems";
 
 export default {
-  props: {},
+  props: {top: {type: Boolean, default: false}},
   computed: {
     page() {
       const page = this.$route.path;
@@ -54,10 +54,6 @@ export default {
       }
     }
   },
-
-  mounted(){
-    console.log(this.$route)
-  }
 }
 </script>
 

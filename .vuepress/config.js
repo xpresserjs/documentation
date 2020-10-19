@@ -100,27 +100,7 @@ module.exports = {
                     },
                     {
                         text: 'xpress-mongo',
-                        items: [
-                            {
-                                text: 'Getting Started',
-                                link: '/xpress-mongo/'
-                            },
-
-                            {
-                                text: 'Schema',
-                                link: '/xpress-mongo/schema'
-                            },
-
-                            {
-                                text: 'Model',
-                                link: '/xpress-mongo/model'
-                            },
-
-                            {
-                                text: 'Events',
-                                link: '/xpress-mongo/events'
-                            }
-                        ]
+                        link: '/xpress-mongo/'
                     }
                 ]
             },
