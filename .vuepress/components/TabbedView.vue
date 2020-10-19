@@ -95,7 +95,7 @@ export default {
   border-radius: 2px;
 
   .tabs > ul {
-    background-color: fade-out(lightskyblue, 0.9);
+    background-color: fade-out(#3eaf7c, 0.9);
     padding-top: 5px;
     margin-top: 0;
     margin-bottom: 0;

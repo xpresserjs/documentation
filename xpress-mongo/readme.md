@@ -1,4 +1,4 @@
-# Xpress-Mongo
+# xpress-mongo
 **xpress-mongo** is a lightweight mongodb collection as model library.
 When using mongodb default client for nodejs (which is recommended), most developers have to create a way to make modelling possible. 
 With xpress-mongo you get customizable modelling at it's peak.
@@ -168,9 +168,7 @@ const user = await User.findOne({email: 'john@doe.com'});
 await user.delete();
 ```
 
-<div style="margin-top: 50px; text-align: right">
-<a href="/xpress-mongo/model.html"><b>Next &gt;&gt; Model</b></a>
-</div>
+<Pagination/>
 
 
 

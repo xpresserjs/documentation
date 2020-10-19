@@ -7,21 +7,16 @@ The schema xpress-mongo provides does not force any type unless defined. it also
 ```javascript
 const {is} = require('xpress-mongo');
 
-// Build Schema
-const OrderSchema = {
-    itemId: is.ObjectId().required(),
-    itemTitle: is.String(),
-    qunatity: is.Number().required(),
-    status: is.String('pending').required(),
-    paypalPaymentId: is.String(),
-    updatedAt: is.Date().required(),
-    createdAt: is.Date().required()
-}
-
 class Orders extends connection.model('orders') {
-    constructor(){
-        super()
-        this.useSchema(OrderSchema);
+    // Set Model Schema
+    static schema = {
+        itemId: is.ObjectId().required(),
+        itemTitle: is.String(),
+        qunatity: is.Number().required(),
+        status: is.String('pending').required(),
+        paypalPaymentId: is.String(),
+        updatedAt: is.Date().required(),
+        createdAt: is.Date().required()
     }
 }
 
@@ -36,15 +31,16 @@ const {is} = require('xpress-mongo');
 The `is` variable is of type `XMongoSchemaBuilder`
 ```typescript
 type XMongoSchemaBuilder = {
-    ObjectId: () => XMongoDataType,
-    Array: { (def?: () => Array<any>): XMongoDataType },
-    Object: { (def?: () => StringToAnyObject): XMongoDataType },
-    String: { (def?: string): XMongoDataType },
-    Boolean: { (def?: boolean): XMongoDataType },
-    Date: { (def?: () => Date): XMongoDataType },
-    Number: { (def?: 0): XMongoDataType },
-    Types: { (types: XMongoDataType[]): XMongoDataType },
-};
+    ObjectId(): XMongoDataType
+    Uuid(version: number, options?: UuidOptions): XMongoDataType
+    Array(def?: () => Array<any>): XMongoDataType
+    Object(def?: () => StringToAnyObject): XMongoDataType
+    String(def?: string): XMongoDataType
+    Boolean(def?: boolean): XMongoDataType
+    Date(def?: () => Date): XMongoDataType
+    Number(def?: 0): XMongoDataType
+    Types(types: XMongoDataType[]): XMongoDataType
+}
 ```
 
 When defining schemas we have the above DataTypes out of the box.
@@ -59,6 +55,32 @@ const PostSchema = {
     userId: is.ObjectId().required()
 }
 ```
+
+### is.Uuid()
+Set a field to type of ["Uuid String"](https://en.wikipedia.org/wiki/Universally_unique_identifier) specifying the version of uuid as first argument.
+
+```javascript
+class Transaction extends model('transactions'){
+    
+    // Set Model Schema
+    static schema = {
+        id: is.Uuid(4).required(),
+        amount: is.Number().required()
+    }
+}
+
+console.log(Transaction.make({amount: 200}));
+
+/**
+* Transaction {
+*   data: {
+*     id: 'efae452f-bd6f-4349-8cbf-7a755ef88702',
+*     amount: 200
+*   }
+* }
+*/
+```
+ 
 ### is.Array()
 Set a field to type of `Array`. Has default value of `() => []`.
 ```javascript
@@ -223,9 +245,7 @@ Sets/Overrides the validator function/functions of the schema.
 #### Single Validator Function
 The validation function receives the current value of the field being validated and can return either: `true|false`
 ```javascript
-new XMongoDataType('adultOnly').validator(age => {
-    return age > 18
-});
+new XMongoDataType('adultOnly').validator(age => age > 18);
 ```
 
 #### Multiple Validators (and|or)
@@ -278,6 +298,8 @@ const modelSchema = {
     field: customSchema('A default value.').required()
 }
 ```
+
+### Examples
 Below are examples of how `is.String()` && `is.Array()` was created.
 ```javascript
 const is = {
@@ -295,8 +317,9 @@ const is = {
 }
 ```
 
+The method of using a function that returns a new `XMongoDataType` is only a concept to provide re-usability. 
+There may be cases where you don't need to reuse i.e The Schema only applies to on Model's field, you can create them like below: 
 
-### Examples
 **`isAnAdult`** - checks if the age passed is old enough <br/> **`isSixNumbers`** - checks if the ticket number is a valid ticket number.
 ```javascript
 const isAnAdult = new XMongoDataType('isAnAdult')
@@ -314,3 +337,5 @@ const AdultMovieTicketSchema = {
     ticketNumber: isValidTicket.required()
 }
 ```
+
+<Pagination/>

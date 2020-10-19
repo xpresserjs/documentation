@@ -7,16 +7,16 @@
   },
   "dependencies": {
     "@xpresser/env": "^1.0.3",
-    "xpresser": "^0.2.79"
+    "xpresser": "^0.2.81"
   },
   "devDependencies": {
     "@vuepress/plugin-register-components": "^1.7.1",
     "bulma": "^0.9.1",
     "markdown-it-container": "^3.0.0",
     "vue-tabs-component": "^1.5.0",
-    "vuepress": "^1.7.0",
+    "vuepress": "^1.7.1",
     "vuepress-plugin-element-tabs": "^0.2.8",
     "vuepress-plugin-tabs": "^0.3.0",
-    "xpress-mongo": "^0.0.46"
+    "xpress-mongo": "^0.0.49"
   }
 }

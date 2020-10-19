@@ -70,3 +70,5 @@ app.get('/', (req, res) =>  {
 
 #### NEXT: [INSTALLATION](./installation.md)
 
+<Pagination/>
+

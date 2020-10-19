@@ -184,6 +184,7 @@ const numberOfAdults = await Users.count({
 // Assuming this is a controller action
 async function getAllUsers(http){
 
+    // Get page from
     const page = http.query('page', 1);
     const perPage = 30;
 
@@ -196,7 +197,6 @@ async function getAllUsers(http){
 
     // Return response
     return http.json({users});
-
 };
 ```
 The result
@@ -220,7 +220,25 @@ The result
 
 ### paginateAggregate() - `async`
 `XmongoModel.paginateAggregate(page: number, perPage: number, query: {}, options?: {})` is same with `XMongoModel.paginate` but works with aggregation query.
+```javascript
+// Assuming this is a controller action
+async function getAllUsers(http){
 
+    const page = http.query('page', 1);
+    const perPage = 30;
+
+    // Pagination of all users with age >= 18, sort by firstName
+    const users = await Users.paginateAggregate(
+        page, 
+        perPage, 
+        [/* Pagination Query */], 
+        {/* Collection Options */}
+    );
+
+    // Return response
+    return http.json({users});
+};
+```
 
 ## Instance Methods
 ### changes()
@@ -525,3 +543,5 @@ user.set('firstName', ['an array instead of string']);
 console.log(user.validate())
 // TypeError: (firstName) is not a String
 ```
+
+<Pagination/>
