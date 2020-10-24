@@ -50,7 +50,8 @@ Your init file **use-xjs-cli.json** will be generated in current working directo
     "main": "app.js",
     "start_cron": "node",
     "start_server": "nodemon",
-    "start_console": "node"
+    "start_console": "node",
+    "jobs_path": "backend/jobs"
   },
   "prod": {
     "main": "app.js",
@@ -58,9 +59,9 @@ Your init file **use-xjs-cli.json** will be generated in current working directo
     "stop_cron": "pm2 stop",
     "start_server": "pm2 start",
     "stop_server": "pm2 stop",
-    "start_console": "node"
+    "start_console": "node",
+    "jobs_path": "backend/jobs"
   },
-  "jobs_path": "backend/jobs",
   "async_cron_jobs": false
 }
 ```
@@ -73,7 +74,8 @@ Your init file **use-xjs-cli.json** will be generated in current working directo
     "main": "app.ts",
     "start_cron": "ts-node-dev --transpile-only",
     "start_server": "ts-node-dev --respawn --transpile-only",
-    "start_console": "ts-node-dev --transpile-only"
+    "start_console": "ts-node-dev --transpile-only",
+    "jobs_path": "backend/jobs"
   },
 
   "prod": {
@@ -82,7 +84,8 @@ Your init file **use-xjs-cli.json** will be generated in current working directo
     "stop_cron": "pm2 stop",
     "start_server": "pm2 start",
     "stop_server": "pm2 stop",
-    "start_console": "node"
+    "start_console": "node",
+    "jobs_path": "backend/jobs"
   },
 
   "jobs_path": "backend/jobs",
