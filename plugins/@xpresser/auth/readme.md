@@ -20,7 +20,7 @@ Xpresser in-house built auth plugin to help you get started quickly with authent
     
 ## Installation
 Add to your project using package managers
-```shell script
+```sh
 npm install @xpresser/auth
 # OR
 yarn add @xpresser/auth
@@ -35,7 +35,7 @@ Add to your `backend/plugins.json`
 
 ## Setup
 Import required files into your project using the `xjs-cli publish` command.
-```shell script
+```sh
 # Publish Configurations
 xjs publish Auth configs
 

@@ -19,6 +19,14 @@ html.use-dark-theme
   strong
     color navajowhite
 
+  table
+    tr:nth-child(2n) {
+      background-color: lighten($bg-color, 5%);
+    }
+
+    strong
+      color $accentColor
+
   .dropdown-title
     color: unset
 

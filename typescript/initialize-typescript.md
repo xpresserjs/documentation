@@ -14,7 +14,7 @@ Now this has been achieved, we have given xpresser the full Typescript supports 
 Creating a new xpresserTs project is no different from running the usual `xjs new` command and select Typescript using [**xjs-cli**](/xjs-cli.md) or starting in a plain **app.ts** file if you have a good understanding of the xpresser framework
 
 ### Using xjs-cli
-```shell script
+```sh
 xjs new xpresser-ts-app
 ```
 

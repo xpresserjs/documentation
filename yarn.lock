@@ -9156,10 +9156,10 @@ xpress-mongo@^0.0.52:
     object-collection "^1.0.29"
     uuid "^8.3.1"
 
-xpresser@^0.2.81:
-  version "0.2.81"
-  resolved "https://registry.yarnpkg.com/xpresser/-/xpresser-0.2.81.tgz#9ac791f23665edbd0b7a55b67716f88fcc4145dd"
-  integrity sha512-Mrsv9LTWRNZtNIN32PU1WQRggF47jP1Yd4L35rKxMMv/9w0NP5mZCYqCtGihRdWxRJh7rJsP3NZJKpXGpafd5w==
+xpresser@^0.2.83:
+  version "0.2.83"
+  resolved "https://registry.yarnpkg.com/xpresser/-/xpresser-0.2.83.tgz#5ac87385bfce5c18488dc96bf70c7ebe065bf269"
+  integrity sha512-HY/n5rcIyfek+QsjcfZPneSz4ndLFI76gzEf4man5NHxLSYG5DVNbq3y5LjVc1ApnGleug/fJSeYejblPGEX0g==
   dependencies:
     "@types/express" "^4.17.7"
     "@types/node" "^14.11.2"
