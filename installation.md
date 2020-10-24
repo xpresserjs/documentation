@@ -2,12 +2,16 @@
 Xpresser can be installed and required just like every other javascript library but to enjoy your development experience a few other libraries are required.
 ## Requirements
 
-#### Nodemon (Required)
-Nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected. 
+#### nodemon (Required)
+**nodemon** is a tool that helps develop **node.js** based applications by automatically restarting the node application when file changes in the directory are detected. 
 <br>[Install Nodemon](https://www.npmjs.com/package/nodemon)
 
+#### ts-node-dev **(Required For Typescript)**
+**ts-node-dev** is a tool that helps develop **node.ts** based applications by automatically restarting the node application when file changes in the directory are detected. 
+<br>[Install ts-nod-dev](https://www.npmjs.com/package/ts-node-dev)
+
 #### Xjs-Cli (Recommended)
-Xjs-Cli is a command-line interface made for xpresser. It provides helpful commands that can assist you in building your application faster.
+**xjs-cli** is a command-line interface made for xpresser. It provides helpful commands that can assist you in building your application faster.
 <br>[Install Xjs-Cli](./xjs-cli.md)
 
 ## Installing Xpresser

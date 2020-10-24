@@ -189,7 +189,22 @@ export =  {
 :::
 ::::
 
-Run `nodemon app.js` and visit [http://localhost:2000](http://localhost:2000) on your browser, you should see **Hello World** and `/about` should show **About Page**
+### Run
+:::: xTabs Javascript|Typescript
+::: xTab Javascript
+```sh
+nodemon app.js
+```
+:::
+
+::: xTab Typescript
+```sh
+ts-node-dev --respawn --transpile-only app.ts
+```
+:::
+::::
+
+Visit [http://localhost:2000](http://localhost:2000) on your browser, you should see **Hello World** and `/about` should show **About Page**
 
 
 ## What Next?
