@@ -1,7 +1,3 @@
-::: warning
-Xpresser is still under development.
-:::
-
 ## Hello World (Single File)
 :::: xTabs Javascript|Typescript
 ::: xTab Javascript

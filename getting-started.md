@@ -1,7 +1,3 @@
-::: warning
-Xpresser is still under development.
-:::
-
 # Start a project using xjs-cli
 
 ### Requirement

@@ -1,7 +1,3 @@
-::: warning
-Xpresser is still under development.
-:::
-
 [GIT](https://github.com/xpresserjs/framework) |
 [NPM](https://www.npmjs.com/package/xpresser) |
 [Yarn](https://yarn.pm/xpresser)

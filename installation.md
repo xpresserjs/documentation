@@ -1,6 +1,3 @@
-::: warning
-Xpresser is still under development.
-:::
 # Installation
 Xpresser can be installed and required just like every other javascript library but to enjoy your development experience a few other libraries are required.
 ## Requirements
