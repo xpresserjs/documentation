@@ -116,9 +116,10 @@ Project commands are only available when there is a valid `use-xjs-cli.json` in 
 * [help](#help)
 * [up](#up)
 * [down](#down)
-* [tsc](#tsc)
 * [start](#start)
 * [routes](#routes)
+* [stack](#stack)
+* [@stack](#stack-2)
 * [@/run](#run)
 * [make:job](#make-job)
 * [make:event](#make-event)
@@ -165,9 +166,6 @@ Put App in maintenance mood.
 xjs down
 ```
 
-### tsc
-This command can only be used when using Typescript
-
 ### start
 Start the main file defined in use-xjs-cli.json
 ```sh
@@ -195,6 +193,22 @@ xjs routes [search] [query]
 │    0    │ 'ALL'  │ '/*' │ [Function] │ null │
 └─────────┴────────┴──────┴────────────┴──────┘
 ```
+
+### stack
+Return **concatenated** commands of a stack without running it. This way you can run it yourself. [#Stacks](#stacks)
+```sh
+xjs stack <name>
+
+# Running returned commands with bash
+xjs stack myCommands | bash
+```
+
+### @stack
+Run **concatenated** commands of a stack using node `exec`. [#Stacks](#stacks)
+```sh
+xjs @stack <name>
+```
+
 
 ### @/run
 Run job
@@ -328,4 +342,98 @@ xjs init [xpresser_file]
 xjs init app.js
 ```
 
+## Stacks
+The stack command is a utility command that helps you when run multiple bash commands. <br/> 
+For Example most times we want to delete the build directory before we rebuild or run series of commands, we end up running something like this
+```sh
+rm -rf ./build && some-other-command && npm run build
+```
 
+With **stack** we can stack them up and call them with one command.
+
+### Register a Stack
+To register a stack of commands, all you need to do is add `{stacks.<commandName>}` in your `use-xjs-cli.json`
+```json
+{
+  "stacks": {
+    "myCommands": [
+       "rm -rf ./build",
+       "some-other-command",
+       "npm run build"
+    ]
+  }
+}
+```
+
+### Using a stack
+Once your stack has been registered, you can call it like so:
+```sh
+xjs stack myCommands
+
+# Returns concatenated version of your commands
+### rm -rf ./build && some-other-command && npm run build
+```
+
+or run it like so:
+```sh
+xjs @stack myCommands
+
+# Runs all commands
+### => Running stack {myCommands}
+### => rm -rf ./build && some-other-command && npm run build
+### => Stack {myCommands} executed successfully!
+```
+
+
+## Cron Jobs
+xjs-cli makes running cron jobs easier using this great node package: [cron](https://npmjs.org/package/cron). 
+
+To add a job to cron all you need to do is: Register it in your `paths/to/jobs/folder/cron.(js|json)`.
+if you don't have a cron file then create one in your jobs folder. Running `xjs cron` without a cron file will throw an error that should include the **expected** path to your cron file.
+
+
+:::: xTabs cron.json|cron.js
+::: xTab cron.json
+```json
+[
+    {
+        "job": "YourJob",
+        "schedule": "* * * * * *"
+    }
+]
+```
+:::
+
+::: xTab cron.js
+```javascript
+module.exports = [
+     {
+         job: "YourJob",
+         schedule: "* * * * * *"
+     }
+]
+```
+:::
+::::
+
+### why Js or Json?
+The default is `cron.json`, but when not found xjs-cli will try looking for a `cron.js` file. <br/>
+We considered adding the `.js` support to give more options when declaring your cron jobs.
+
+Given a scenerio when you want to use some cron time parser like [cron-time-generator](https://npmjs.com/package/cron-time-generator)
+```js
+const cronTime = require('cron-time-generator');
+
+module.exports = [
+     {
+         job: "SomeJob",
+         schedule: cronTime.everyMinute()
+     },
+
+    {
+         job: "SomeOtherJob",
+         schedule: cronTime.everyDayAt(4, 30)
+     }
+]
+```
+with `cron.js` you have power todo more.
