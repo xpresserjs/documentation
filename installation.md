@@ -11,14 +11,24 @@ Xjs-Cli is a command-line interface made for xpresser. It provides helpful comma
 <br>[Install Xjs-Cli](./xjs-cli.md)
 
 ## Installing Xpresser
-### Npm
+Using Package Managers.
+:::: xTabs NPM|YARN|PNPM
+::: xTab NPM
 ```sh
 npm i xpresser
 ```
-### Yarn
+:::
+::: xTab YARN
 ```sh
 yarn add xpresser
 ```
+:::
+::: xTab PNPM
+```sh
+pnpm add xpresser
+```
+:::
+::::
 
 Next create: 
 
