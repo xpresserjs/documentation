@@ -9,13 +9,15 @@ html.use-dark-theme, html.use-dark-theme body
   background-color $bg-color !important
   transition background-color .2s
 
-strong
-  color navajowhite
+
 
 html.use-dark-theme
   body
     //color: antiquewhite
     color desaturate(lighten($bg-color2, 80%), 50%)
+
+  strong
+    color navajowhite
 
   .dropdown-title
     color: unset
