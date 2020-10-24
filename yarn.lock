@@ -1764,6 +1764,13 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.10.1.tgz#e1e82e4f3e999e2cfd61b161280d16a111f86428"
   integrity sha512-zg7Hz2k5lI8kb7U32998pRRFin7zJlkfezGJjUc2heaD4Pw2wObakCDVzkKztTm/Ln7eiVvYsjqak0Ed4LkMDA==
 
+axios@^0.20.0:
+  version "0.20.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.20.0.tgz#057ba30f04884694993a8cd07fa394cff11c50bd"
+  integrity sha512-ANA4rr2BDcmmAQLOKft2fufrtuvlqR+cXNNinUmvfeSNCOF98PZL+7M/v1zIdGo7OLjEA9J2gXJL+j4zGsl0bA==
+  dependencies:
+    follow-redirects "^1.10.0"
+
 babel-loader@^8.0.4:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.1.0.tgz#c611d5112bd5209abe8b9fa84c3e4da25275f1c3"
@@ -3835,7 +3842,7 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
 
-follow-redirects@^1.0.0:
+follow-redirects@^1.0.0, follow-redirects@^1.10.0:
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.0.tgz#b42e8d93a2a7eea5ed88633676d6597bc8e384db"
   integrity sha512-aq6gF1BEKje4a9i9+5jimNFIpq4Q1WiwBToeRK5NvZBd/TRsmW8BsJfOEGkr76TbOyPVD3OVDN910EcUNtRYEA==
@@ -9137,12 +9144,13 @@ xdg-basedir@^4.0.0:
   resolved "https://registry.yarnpkg.com/xdg-basedir/-/xdg-basedir-4.0.0.tgz#4bc8d9984403696225ef83a1573cbbcb4e79db13"
   integrity sha512-PSNhEJDejZYV7h50BohL09Er9VaIefr2LMAf3OEmpCkjOi34eYyQYAXUTjEQtZJTKcF0E2UKTh+osDLsgNim9Q==
 
-xpress-mongo@^0.0.49:
-  version "0.0.49"
-  resolved "https://registry.yarnpkg.com/xpress-mongo/-/xpress-mongo-0.0.49.tgz#5ea948ae404a71c4a8eaa09bb3cf20b632575f0c"
-  integrity sha512-dwBxv3gbhWFEItB33uTKmhdbQPpZopEW73lzEkVIz2LdFnlBEKIfekwmWJNT9INtZ34Bp8tbb4Y2x+3e38L0qQ==
+xpress-mongo@^0.0.52:
+  version "0.0.52"
+  resolved "https://registry.yarnpkg.com/xpress-mongo/-/xpress-mongo-0.0.52.tgz#b6b4cb42d23a9294be743b96a1df988fb3f93fbd"
+  integrity sha512-P/xXfukGQd6wpUGRFShWxv5u7pue0MuH3nuKM9Gc0SPtuTaJDRPozh3VwZXJ0KbmNabcMkJx/Tzeyf/p+fjDFw==
   dependencies:
     "@types/mongodb" "^3.5.27"
+    axios "^0.20.0"
     deep-object-diff "^1.1.0"
     mongodb "^3.6.2"
     object-collection "^1.0.29"

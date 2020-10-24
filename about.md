@@ -67,8 +67,5 @@ app.get('/', (req, res) =>  {
 - Events.
 - Commands & Cron Jobs
 
-
-#### NEXT: [INSTALLATION](./installation.md)
-
 <Pagination/>
 

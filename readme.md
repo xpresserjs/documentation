@@ -1,7 +1,7 @@
 ---
 home: true
 heroText:
-heroImage: /images/logo.png
+heroImage: /images/logo-js-white.png
 actionText: Get Started →
 actionLink: /about.html
 

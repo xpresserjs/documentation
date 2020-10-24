@@ -1,11 +1,17 @@
-@require '~vuepress-plugin-tabs/dist/themes/default.styl'
-
-h1, h2, h3
-  color #3eaf7c
-  border-left-color #3eaf7c
+@require 'dark.styl'
 
 body
-  font-size 15px
+  font-family: 'PT Sans', sans-serif
+  font-size 1.1em
+
+code, .line-numbers-mode
+  font-family: 'Fira Code', monospace;
+  font-size 16px
+
+h1, h2, h3
+  font-weight lighter
+  color #3eaf7c
+  border-left-color #3eaf7c
 
 
 img
@@ -21,3 +27,9 @@ img[src*="#console"]
 
 .text-danger
   color red !important
+
+
+@media (max-width: $MQMobile)
+  .theme-toggler
+    bottom: 7vh !important;
+    right: 5vh !important;

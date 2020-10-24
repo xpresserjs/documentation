@@ -31,15 +31,20 @@ const {is} = require('xpress-mongo');
 The `is` variable is of type `XMongoSchemaBuilder`
 ```typescript
 type XMongoSchemaBuilder = {
-    ObjectId(): XMongoDataType
-    Uuid(version: number, options?: UuidOptions): XMongoDataType
     Array(def?: () => Array<any>): XMongoDataType
-    Object(def?: () => StringToAnyObject): XMongoDataType
-    String(def?: string): XMongoDataType
     Boolean(def?: boolean): XMongoDataType
+    CustomValidator(
+        validator: (value: any) => boolean,
+        error?: string | { (key: string): string }
+    ): XMongoDataType
     Date(def?: () => Date): XMongoDataType
-    Number(def?: 0): XMongoDataType
+    InArray(list: any[], def?: any): XMongoDataType
+    Number(def?: number | number[]): XMongoDataType
+    Object(def?: () => StringToAnyObject): XMongoDataType
+    ObjectId(): XMongoDataType
+    String(def?: string | string[]): XMongoDataType
     Types(types: XMongoDataType[]): XMongoDataType
+    Uuid(version: number, options?: UuidOptions): XMongoDataType
 }
 ```
 
@@ -48,39 +53,6 @@ When defining schemas we have the above DataTypes out of the box.
 
 **Note:** all schema functions returns an instance of `XMongoDataType`
 
-### is.ObjectId()
-Set a field to type of mongodb `ObjectId` and has no default value.
-```javascript
-const PostSchema = {
-    userId: is.ObjectId().required()
-}
-```
-
-### is.Uuid()
-Set a field to type of ["Uuid String"](https://en.wikipedia.org/wiki/Universally_unique_identifier) specifying the version of uuid as first argument.
-
-```javascript
-class Transaction extends model('transactions'){
-    
-    // Set Model Schema
-    static schema = {
-        id: is.Uuid(4).required(),
-        amount: is.Number().required()
-    }
-}
-
-console.log(Transaction.make({amount: 200}));
-
-/**
-* Transaction {
-*   data: {
-*     id: 'efae452f-bd6f-4349-8cbf-7a755ef88702',
-*     amount: 200
-*   }
-* }
-*/
-```
- 
 ### is.Array()
 Set a field to type of `Array`. Has default value of `() => []`.
 ```javascript
@@ -93,32 +65,6 @@ const UserSchema =  {
 **Note:** when declaring a default value for `is.Array` and `is.Object` you must use a function. 
 This is to prevent any mutation on default values.
 
-### is.Object()
-Set a field to type of `Object`. Has default value of `() => {}`.
-```javascript
-const UserSchema = {
-    phones: is.Object(),
-    // with default value
-    address: is.Object(() => ({
-        city: null,
-        state: null,
-        country: null
-    })),
-}
-```
-**Note:** when declaring a default value for `is.Array` and `is.Object` you must use a function. 
-This is to prevent any mutation on default values.
-
-### is.String()
-Set a field to type of `String`. Has no default value.
-```javascript
-const UserSchema = {
-    email: is.String(),
-    // with default value
-    status: is.String('pending')
-}
-```
-
 ### is.Boolean()
 Set a field to type of `Boolean`. Has default value of `false`.
 
@@ -129,6 +75,37 @@ const UserSchema = {
     sendNewsletters: is.Boolean(true)
 }
 ```
+
+### is.CustomValidator()
+Set a custom validator and error on the fly using the custom validator schema type.
+```javascript
+// Syntax
+is.CustomValidator(validatorFunction, errorMessage);
+
+
+// Example
+const usernameValidator = is.CustomValidator((username) => {
+      return new RegExp(/* Some Check */).test(username)
+  },
+  'Username contains invalid characters.'
+)
+
+// Usage
+const UserSchema = {
+    username: usernameValidator.required()
+}
+```
+The `is.CustomValidator` returns a type of `XMongoDataType`, meaning you have same instanced methods like every other schema type.
+
+**Note:** The error argument can also accept a function.
+```javascript
+const usernameValidator = is.CustomValidator((username) => {
+      return new RegExp(/* Some Check */).test(username)
+  },
+  (key) => `{$key} contains invalid characters.`
+)
+```
+
 
 ### is.Date()
 Set a field to type  of `Date`. Has default value of the current date: `new Date()
@@ -147,6 +124,40 @@ const VideoSchema = {
     views: is.Number(),
     // with default value
     minimumAge: is.Number(16),
+}
+```
+
+### is.Object()
+Set a field to type of `Object`. Has default value of `() => {}`.
+```javascript
+const UserSchema = {
+    phones: is.Object(),
+    // with default value
+    address: is.Object(() => ({
+        city: null,
+        state: null,
+        country: null
+    })),
+}
+```
+**Note:** when declaring a default value for `is.Array` and `is.Object` you must use a function. 
+This is to prevent any mutation on default values.
+
+### is.ObjectId()
+Set a field to type of mongodb `ObjectId` and has no default value.
+```javascript
+const PostSchema = {
+    userId: is.ObjectId().required()
+}
+```
+
+### is.String()
+Set a field to type of `String`. Has no default value.
+```javascript
+const UserSchema = {
+    email: is.String(),
+    // with default value
+    status: is.String('pending')
 }
 ```
 
@@ -173,7 +184,33 @@ The default string defined on **line 4** `admin` will be inherited.
 
 Default variables can also be defined using `.default(value)`
 
-## Type Instance Methods
+### is.Uuid()
+Set a field to type of ["Uuid String"](https://en.wikipedia.org/wiki/Universally_unique_identifier) specifying the version of uuid as first argument. <br/>
+The versions of uuid are `1, 3, 4 & 5`, if you don't have any idea of the version togo with then use **4**. <br/> **Why 4?** Because **4** requires no extra configurations 
+
+```javascript
+class Transaction extends model('transactions'){
+    
+    // Set Model Schema
+    static schema = {
+        id: is.Uuid(4).required(),
+        amount: is.Number().required()
+    }
+}
+
+console.log(Transaction.make({amount: 200}));
+
+/**
+* Transaction {
+*   data: {
+*     id: 'efae452f-bd6f-4349-8cbf-7a755ef88702',
+*     amount: 200
+*   }
+* }
+*/
+```
+
+## Schema Instance Methods
 Methods available on `XMongoDataType` instance are:
 
 ### cast()

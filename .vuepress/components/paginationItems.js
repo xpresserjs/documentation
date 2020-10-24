@@ -1,4 +1,7 @@
 export default {
+    '/about': [
+        {type: 'next', name: 'Installation', url: '/installation.html'}
+    ],
     '/xpress-mongo/': [
         {type: 'next', name: 'Installation', url: '/xpress-mongo/installation.html'}
     ],

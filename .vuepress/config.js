@@ -1,10 +1,13 @@
 const extendMarkdown = require("./markDownIt");
 
 module.exports = {
+
+    globalUIComponents: [
+        'ToggleTheme',
+    ],
+
     plugins: [
-        // 'tabs',
         '@vuepress/register-components'
-        // 'vuepress-plugin-element-tabs'
     ],
 
     markdown: {
@@ -18,20 +21,34 @@ module.exports = {
 
     head: [
         [
+            'script',
+            {src: '/style.js'}
+        ],
+        [
             "link",
             {
                 rel: "stylesheet",
                 href: "/style.css"
             }
         ],
-        //
+
+        [
+            "link",
+            {
+                rel: "stylesheet",
+                href: "https://fonts.googleapis.com/css2?family=Fira+Code:wght@480&family=PT+Sans&display=swap"
+            }
+        ],
+
         // [
         //     "link",
         //     {
         //         rel: "stylesheet",
-        //         href: "https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap"
+        //         href: "https://fonts.googleapis.com/css2?family=PT+Sans&display=swap"
         //     }
         // ],
+
+
     ],
 
     themeConfig: {
