@@ -36,11 +36,11 @@ Add to your `backend/plugins.json`
 ## Setup
 Import required files into your project using the `xjs-cli publish` command.
 ```sh
-# Publish Configurations
-xjs publish Auth configs
+# Import Configurations
+xjs import Auth configs
 
-# Publish Models
-xjs publish Auth models
+# Import Models
+xjs import Auth models
 ```
 The above command will publish the configuration & model files of this plugin into your `backend/configs` & `backend/models` folder respectively.
 
