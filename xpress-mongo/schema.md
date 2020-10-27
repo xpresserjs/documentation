@@ -1,6 +1,6 @@
 # xpress-mongo Schema
 Mongodb is a schemaless database, so you have the choice to use without schema.
-The schema xpress-mongo provides does not force any type unless defined. it also serves a structure for your models, gives you insight on what your data should look like in the database.
+The schema xpress-mongo provides does not force any type unless defined. it serves a structure for your models and gives you an insight of what your data should look like in the database.
 
 
 ### Basic Example
@@ -240,8 +240,8 @@ is.String().default('pending');
 // is same with
 is.String().default(() => 'pending');
 ```
-usage depends on your preference, for readability you can decide to use `.default()`
-Can also be used to override any previous default values
+usage depends on your preference, for readability you can decide to use `.default()`. <br/>
+Can also be used to override any previous default values.
 ```javascript
 // Default value overwriten to '404'
 is.Number(200).default(404);
@@ -355,7 +355,7 @@ const is = {
 ```
 
 The method of using a function that returns a new `XMongoDataType` is only a concept to provide re-usability. 
-There may be cases where you don't need to reuse i.e The Schema only applies to on Model's field, you can create them like below: 
+There may be cases where you don't need to reuse i.e The Schema only applies to one Model's field, you can create them like below: 
 
 **`isAnAdult`** - checks if the age passed is old enough <br/> **`isSixNumbers`** - checks if the ticket number is a valid ticket number.
 ```javascript

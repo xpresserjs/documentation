@@ -46,7 +46,7 @@ await new User().set(user).save(); // TodoFunction is called
 ```
 
 The create event also supports targeting fields using the **dot** operator. <br/>
-if a **!undefined** value is returned, xpress-mongo will set the value of the targeted field to the value returned
+if value returned `!== undefined`, xpress-mongo will set the value of the targeted field to the value returned
 ```javascript
 /** 
 * on every new document `avatar` will be set to '/images/default.png' if undefined.
@@ -88,7 +88,7 @@ Notice the use of `.hasChanges()`, this is because all update event functions ar
 
 ### delete
 This event **runs in background after** a document is deleted. <br/>
-**Note:** The **delete** event does not support using **dot** operator on fields.
+**Note:** The delete event **does not** support using **dot** operator on fields.
 ```javascript
 // This event deletes user avatar every time a user is deleted.
 User.on('delete', (user) => {
@@ -101,10 +101,10 @@ User.on('delete', (user) => {
  
 const user = await User.findById(ObjectId) // Returns instance.
 
-await user.delete({name: 'Paul Dean'}); // event is called after delete
+await user.delete(); // event is called after delete
 ```
 ### watch
-The watch event is a special event that occurs **after** when a real change made to a field. like the **delete** event it runs in the background.
+The watch event is a special event that occurs  **after** a real change has been made to a field. Just Like the **delete** event, it runs in the background.
 
 **Note:** The watch event only supports the **dot** target for field names.
 ```javascript

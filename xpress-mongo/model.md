@@ -94,7 +94,7 @@ await newUsers.save();
 
 Let's assume you have a raw data returned from the native client `findOne` query, it can be converted to a model instance using `use()` 
 ```javascript
-const rawData = await Users.thisCollection().findOne({});
+const rawData = await Users.native().findOne({});
 const user = Users.use(rawData);
 
 // Updates same document
@@ -193,10 +193,10 @@ const numberOfAdults = await Users.count({
 `XmongoModel.paginate(page: number, perPage: number, query: {}, options?: {})` is used to paginate results 
 ```javascript
 // Assuming this is a controller action
-async function getAllUsers(http){
+async function getAllUsers(req, res){
 
     // Get page from
-    const page = http.query('page', 1);
+    const page = req.query.page || 1;
     const perPage = 30;
 
     // Pagination of all users with age >= 18, sort by firstName
@@ -207,7 +207,7 @@ async function getAllUsers(http){
     });
 
     // Return response
-    return http.json({users});
+    return res.json({users});
 };
 ```
 The result
@@ -233,9 +233,9 @@ The result
 `XmongoModel.paginateAggregate(page: number, perPage: number, query: {}, options?: {})` is same with `XMongoModel.paginate` but works with aggregation query.
 ```javascript
 // Assuming this is a controller action
-async function getAllUsers(http){
+async function getAllUsers(req, res){
 
-    const page = http.query('page', 1);
+    const page = req.query.page || 1;
     const perPage = 30;
 
     // Pagination of all users with age >= 18, sort by firstName
@@ -247,7 +247,7 @@ async function getAllUsers(http){
     );
 
     // Return response
-    return http.json({users});
+    return res.json({users});
 };
 ```
 
@@ -297,7 +297,7 @@ john.get('verified', false);
 `this.id()` returns the current _id of the document
 
 ### idEqualTo()
-`this.idEqualTo(to: any, key: '_id')` is used to Compare model id with a string or ObjectId type variable.
+`this.idEqualTo(to: any, key: '_id')` is used to Compare model id with a string or ObjectId type field.
 ```javascript
 /**
 * Data: {
@@ -434,7 +434,7 @@ userCollection.get('about.address')
 ```
 
 ### toJson()
-`this.tojson(replacer?: any, spacing?: number)` simple returns the data of the model as json string.
+`this.tojson(replacer?: any, spacing?: number)` simply returns the data of the model as json string.
 It uses: `JSON.stringify()` in the background.
 ```javascript
 const user = await User.findOne({firstName: 'John'});
@@ -492,7 +492,7 @@ await user.set({
     lastName: "Ipsum"
 }).save();
 ```
-Note: Updates will not occur if there are no changes in data.
+**Note:** Updates will not occur if there are no changes in data.
 
 ### updateRaw() - `async`
 `this.updateRaw(updateQuery: {}, options?: UpdateOneOptions)` unlike `this.update()` allows you to perform other operations other than {$set} operations.
@@ -517,7 +517,7 @@ await john.updateRaw({
 ### useSchema()
 `this.useSchema(schema: {})` is used to register the model's schema, with schemas you get a validation check and auto generated fields.
 
-**Note:** `useSchema` must be in the constructor()
+**Note:** `useSchema` must be in the constructor() but will be called for you if you have `static schema` set.
 ```javascript
 // Import Xpress-Mongo Schema builder.
 const {is} = require('xpress-mongo');

@@ -34,7 +34,7 @@ Add to your `backend/plugins.json`
 ```
 
 ## Setup
-Import required files into your project using the `xjs-cli publish` command.
+Import required files into your project using the `xjs import` command.
 ```sh
 # Import Configurations
 xjs import Auth configs
@@ -42,7 +42,7 @@ xjs import Auth configs
 # Import Models
 xjs import Auth models
 ```
-The above command will publish the configuration & model files of this plugin into your `backend/configs` & `backend/models` folder respectively.
+The above command will import the configuration & model files of this plugin into your `backend/configs` & `backend/models` folder respectively.
 
 
 Next, Include the imported config file into your xpresser config like so:
