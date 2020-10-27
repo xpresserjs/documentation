@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@xpresser/env": "^1.0.3",
-    "xpresser": "^0.2.83"
+    "xpresser": "^0.2.91"
   },
   "devDependencies": {
     "@vuepress/plugin-register-components": "^1.7.1",
