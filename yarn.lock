@@ -940,10 +940,10 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.6.tgz#f4c7ec43e81b319a9815115031709f26987891f0"
   integrity sha512-3c+yGKvVP5Y9TYBEibGNR+kLtijnj7mYrXRg+WpFb2X9xm04g/DXYkfg4hmzJQosc9snFNUPkbYIhu+KAm6jJw==
 
-"@types/lodash@^4.14.161":
-  version "4.14.162"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.162.tgz#65d78c397e0d883f44afbf1f7ba9867022411470"
-  integrity sha512-alvcho1kRUnnD1Gcl4J+hK0eencvzq9rmzvFPRmP5rPHx9VVsJj6bKLTATPVf9ktgv4ujzh7T+XWKp+jhuODig==
+"@types/lodash@^4.14.162":
+  version "4.14.163"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.163.tgz#6026f73c8267a0b7d41c7c8aadacfa2a5255774f"
+  integrity sha512-BeZM/FZaV53emqyHxn9L39Oz6XbHMBRLA1b1quROku48J/1kYYxPmVOJ/qSQheb81on4BI7H6QDo6bkUuRaDNQ==
 
 "@types/mime@*":
   version "2.0.3"
@@ -955,10 +955,10 @@
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
   integrity sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
 
-"@types/mongodb@^3.5.27":
-  version "3.5.27"
-  resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.5.27.tgz#158a7a43ce25ef3592ac8a62e62ab38bebf661f2"
-  integrity sha512-1jxKDgdfJEOO9zp+lv43p8jOqRs02xPrdUTzAZIVK9tVEySfCEmktL2jEu9A3wOBEOs18yKzpVIKUh8b8ALk3w==
+"@types/mongodb@^3.5.32":
+  version "3.5.32"
+  resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.5.32.tgz#c3f72a9a157922e6b9a05690552abe8479e79232"
+  integrity sha512-lBV8D5S5UNlWihHYQkEebqQTRazm5SglwQ126ls03eeYk2NJN4P72udUxJtyuKSmSFKvhLeekfNoPcyFa3BNdQ==
   dependencies:
     "@types/bson" "*"
     "@types/node" "*"
@@ -968,10 +968,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.11.8.tgz#fe2012f2355e4ce08bca44aeb3abbb21cf88d33f"
   integrity sha512-KPcKqKm5UKDkaYPTuXSx8wEP7vE9GnuaXIZKijwRYcePpZFDVuy2a57LarFKiORbHOuTOOwYzxVxcUzsh2P2Pw==
 
-"@types/node@^14.14.3":
-  version "14.14.5"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.5.tgz#e92d3b8f76583efa26c1a63a21c9d3c1143daa29"
-  integrity sha512-H5Wn24s/ZOukBmDn03nnGTp18A60ny9AmCwnEcgJiTgSGsCO7k+NWP7zjCCbhlcnVCoI+co52dUAt9GMhOSULw==
+"@types/node@^14.14.5", "@types/node@^14.14.6":
+  version "14.14.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.6.tgz#146d3da57b3c636cc0d1769396ce1cfa8991147f"
+  integrity sha512-6QlRuqsQ/Ox/aJEQWBEJG7A9+u7oSYl3mem/K8IzxXG/kAGbV1YPD9Bg9Zw3vyxC/YP+zONKwy8hGkSt1jxFMw==
 
 "@types/q@^1.5.1":
   version "1.5.4"
@@ -995,6 +995,11 @@
   dependencies:
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
+
+"@types/uuid@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-8.3.0.tgz#215c231dff736d5ba92410e6d602050cce7e273f"
+  integrity sha512-eQ9qFW/fhfGJF8WKHGEHZEyVWfZxrT+6CLIJGBcZPfxUh/+BnEj+UCGYMlr9qZuX/2AltsvwrGqp0LhEW8D0zQ==
 
 "@vue/babel-helper-vue-jsx-merge-props@^1.0.0":
   version "1.0.0"
@@ -1769,10 +1774,10 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.10.1.tgz#e1e82e4f3e999e2cfd61b161280d16a111f86428"
   integrity sha512-zg7Hz2k5lI8kb7U32998pRRFin7zJlkfezGJjUc2heaD4Pw2wObakCDVzkKztTm/Ln7eiVvYsjqak0Ed4LkMDA==
 
-axios@^0.20.0:
-  version "0.20.0"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.20.0.tgz#057ba30f04884694993a8cd07fa394cff11c50bd"
-  integrity sha512-ANA4rr2BDcmmAQLOKft2fufrtuvlqR+cXNNinUmvfeSNCOF98PZL+7M/v1zIdGo7OLjEA9J2gXJL+j4zGsl0bA==
+axios@^0.21.0:
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.0.tgz#26df088803a2350dff2c27f96fef99fe49442aca"
+  integrity sha512-fmkJBknJKoZwem3/IKSSLpkdNXZeBu5Q7GA/aRsr2btgrptmSCxi2oFjZHqGdK9DoTil9PIHlPIZw2EcRJXRvw==
   dependencies:
     follow-redirects "^1.10.0"
 
@@ -5236,10 +5241,10 @@ knex@^0.21.5:
     uuid "^7.0.3"
     v8flags "^3.2.0"
 
-knex@^0.21.7:
-  version "0.21.7"
-  resolved "https://registry.yarnpkg.com/knex/-/knex-0.21.7.tgz#c36e957d59504c250c98f39fd3bf6d9815cad636"
-  integrity sha512-f9DHi2nx2jHfza9JErcHxEi0ZLK7+kQhK7XtDIP5ud2k9MYbV5EpwneNJRppSdYAkqXkKeqlHWDcd7OYbLiB9A==
+knex@^0.21.8:
+  version "0.21.8"
+  resolved "https://registry.yarnpkg.com/knex/-/knex-0.21.8.tgz#e5c07af61ee6aa006d3468e10e3a69351deb0c26"
+  integrity sha512-ziUu4vAlIGA8j2l0S4xcD1d3XdpJA4HYGhwHEhgAgefGCmB1OLSjUGCs/ebkJal42fSvAkyZaB0tcOtTXKgS5g==
   dependencies:
     colorette "1.2.1"
     commander "^5.1.0"
@@ -6135,12 +6140,12 @@ object-assign@^4, object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
   integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
 
-object-collection@^1.0.29:
-  version "1.0.29"
-  resolved "https://registry.yarnpkg.com/object-collection/-/object-collection-1.0.29.tgz#8de31c5f5e99324e9a1c48388a4859e2ba77c06a"
-  integrity sha512-6JX4HF0LM6h+YasW1JUrYkECvPLHqxyLfi8qZjl5mV+6huIKjt2REo6dd+srUq/09nPsA+Meu+94rmf8oJK+QQ==
+object-collection@^1.0.30:
+  version "1.0.30"
+  resolved "https://registry.yarnpkg.com/object-collection/-/object-collection-1.0.30.tgz#aceacb4c3026501099c266fb6989b27dd3b78e85"
+  integrity sha512-JPrsxmk7I6L0DnETvcN8jeXbQF3aGVaFVUwRoJphO5mwhdyOolsEIDy00I4zgR9+gS+KVb2l4pgFeAPobbvyWA==
   dependencies:
-    "@types/lodash" "^4.14.161"
+    "@types/lodash" "^4.14.162"
     lodash "^4.17.20"
 
 object-copy@^0.1.0:
@@ -9173,25 +9178,27 @@ xdg-basedir@^4.0.0:
   resolved "https://registry.yarnpkg.com/xdg-basedir/-/xdg-basedir-4.0.0.tgz#4bc8d9984403696225ef83a1573cbbcb4e79db13"
   integrity sha512-PSNhEJDejZYV7h50BohL09Er9VaIefr2LMAf3OEmpCkjOi34eYyQYAXUTjEQtZJTKcF0E2UKTh+osDLsgNim9Q==
 
-xpress-mongo@^0.0.52:
-  version "0.0.52"
-  resolved "https://registry.yarnpkg.com/xpress-mongo/-/xpress-mongo-0.0.52.tgz#b6b4cb42d23a9294be743b96a1df988fb3f93fbd"
-  integrity sha512-P/xXfukGQd6wpUGRFShWxv5u7pue0MuH3nuKM9Gc0SPtuTaJDRPozh3VwZXJ0KbmNabcMkJx/Tzeyf/p+fjDFw==
+xpress-mongo@^0.0.54:
+  version "0.0.54"
+  resolved "https://registry.yarnpkg.com/xpress-mongo/-/xpress-mongo-0.0.54.tgz#9e8f51b228f9fca604820522e38e89ca23127fda"
+  integrity sha512-l13Pgc490CzpIy6oPhbDepmtcYLPaNxn49vNWX+Dbtuo3DgUgN0OEDlA+Ag8c6q6dZwSWTrH8aVMWZ3rctHk1w==
   dependencies:
-    "@types/mongodb" "^3.5.27"
-    axios "^0.20.0"
+    "@types/mongodb" "^3.5.32"
+    "@types/node" "^14.14.6"
+    "@types/uuid" "^8.3.0"
+    axios "^0.21.0"
     deep-object-diff "^1.1.0"
     mongodb "^3.6.2"
-    object-collection "^1.0.29"
+    object-collection "^1.0.30"
     uuid "^8.3.1"
 
-xpresser@^0.2.91:
-  version "0.2.91"
-  resolved "https://registry.yarnpkg.com/xpresser/-/xpresser-0.2.91.tgz#e7b149d4d02e3e35488720466a02ef9b78ff82f4"
-  integrity sha512-Sr7qPRY6wXy8qdIUz69SPtdGDkXJh8/Hhu/q+uHm9R+FRR99hon/NBC3pvSoHeilsDqxaLDoUs346xpsU/tXdw==
+xpresser@^0.2.93:
+  version "0.2.93"
+  resolved "https://registry.yarnpkg.com/xpresser/-/xpresser-0.2.93.tgz#d9b399bb7e9b28938b13f3b95138a6670cc66620"
+  integrity sha512-HCRGEouCJ2+5aNGlDtHLb0dswPHtu5aScwayYGH3tR9KffpyLLG2sWO/eIpxtTLZheM61qwzd0PVed19pH+utA==
   dependencies:
     "@types/express" "^4.17.7"
-    "@types/node" "^14.14.3"
+    "@types/node" "^14.14.5"
     "@xpresser/router" "^1.0.13"
     body-parser "^1.19.0"
     build-url "^6.0.1"
@@ -9205,9 +9212,9 @@ xpresser@^0.2.91:
     fs-extra "^9.0.1"
     handlebars "^4.7.6"
     helmet "^4.1.1"
-    knex "^0.21.7"
+    knex "^0.21.8"
     moment "^2.29.1"
-    object-collection "^1.0.29"
+    object-collection "^1.0.30"
     pluralize "^8.0.0"
     shelljs "^0.8.4"
     sqlite3 "^5.0.0"

@@ -247,21 +247,21 @@ Can also be used to override any previous default values.
 is.Number(200).default(404);
 ```
 
-### isOptional()
-Sets required to `false`. When a field **isOptional** xpress-mongo does not throw any error when it's `undefined` but will validate when a value is **defined**.
+### optional()
+Sets required to `false`. When a field is **optional** xpress-mongo does not throw any error when it's `undefined` but will validate when a value is **defined**.
 ```javascript
-is.String().isOptional()
+is.String().optional()
 // is same with
 is.String().required(false);
 ```
 
-### isUndefined()
+### undefined()
 Sets default value to `undefined`. if value of field is **undefined** and **required** xpress-mongo will throw an **error**.
 
 ```javascript
 is.Number() // default value = 0
 
-is.Number().isUndefined() // default value = undefined
+is.Number().undefined() // default value = undefined
 
 is.Number().default(undefined) // default value = undefined
 ```
