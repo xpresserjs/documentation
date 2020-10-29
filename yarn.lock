@@ -9178,10 +9178,10 @@ xdg-basedir@^4.0.0:
   resolved "https://registry.yarnpkg.com/xdg-basedir/-/xdg-basedir-4.0.0.tgz#4bc8d9984403696225ef83a1573cbbcb4e79db13"
   integrity sha512-PSNhEJDejZYV7h50BohL09Er9VaIefr2LMAf3OEmpCkjOi34eYyQYAXUTjEQtZJTKcF0E2UKTh+osDLsgNim9Q==
 
-xpress-mongo@^0.0.54:
-  version "0.0.54"
-  resolved "https://registry.yarnpkg.com/xpress-mongo/-/xpress-mongo-0.0.54.tgz#9e8f51b228f9fca604820522e38e89ca23127fda"
-  integrity sha512-l13Pgc490CzpIy6oPhbDepmtcYLPaNxn49vNWX+Dbtuo3DgUgN0OEDlA+Ag8c6q6dZwSWTrH8aVMWZ3rctHk1w==
+xpress-mongo@^0.0.56:
+  version "0.0.56"
+  resolved "https://registry.yarnpkg.com/xpress-mongo/-/xpress-mongo-0.0.56.tgz#54640bd0034ae9a2dd3c52a05dce9dd97a688aaf"
+  integrity sha512-x2RxwU/IXYnAwK8NPRk7DXZjg09Lo4yM9K+mRZySjjzd9T/hbTIv3b5NUD/OWPKbxGg+yhLTzMkwal4B5tp2pw==
   dependencies:
     "@types/mongodb" "^3.5.32"
     "@types/node" "^14.14.6"
@@ -9192,10 +9192,10 @@ xpress-mongo@^0.0.54:
     object-collection "^1.0.30"
     uuid "^8.3.1"
 
-xpresser@^0.2.93:
-  version "0.2.93"
-  resolved "https://registry.yarnpkg.com/xpresser/-/xpresser-0.2.93.tgz#d9b399bb7e9b28938b13f3b95138a6670cc66620"
-  integrity sha512-HCRGEouCJ2+5aNGlDtHLb0dswPHtu5aScwayYGH3tR9KffpyLLG2sWO/eIpxtTLZheM61qwzd0PVed19pH+utA==
+xpresser@^0.2.95:
+  version "0.2.95"
+  resolved "https://registry.yarnpkg.com/xpresser/-/xpresser-0.2.95.tgz#98d2534379739d43104d767806cb797251229279"
+  integrity sha512-wSVdtUBF+c7Hkypb4biS12oIpNc+HfPQZQXF8nOxK0QrC/68QQYlSREk3nkU54UnZ2BNg0ScaN6mtpGZWGZfHQ==
   dependencies:
     "@types/express" "^4.17.7"
     "@types/node" "^14.14.5"

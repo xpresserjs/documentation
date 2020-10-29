@@ -5,30 +5,24 @@ It contains functions that will serve as helpers in your project.
 ## Config
 
 ### $.config
-##### Type: `Object`
-Carries the config object of your application, Both default and defined.
+##### Type: [**`ObjectCollection`**](https://www.npmjs.com/package/object-collection)
+
+Carries the config object of your application as a collection, Both default and defined.
 
 **Example**
 ```javascript
-if($.config.server.port === 443){
+if($.config.get('server.port') === 443){
     $.log("You are using https.");
 }
-```
 
-### $.$config
-##### Type: [**`ObjectCollection`**](https://www.npmjs.com/package/object-collection)
-`$.config` as a collection to enable easy modification and access of config data in large projects.
-
-**Example**
-```javascript
-if(!$.$config.has('project.theme')){
+if(!$.config.has('project.theme')){
     $.logErrorAndExit("No {project.theme} config defined.");
 }
 
-$.$config.get('name', 'Xpresser');
+$.config.get('name', 'Xpresser');
 // => Name of your application or set default
 
-$.$config.get('paths.base');
+$.config.get('paths.base');
 // => /path/to/your/base/folder
 ```
 
@@ -78,18 +72,19 @@ const AppController = $.use.controller('AppController');
 ```
 
 ## Others
-### $.engineData
+### $.store
 ##### Type: [**`ObjectCollection`**](https://www.npmjs.com/package/object-collection)
 A collection for storing data at anywhere in your project.
 
 **Example**
 ```javascript
-$.engineData.set('foo', 'bar')
+$.store.set('foo', 'bar')
 
 // Some where else in your app.
-$.engineData.get('foo');
+$.store.get('foo');
 // => 'bar'
 ```
+
 
 
 
