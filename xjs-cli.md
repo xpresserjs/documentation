@@ -113,6 +113,65 @@ The commands are seperated in to two parts. The first part has the **dev** comma
 | **async_cron_jobs** | If set to `true`, Cron jobs will run asynchronously. By default is `false`.
 | **tsc** | An array of commands to call when we run `xjs tsc build`
 
+## Non-Project Commands
+These commands are only available when there is no **use-xjs-cli.json** file in the current working directory.
+
+* [new/create](#new-create)
+* [init](#init)
+* [nginx:config](#nginx-config)
+
+
+
+### new/create
+Create new xjs project.
+```sh
+xjs new [name]
+```
+
+### init
+Initialize xjs-cli in your project and creates a `use-xjs-cli.json`. You need to pass the name of your **xpresser boot file**.
+```sh
+xjs init [xpresser_file]
+
+# If boot file is app.js
+xjs init app.js
+```
+
+### nginx:config
+This command helps you create  a minimal nginx configuration for your project on the fly.
+```sh
+xjs nginx:config
+
+# Result (Questionnaire)
+? Name of config file: my_app
+? Path to file: /path/to/desired/folder.
+? Your app domain: myapp.com
+? Your app url (including port): localhost:3000
+=>  Conf: my_app has been created at /path/to/desired/folder
+```
+The above questionnaire will create the file below.
+```sh
+server {
+	listen 80;
+#	listen 443 ssl;
+
+	server_name myapp.com www.myapp.com;
+
+#	ssl_certificate "cert.pem";
+#   ssl_certificate_key "cert.key";
+
+
+	location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+```
+
 ## Project Commands
 Project commands are only available when there is a valid `use-xjs-cli.json` in the current working directory.
 
@@ -318,31 +377,6 @@ xjs check-for-update
 =>  Checking npm registry for version update...
 =>  xpresser latest version is 0.2.83 but yours is 0.2.81
 ? Would you like to update? (Y/n) 
-```
-
-
-## Non-Project Commands
-These commands are only available when there is no **use-xjs-cli.json** file in the current working directory.
-
-* [new/create](#new-create)
-* [init](#init)
-* install-prod-tools
-
-
-
-### new/create
-Create new xjs project.
-```sh
-xjs new [name]
-```
-
-### init
-Initialize xjs-cli in your project and creates a `use-xjs-cli.json`. You need to pass the name of your **xpresser boot file**.
-```sh
-xjs init [xpresser_file]
-
-# If boot file is app.js
-xjs init app.js
 ```
 
 ## Stacks

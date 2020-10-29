@@ -33,7 +33,7 @@ In your application an instance of XpresserRouter can be accessed globally using
 ```javascript
 $.router.get(url, action)
 ```
-`action` can either be a function or a string holding a controller name and action.
+`action` can either be a function, or a string holding a controller name and action.
 ```javascript
 $.router.get('/', (x) => {
     return x.view('about')
@@ -112,8 +112,8 @@ Now we want all the requests to this controller to be on **example.com/account/{
 #### Without Path
 ```javascript
 const route = $.router;
-route.get('/account/view', 'Account@view');
-route.post('/account/update', 'Account@update');
+route.get('/account', 'Account@view');
+route.post('/account', 'Account@update');
 route.post('/account/change_password', 'Account@change_password');
 route.post('/account/send_code', 'Account@send_code');
 route.get('/account/verify', 'Account@verify');
@@ -122,8 +122,8 @@ route.get('/account/verify', 'Account@verify');
 ```javascript
 const route = $.router;
 route.path('/account', () => {
-    route.get('view', 'view');
-    route.post('update', 'update');
+    route.get('', 'view');
+    route.post('', 'update');
     route.post('change_password', 'change_password');
     route.post('send_code', 'send_code');
     route.get('verify', 'verify');
@@ -134,13 +134,14 @@ But it doesn't end here.
 
 The path function also provides amazing ways to make you write less when declaring routes.
 
+### @/= Shorthand
 Notice the url, and the controller action is the same when declaring with path.
 it kind of feels like  there is a little redundancy there, well XpresserRouter provides a clean solution for situations like this.
 ```javascript
 // Instead of
-route.get('view', 'view');
+route.get('change_password', 'change_password');
 // it can be written as
-route.get('@view');
+route.get('@change_password');
 ```
 The above simply means that XpresserRouter should use same url as the actions name.
 

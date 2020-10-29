@@ -47,7 +47,7 @@ The above command will import the configuration & model files of this plugin int
 
 Next, Include the imported config file into your xpresser config like so:
 ```javascript
-const authPluginConfig = require('./backend/configs/Auth/config');
+const authPluginConfig = require('./backend/configs/auth');
 
 const config = {
     // .... other configs above ....
@@ -113,10 +113,10 @@ When using **XpresserTs** complete path to url is required else xpresser will tr
 ## Auth Providers
 The auth providers are functions defined by you to tell the plugin how you want your login and registration handled.
 
-- User Password Provider [`userPasswordProvider`]
-- User Data Provider [`userDataProvider`]
-- User Registration Handler [`userRegistrationHandler`]
-- User Login Validator [`userLoginValidator`]
+- User Password Provider `[userPasswordProvider]`
+- User Data Provider `[userDataProvider]`
+- User Registration Handler `[userRegistrationHandler]`
+- User Login Validator `[userLoginValidator]`
 
 Located @ `backend/models/Auth/AuthProviders.js` 
 
