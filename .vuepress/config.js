@@ -126,6 +126,10 @@ module.exports = {
                 text: 'Plugins',
                 items: [
                     {
+                        text: 'Xpresser Plugins',
+                        link: '/plugins/'
+                    },
+                    {
                         text: '@xpresser/auth',
                         link: '/plugins/@xpresser/auth/'
                     },
