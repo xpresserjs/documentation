@@ -99,7 +99,9 @@ It accepts the path for 1st argument and a function containing **child routes** 
 
 Assuming you have a controller with so many methods for a related route. e.g
 ```javascript
-class AccountController extends $.controller {
+const {ControllerClass} = require('xpresser');
+
+class AccountController extends ControllerClass {
     static view(){/* Some codes here... */}
     static update(){/* Some codes here... */}
     static change_password(){/* Some codes here... */}
@@ -134,30 +136,38 @@ But it doesn't end here.
 
 The path function also provides amazing ways to make you write less when declaring routes.
 
-### @/= Shorthand
+### @/= Path Helpers
 Notice the url, and the controller action is the same when declaring with path.
 it kind of feels like  there is a little redundancy there, well XpresserRouter provides a clean solution for situations like this.
 ```javascript
 // Instead of
-route.get('change_password', 'change_password');
+route.post('change_password', 'change_password');
 // it can be written as
-route.get('@change_password');
+route.post('@change_password');
 ```
 The above simply means that XpresserRouter should use same url as the actions name.
+
+```javascript
+// Instead of
+route.get('', 'view');
+// it can be written as
+route.get('=view');
+```
+
+The above simply means that XpresserRouter should set the action to the path's index url.
 
 So the above routes can be written like below
 ```javascript
 const route = $.router;
 route.path('/account', () => {
-    route.get('@view');
-    route.post('@update');
+    route.get('=view');
+    route.post('=update');
     route.post('@change_password');
     route.post('@send_code');
     route.get('@verify');
 }).controller('Account');
 ```
-
-But this only applies if your controller actions matches your url which most times is the case and can be used only by routes declared in `$.router.path` children function.
+**Note:** This only applies if your controller actions matches your url which most times is the case and can be used only by routes declared in `$.router.path` children function.
 
 ### Named Routes
 In real life situations when using the path function you may like to have a name prefix for all names registered in that path e.g
@@ -174,15 +184,14 @@ route.path('/account', () => {
 Instead of using `account.` repeatedly you can use the `as` helper like this
 ```javascript
 route.path('/account', () => {
-    route.get('@view').name('view');
-    route.post('@update').name('update');
+    route.get('=view').name('view');
+    route.post('=update').name('update');
     route.post('@change_password').name('change_password');
     route.post('@send_code').name('send_code');
     route.get('@verify').name('verify');
 }).controller('Account').as('account');
 ```
 The as function tells XpresserRouter to prefix any name in the given path with `account.`
-**Note:** If a route specifies `name` and `as` is also used in parent path the name will be used instead of the string specified in `as`
 
 ### Actions as Name
 Using the routes declared above as an example, you will notice the controller actions are the same with names of all the routes.
@@ -190,19 +199,19 @@ Using the routes declared above as an example, you will notice the controller ac
 Path also offers a function similar to the **actionAsName** function but this time it is plural.
 ```javascript
 route.path('/account', () => {
-    route.get('@view');
-    route.post('@update');
+    route.get('=view');
+    route.post('=update');
     route.post('@change_password');
     route.post('@send_code');
     route.get('@verify');
 }).controller('Account').as('account').actionsAsName();
 ```
-With these neat looking codes your end result will be
+With these simple looking codes, your end result will be:
 
 | Method | Url | Controller@action | Name
 | ----- | -----| -----------------| -----
-| GET   | /account/view | AccountController@view | account.view
-| POST   | /account/update | AccountController@update | account.update
+| GET   | /account | AccountController@view | account.view
+| POST   | /account | AccountController@update | account.update
 | POST   | /account/change_password | AccountController@change_password | account.change_password
 | POST   | /account/send_code | AccountController@send_code | account.send_code
 | GET   | /account/verify | AccountController@verify | account.verify

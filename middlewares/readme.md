@@ -72,7 +72,9 @@ Every controller has a middleware handler where you assign middlewares to action
 :::: xTabs Controller Class| Controller Object
 ::: xTab Controller Class
 ```javascript
-class ApiController extends $.controller {
+const {ControllerClass} = require('xpresser');
+
+class ApiController extends ControllerClass {
 
     /**
     * middleware - Set Middleware

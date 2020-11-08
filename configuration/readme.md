@@ -7,13 +7,13 @@ You can add configuration to your project using any of these methods you prefer.
 **Inline**
 ```javascript
 const xpresser = require('xpresser');
-xpresser({/*Your configurations here!*/});
+xpresser.init({/*Your configurations here!*/});
 ```
 
 **Require**
 ```javascript
 const xpresser = require('xpresser');
-xpresser(require('./config.js'));
+xpresser.init(require('./config.js'));
 ```
 
 **Path to file**
@@ -21,7 +21,7 @@ xpresser(require('./config.js'));
 const xpresser = require('xpresser');
 const configFile = __dirname + './config.js';
 
-xpresser(configFile);
+xpresser.init(configFile);
 ```
 `configFile` will be required by xpresser if path exits.
 

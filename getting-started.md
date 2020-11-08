@@ -44,7 +44,7 @@ if you are not comfortable with it, lets say you want **controllers** & **views*
     backend: __dirname,
 ```
 
-Then move the all content in backend to your specified folder and everything should still work perfectly.
+Then move affected files from backend folder to your specified folder and everything should still work perfectly.
 
 If you take a look a the [config.js](./configuration/default.md) page you will see all the configurations available for you and how they function.
 

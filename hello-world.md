@@ -7,7 +7,7 @@ Create a file: **app.js** and paste the codes below.
 const xpresser = require('xpresser');
 
 //> 2
-const $ = xpresser({
+const $ = xpresser.init({
     name: 'My Xpresser App',
     paths: {base: __dirname},
     server: {port: 2000}
@@ -30,10 +30,10 @@ $.boot();
 Create a file: **app.ts** and paste the codes below.
 ```typescript
 //> 1
-import xpresser from "xpresser";
+import xpresser = require("xpresser");
 
 //> 2
-const $ = xpresser({
+const $ = xpresser.init({
     name: 'My Xpresser App',
     paths: {base: __dirname},
     server: {port: 2000}
@@ -62,12 +62,12 @@ $.boot();
 3. Define **index** route in xpresser `$.on.boot` event 
 4. Boot xpresser.
 
-Run ```nodemon app.js``` and you should see your server started in console.
+Run `nodemon app.js` or `ts-node-dev app.ts` and you should see your server started in console.
 ```sh
-===> xpresser v{Your xpresser version}
-===> Starting {Your App Name}...
-===> Server started and available on http://localhost:2000/
-===> PORT:2000
+==> xpresser v{Your xpresser version}
+==> Starting {Your App Name}...
+==> Server started and available on http://localhost:2000/
+==> PORT:2000
 ```
 
 ## Using MVC Structure.
@@ -105,14 +105,14 @@ const config = {
 };
 
 // Boot Server
-xpresser(config).boot();
+xpresser.init(config).boot();
 ```
 :::
 
 ::: xTab Typescript
 Create Boot File: **app.ts**
-```javascript
-import xpresser from "xpresser";
+```typescript
+import xpresser = require("xpresser");
 
 // Set Config
 const config = {
@@ -129,7 +129,7 @@ const config = {
 };
 
 // Boot Server
-xpresser(config)
+xpresser.init(config)
     .initializeTypescript(__filename)
     .boot();
 ```
@@ -150,10 +150,10 @@ $.router.get('/', 'AppController@index');
 // "/about" => {about} method in AppController
 $.router.get('/about', 'AppController@about');
 ```
-`$.router` is an instance of [**XpresserRouter**](../router/readme.md).
+Remember inside your project **`$`** is xpresser's global variable and `$.router` is an instance of [**XpresserRouter**](../router/readme.md).
 
 Create Controller: **AppController**
-:::: xTabs Javascript|Typescript
+:::: xTabs Javascript|Typescript|xjs-cli
 ::: xTab Javascript
 ```javascript
 module.exports =  {
@@ -187,6 +187,14 @@ export =  {
 }
 ```
 :::
+
+
+::: xTab xjs-cli
+```sh
+xjs make:controller AppController
+```
+Note: make sure you have **initialized** `xjs-cli` for your project **before** running this command.
+see [How to initialize xjs-cli](./xjs-cli.md#init-file)
 ::::
 
 ### Run

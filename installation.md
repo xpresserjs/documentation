@@ -11,7 +11,7 @@ ts-node-dev is a tool that helps develop **node.ts** based applications by autom
 <br>[Install ts-nod-dev](https://www.npmjs.com/package/ts-node-dev)
 
 #### Xjs-Cli (Recommended)
-xjs-cli is a command-line interface made for xpresser. It provides helpful commands that can assist you in building your application faster.
+xjs-cli is a command-line tool made for xpresser. It provides helpful commands that can assist you in building your application faster.
 <br>[Install Xjs-Cli](./xjs-cli.md)
 
 ## Installing Xpresser

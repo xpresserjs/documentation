@@ -14,7 +14,9 @@ Don't get overwhelmed, they all serve the same purpose with just a little prefer
 #### Class file controller
 **Filename:** PostsController.js
 ```javascript
-class PostController extends $.controller {
+const {ControllerClass} = require('xpresser');
+
+class PostController extends ControllerClass {
     all() { /** take action here **/ }
     static create() { /** same as above but static **/}
 }
@@ -24,7 +26,7 @@ module.exports = PostController;
 
 The above is an example of a **class file** controller.
 
-The class file controller **MUST** extend xpresser's base controller (`$.controller`), this extension lets xpresser know that you are using a class and not an object.
+The class file controller **MUST** extend xpresser's base controller (`ControllerClass`), this extension lets xpresser know that you are using a class and not an object.
 this is because javascript has no official way of checking if a variable is a class.
 
 The `PostController` contains a **static** method and a **non-static** method, both works exactly the same way. Usage depends on your preference.
@@ -41,7 +43,9 @@ Now, when a request matches the specified route URI, the `all` method on the `Po
 
 We can send a basic response like so
 ```javascript
-class PostController extends $.controller {
+const {ControllerClass} = require('xpresser');
+
+class PostController extends ControllerClass {
 
     all(http) {
         http.send("List of all posts.");
