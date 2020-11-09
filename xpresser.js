@@ -1,5 +1,5 @@
 const env = require('@xpresser/env')(__dirname);
-const StartXpresser = require('xpresser');
+const {init} = require('xpresser');
 const isDev = env.NODE_ENV !== 'production';
 
 const config = {
@@ -30,7 +30,7 @@ const config = {
     },
 };
 
-const $ = StartXpresser(config);
+const $ = init(config);
 
 // Run IfNotConsole
 $.on.boot((next) => {

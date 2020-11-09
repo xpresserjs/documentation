@@ -9192,12 +9192,13 @@ xpress-mongo@^0.0.56:
     object-collection "^1.0.30"
     uuid "^8.3.1"
 
-xpresser@^0.2.98:
-  version "0.2.98"
-  resolved "https://registry.yarnpkg.com/xpresser/-/xpresser-0.2.98.tgz#8cb7d3d3baa96ce9ab976ffba5f833e02cccfecd"
-  integrity sha512-Vj8FbhkbT79bf5sqqN+qxE7AY5axmDP5bTjzAjtMHQ47WHEg4V3W/kvCfD5+yAxu4637rdl//OCEKKEQHRjrHw==
+xpresser@^0.3.9:
+  version "0.3.9"
+  resolved "https://registry.yarnpkg.com/xpresser/-/xpresser-0.3.9.tgz#a6df3d2918840413544e8741848f29a048043f3c"
+  integrity sha512-cp07Dlr1mL7zAEbbIeJfYQDb444Px/aJZ7eUB1NX5kCx8G/pKFUwPoZUFcAeNC0/4R78ljJzMIzFlYM0KhYhHA==
   dependencies:
     "@types/express" "^4.17.7"
+    "@types/lodash" "^4.14.162"
     "@types/node" "^14.14.5"
     "@xpresser/router" "^1.0.13"
     body-parser "^1.19.0"
@@ -9213,6 +9214,7 @@ xpresser@^0.2.98:
     handlebars "^4.7.6"
     helmet "^4.1.1"
     knex "^0.21.8"
+    lodash "^4.17.20"
     moment "^2.29.1"
     object-collection "^1.0.30"
     pluralize "^8.0.0"

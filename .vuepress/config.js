@@ -86,8 +86,12 @@ module.exports = {
                         link: '/configuration/'
                     },
                     {
-                        text: '$ (The Dollar Sign)',
+                        text: 'Xpresser Instance ($)',
                         link: '/dollar-sign'
+                    },
+                    {
+                        text: 'Repl',
+                        link: '/cli/repl.md'
                     }
                 ]
             },
