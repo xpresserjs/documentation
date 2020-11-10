@@ -1,4 +1,8 @@
 # Repl
+<div style="text-align:center">
+<img alt="Xpresser Repl" src="./../images/cli/repl.gif"/>
+</div>
+
 Tinker allows you to interact with your entire Xpresser application on the command line, including the current xpresser instance **`$`**. 
 
 To enter the repl environment, run the command
@@ -69,7 +73,7 @@ repl.start(($) => {
 :::
 ::::
 
-**Note:** Running `node repl.js` directly will still work, but you may not get to use **top level await** function.
+**Note:** Running the repl file directly e.g `node repl.js` will start the repl as expected, but you may not get to use **top level await** function.
 
 ## Setup/Configuration
 Setting up a perfect **repl** for your xpresser project is easy with the `XpresserRepl` class.
@@ -91,23 +95,25 @@ repl.addContext({
 })
 ```
 
-### Add files as context
+### Add files to context
 `XpresserRepl` includes a helper function that can load files into your context by requiring them.
 ```javascript
 repl.addContextFromFiles({
-    User: 'backend/models/User',
-    Mailer: 'backend/libs/Mailer'
+    User: 'backend/models/User.js',
+    Mailer: 'backend/libs/Mailer.js'
 })
 ```
 Key of file path will be used as the content key.
 
-### Add Folder Files as context
-`XpresserRepl` includes a helper function that can load files into your context by requiring them.
+You can also group files into one contentName
 ```javascript
-/**
-* Assuming `backend/models`
-*/
-repl.addContextFromFolder('backend/models')
+repl.addContextFromFiles({
+    User: 'backend/models/User.js',
+    Mailer: 'backend/libs/Mailer.js'
+}, 'models')
 ```
 
-## Api
+
+::: warning Incomplete Documentation
+This documentation is not yet complete! Check back in some days time.
+:::
