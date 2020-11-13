@@ -100,7 +100,7 @@ When using **XpresserTs** complete path to url is required else xpresser will tr
 ```json
 {
   "middlewares": {
-    "Auth": "npm://@xpresser/auth/Middlewares/Auth.js"
+    "Auth": "npm://@xpresser/auth/Middlewares/AuthMiddleware.js"
   },
   "globalMiddlewares": [
     "npm://@xpresser/auth/Middlewares/GlobalMiddleware.js"
