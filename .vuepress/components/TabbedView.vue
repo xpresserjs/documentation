@@ -4,7 +4,9 @@
       <ul>
         <template v-for="(tab, index) in computedTabs">
           <li :class="activeTab===computedTabsSlugs[index]?'is-active':''"><a
-              @click.prevent="changeActiveTab(tab)">{{ tab }}</a></li>
+              @click.prevent="changeActiveTab(tab)">
+            <small>{{ tab }}</small>
+          </a></li>
         </template>
       </ul>
     </div>
@@ -87,27 +89,44 @@ export default {
 @import "~bulma/sass/elements/box";
 @import "~bulma/sass/components/tabs";
 
+$linkColor: darken(#3eaf7c, 10%);
+
 .tabs-box {
   margin-top: 20px;
   padding: 0;
-  border: solid 1px fade-out(#2D2A2E, 0.9);
+  border: solid 1px fade-out(gray, 0.7);
   box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
   border-radius: 2px;
 
   .tabs > ul {
-    background-color: fade-out(#3eaf7c, 0.9);
+    //background-color: seagreen;
     padding-top: 5px;
     margin-top: 0;
     margin-bottom: 0;
     padding-left: 0;
 
-    li > a:hover {
-      text-decoration: none
+    li.is-active {
+      a {
+        color: $linkColor;
+        border-bottom-color: $linkColor;
+        border-bottom-width: 2px;
+      }
+    }
+
+    li > a {
+      color: gray;
+      font-weight: bold;
+
+      &:hover {
+        text-decoration: none;
+        border-bottom-color: $linkColor;
+        border-bottom-width: 2px;
+      }
     }
   }
 
   .content {
-    padding: 0 10px;
+    padding: 0 8px;
     margin-top: 0;
   }
 }
