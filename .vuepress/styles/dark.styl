@@ -14,18 +14,20 @@ html.use-dark-theme, html.use-dark-theme body
 html.use-dark-theme
   body
     //color: antiquewhite
-    color desaturate(lighten($bg-color2, 80%), 50%)
+    color desaturate(lighten($bg-color2, 70%), 50%)
 
   strong
     color navajowhite
 
   table
+    background-color unset
+
     tr:nth-child(2n) {
       background-color: lighten($bg-color, 5%);
     }
 
-    strong
-      color $accentColor
+  strong
+    color $accentColor
 
   .dropdown-title
     color: unset
@@ -112,7 +114,7 @@ html.use-dark-theme
       border-top-color desaturate(lighten($bg-color, 10%), 10%)
 
   .sidebar
-    background-color $bg-color
+    background-color lighten($bg-color, 3%)
     border-right-color desaturate(lighten($bg-color, 10%), 10%)
 
     .nav-links

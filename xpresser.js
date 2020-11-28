@@ -6,7 +6,6 @@ const config = {
     name: 'Xpresser Docs',
     env: env.NODE_ENV,
 
-
     server: {
         domain: env.APP_DOMAIN,
         port: env.APP_PORT,

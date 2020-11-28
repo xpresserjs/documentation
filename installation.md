@@ -37,5 +37,5 @@ pnpm add xpresser
 Next create: 
 
 
-1. [Simple Hello World](./hello-world.md)
-2. [Your first Xpresser app](./getting-started.md)
+- [Quick Start using xjs-cli.](./getting-started.md)
+- [Dive in from scratch.](./hello-world.md)
