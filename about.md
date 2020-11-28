@@ -55,13 +55,5 @@ app.get('/', (req, res) =>  {
 :::
 ::::
 
-## What's added?
-- Boot Middleware Support
-- MVC (Model, View, Controller) support out of the box.
-- Plugin Support
-- Helpers for faster development 
-- Events.
-- Commands & Cron Jobs
-
 <Pagination/>
 

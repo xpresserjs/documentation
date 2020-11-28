@@ -1,24 +1,40 @@
-@require 'dark.styl'
+@require 'dark.styl';
+$bg-color = darken(whitesmoke, 5%)
+$link-green = darken(#3eaf7c, 10%)
+
+html, html body
+  background-color $bg-color;
 
 body
   font-family: 'PT Sans', sans-serif
+  //font-weight: normal
   font-size 1.1em
+
+a {
+  //font-family sans-serif
+}
+
+.sidebar
+  background-color whitesmoke
+  //border-right-color fade-out(lighten(black, 50%), 50%)
 
 code, .line-number
   font-family: 'Fira Code', monospace;
   font-size 17px
 
 table
+  background-color white
   font-size 15px
 
 .line-number
   line-height 1.65em
-  //font-size 1px !important
+
+//font-size 1px !important
 
 h1, h2, h3
-  font-weight lighter
-  color #3eaf7c
-  border-left-color #3eaf7c
+  font-weight normal
+  color $link-green
+  border-left-color $link-green
 
 
 img
