@@ -16,8 +16,11 @@ html.use-dark-theme
     //color: antiquewhite
     color desaturate(lighten($bg-color2, 70%), 50%)
 
+  h4, h5, h6, strong
+    color unset
+
   strong
-    color navajowhite
+    color desaturate(navajowhite, 40%) !important
 
   table
     background-color unset
