@@ -89,38 +89,44 @@ export default {
 @import "~bulma/sass/elements/box";
 @import "~bulma/sass/components/tabs";
 
-$linkColor: darken(#3eaf7c, 10%);
+$linkColor: darken(#3eaf7c, 5%);
+$black: fade-out(black, 0.9);
+$bg-color: darken(whitesmoke, 5%);
+
 
 .tabs-box {
+  background-color: whitesmoke;
   margin-top: 20px;
   padding: 0;
-  border: solid 1px fade-out(gray, 0.7);
+  border: solid 2px fade-out(black, 0.9);
   box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
-  border-radius: 2px;
+  border-radius: 5px;
 
   .tabs > ul {
-    //background-color: seagreen;
     padding-top: 5px;
     margin-top: 0;
     margin-bottom: 0;
     padding-left: 0;
+    border-bottom: unset;
 
     li.is-active {
       a {
         color: $linkColor;
         border-bottom-color: $linkColor;
-        border-bottom-width: 2px;
+        border-bottom-width: 3px;
       }
     }
 
     li > a {
-      color: gray;
-      font-weight: bold;
+      color: lighten(black, 30%);
+      //font-weight: bold;
+      font-family: 'Fira Code', 'PT Sans', monospace;
+      border-bottom-color: transparent;
 
       &:hover {
         text-decoration: none;
         border-bottom-color: $linkColor;
-        border-bottom-width: 2px;
+        border-bottom-width: 3px;
       }
     }
   }
