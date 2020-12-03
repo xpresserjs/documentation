@@ -3,11 +3,7 @@ export default {
         {type: 'next', name: 'Installation', url: '/installation.html'}
     ],
     '/xpress-mongo/': [
-        {type: 'next', name: 'Installation', url: '/xpress-mongo/installation.html'}
-    ],
-    '/xpress-mongo/installation': [
-        {name: 'Menu', url: '/xpress-mongo/'},
-        {name: 'Model', url: '/xpress-mongo/model.html'}
+        {type: 'next', name: 'Model', url: '/xpress-mongo/model.html'}
     ],
     '/xpress-mongo/events': [
         {type: 'prev', name: 'Schema', url: '/xpress-mongo/schema.html'}
