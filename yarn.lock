@@ -8870,6 +8870,10 @@ vuepress-html-webpack-plugin@^3.2.0:
     toposort "^1.0.0"
     util.promisify "1.0.0"
 
+"vuepress-plugin-code-copy@https://github.com/trapcodeio/vuepress-plugin-code-copy":
+  version "1.0.6"
+  resolved "https://github.com/trapcodeio/vuepress-plugin-code-copy#c020408855c848eb89884c19c470240b95fba726"
+
 vuepress-plugin-container@^2.0.2:
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/vuepress-plugin-container/-/vuepress-plugin-container-2.1.5.tgz#37fff05662fedbd63ffd3a5463b2592c7a7f3133"

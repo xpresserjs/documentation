@@ -96,10 +96,10 @@ router.METHOD(PATH, ACTION)
 
 where
 
-- **router** is an instance of XpresserRouter.
-- **METHOD** is an HTTP request method, in lowercase.
-- **PATH** is a path on the server.
-- **ACTION** is the function executed when the route is matched.
+- **`router`** is an instance of XpresserRouter.
+- **`METHOD`** is an HTTP request method, in lowercase.
+- **`PATH`** is a path on the server.
+- **`ACTION`** is the function executed when the route is matched.
 
 `ACTION` can either be a function, or a string holding a controller action.
 
