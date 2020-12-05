@@ -150,10 +150,20 @@ html.use-dark-theme
   .home
     .hero
       .description
-        color desaturate(lighten($bg-color, 50%), 50%)
+        color lighten($bg-color, 50%) !important
 
       .action-button
         border 0
+
+      .action-button[href^="/about"]
+        background-color darken(#f40f1b, 20%) !important
+        color white !important
+        font-weight: bold
+
+      .action-button[href^="/typescript"]
+        background-color #3498db !important
+        color white !important
+        font-weight: bold
 
     .features,
     .footer

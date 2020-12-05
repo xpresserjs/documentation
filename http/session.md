@@ -72,5 +72,12 @@ route.post('/logout', http => {
 ```
 
 ## Advanced
-
+### Using Custom Store.
+To use a custom session store, you need to set `useDefault` to `false` and `customStore` to `true`
+```javascript
+module.exports = ($) => ({
+  useDefault: false,
+  customS
+})
+```
 **TO BE CONTINUED...**

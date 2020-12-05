@@ -4,9 +4,11 @@
 keeping you very close to mongodb native syntax which is always **Recommended**.
 
 For Example.
+
 ```javascript
 modelInstance.native().findOne({}) // Mongodb native query
 ```
+
 The `.native()` model instance method allows you run raw mongodb native queries.
 
 <small>
@@ -74,7 +76,8 @@ run().catch(console.dir)
 ```
 
 :::
-::: xTab mongodb Example using default [mongodb](https://docs.mongodb.com/drivers/node/quick-start#set-up-your-project)
+::: xTab mongodb 
+Example using default [mongodb](https://docs.mongodb.com/drivers/node/quick-start#set-up-your-project)
 driver which xpress-mongo is built on.
 
 ```javascript

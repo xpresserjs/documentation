@@ -1,6 +1,5 @@
-@require 'dark.styl';
-$bg-color = darken(whitesmoke, 5%)
-$link-green = darken(#3eaf7c, 10%)
+$bg-color = darken(white, 5%)
+$link-green = #e95420;
 
 html, html body
   background-color $bg-color;
@@ -9,15 +8,28 @@ html, html body
 body
   font-family: 'PT Sans', sans-serif
   //font-weight: normal
-  font-size 1.06em
+  font-size 1.08em
 
 a {
   //font-family sans-serif
 }
 
+.home .hero .description
+  color: #2D2A2E !important
+
+
+.hero .action-button
+  background-color: #2D2A2E !important
+  border-color #2D2A2E !important
+
+//.action-button[href^="/typescript"]
+//  color: lightblue !important
+
+
 .sidebar
-  background-color #f5f5f5
-  //border-right-color fade-out(lighten(black, 50%), 50%)
+  background-color white
+
+//border-right-color fade-out(lighten(black, 50%), 50%)
 
 code, .line-number
   font-family: 'Fira Code', monospace;
@@ -33,17 +45,18 @@ table
 //font-size 1px !important
 
 h1, h2, h3
-  font-weight normal
-  color $link-green
-  border-left-color $link-green
+  //font-family: 'Padauk', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight normal;
+  color $link-green;
+  border-left-color $link-green;
   border-bottom-color: fade-out($link-green, 80%);
 
 h4, h5, h6, strong
   color lighten(black, 20%);
 
 strong
-  color gray
-
+  color darken(gray, 30%)
 
 img
   border-radius: 5px;
@@ -69,3 +82,7 @@ img[src*="#console"]
 pre .code-copy {
   margin-top: -1.0rem;
 }
+
+
+
+@require 'dark.styl';

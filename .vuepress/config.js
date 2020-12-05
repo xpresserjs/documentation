@@ -40,7 +40,7 @@ module.exports = {
       'link',
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@480&family=PT+Sans&display=swap',
+        href: 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@480&family=PT+Sans&family=Roboto+Condensed&display=swap',
       },
     ],
     
@@ -48,7 +48,7 @@ module.exports = {
     //     "link",
     //     {
     //         rel: "stylesheet",
-    //         href: "https://fonts.googleapis.com/css2?family=PT+Sans&display=swap"
+    //         href: "https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap"
     //     }
     // ],
   
@@ -112,6 +112,10 @@ module.exports = {
           {
             text: 'Middlewares',
             link: '/middlewares/',
+          },
+          {
+            text: 'Session',
+            link: '/http/session.md',
           },
         ],
       },

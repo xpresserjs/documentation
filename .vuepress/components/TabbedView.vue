@@ -25,8 +25,8 @@ export default {
   props: {
     tabs: {
       type: String,
-      default: ""
-    }
+      default: '',
+    },
   },
   data() {
     return {
@@ -34,29 +34,29 @@ export default {
       expectedSlots: ['js', 'ts', 'express', 'xpresser'],
       langTabs: {
         js: 'Javascript',
-        ts: 'Typescript'
+        ts: 'Typescript',
       },
       frameworkTabs: {
         xpresser: 'Xpresser',
         express: 'Express',
-      }
-    }
+      },
+    };
   },
 
   computed: {
     computedTabs() {
       if (!this.tabs.trim()) return [];
-      return this.tabs.split('|')
+      return this.tabs.split('|');
     },
 
     computedTabsSlugs() {
       const tabs = this.computedTabs;
       const slugs = [];
       for (const tab of tabs) {
-        slugs.push(this.slugify(tab))
+        slugs.push(this.slugify(tab));
       }
-      return slugs
-    }
+      return slugs;
+    },
   },
 
   methods: {
@@ -64,24 +64,23 @@ export default {
       this.activeTab = this.slugify(newTab);
     },
 
-    slugify(str, separator = "-") {
-      return str
-          .toString()
-          .normalize('NFD')                   // split an accented letter in the base letter and the acent
+    slugify(str, separator = '-') {
+      return str.toString().
+          normalize('NFD')                   // split an accented letter in the base letter and the acent
           .replace(/[\u0300-\u036f]/g, '')   // remove all previously split accents
-          .toLowerCase()
-          .trim()
-          .replace(/[^a-z0-9 ]/g, '')   // remove all chars not letters, numbers and spaces (to be replaced)
+          .toLowerCase().
+          trim().
+          replace(/[^a-z0-9 ]/g, '')   // remove all chars not letters, numbers and spaces (to be replaced)
           .replace(/\s+/g, separator);
-    }
+    },
   },
 
   mounted() {
     if (this.computedTabs.length) {
-      this.changeActiveTab(this.computedTabs[0])
+      this.changeActiveTab(this.computedTabs[0]);
     }
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss">
@@ -89,7 +88,7 @@ export default {
 @import "~bulma/sass/elements/box";
 @import "~bulma/sass/components/tabs";
 
-$linkColor: darken(#3eaf7c, 5%);
+$linkColor: darken(#e95420, 5%);
 $black: fade-out(black, 0.9);
 $bg-color: darken(whitesmoke, 5%);
 
