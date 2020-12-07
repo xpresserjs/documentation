@@ -4,19 +4,16 @@
 It provides helpful commands that can assist you in building your application faster. 
 
 ## Installation
-xjs-cli requires **global** installation.
-
-
 :::: xTabs Npm|Yarn
 ::: xTab Npm
 ```sh
-npm i xjs-cli -g
+npm i xjs-cli
 ```
 :::
 
 ::: xTab Yarn
 ```sh
-yarn global add xjs-cli
+yarn add xjs-cli
 ```
 :::
 ::::
