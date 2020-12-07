@@ -2,13 +2,13 @@
 
 ##### Already installed? [Jump to Usage](#usage)
 
+:::details Migrating?
+
 At version **1.0.0**, xpresser will **STOP** shipping with session support out of the box because It benefits the
 framework more as a standalone plugin.
 <br/>However, this plugin re-enables the old session system and is simply **Plug & Play**.
 
-:::details Migrating?
-
-Migrating does not affect code usage. Sessions data stil exists in `http.session`.
+Migrating does not affect code usage. Sessions data still exists in `http.session`.
 :::
 
 ## Setup
@@ -23,7 +23,7 @@ yarn add @xpresser/session
 
 ### Register Plugin
 
-Add plugin to your `plugins.json` file. if you don't have one create one at `backend/plugins.json`.
+Add plugin to your `plugins.json` file. if you don't have one, create one at `backend/plugins.json`.
 
 ```json
 [
@@ -44,24 +44,12 @@ xjs import session configs
 
 Check imported config file for more settings @ **configs/session(.js|.ts)**
 
-### Tsconfig.json (Typescript)
+### Required Declarations (Typescript)
 
-If your project is following xpresser's recommended declaration files structure then you can add the code below to
-your `xpresser.d.ts` file **OR** You have a declaration file already registered in your tsconfig.json, then add the code
-below to it.
+Add the code below to your `xpresser.d.ts` file.
 
 ```typescript
 import "@xpresser/session/xpresser";
-```
-
-An alternative to using a declaration file is adding types to your `tsconfig.json`.
-
-```json
-{
-  "types": [
-    "@xpresser/session/xpresser"
-  ]
-}
 ```
 
 ## Usage
@@ -114,6 +102,7 @@ To use a custom session store, you need to set `useDefault` to `false` and set y
 
 :::: xTabs Javascript|Typescript
 ::: xTab Javascript
+
 ```javascript
 module.exports = ($) => ({
   useDefault: false,
@@ -128,10 +117,12 @@ module.exports = ($) => ({
   }
 });
 ```
+
 :::
 ::: xTab Typescript
+
 ```typescript
-import {XSessionConfig} from  "@xpresser/session/custom-types";
+import {XSessionConfig} from "@xpresser/session/custom-types";
 
 export = (): XSessionConfig => ({
     useDefault: false,
@@ -146,32 +137,36 @@ export = (): XSessionConfig => ({
     }
 });
 ```
+
 :::
 ::::
 
 #### Custom Store Example.
-The example below is a mongodb custom store using [connect-mongodb-session](https://npmjs.org/package/connect-mongodb-session)
+
+The example below is a mongodb custom store
+using [connect-mongodb-session](https://npmjs.org/package/connect-mongodb-session)
 
 :::: xTabs Javascript|Typescript
 ::: xTab Javascript
+
 ```javascript
 const ConnectMongodbSession = require('connect-mongodb-session');
 
 module.exports = () => ({
   useDefault: false,
   
-  customStore(session){
+  customStore(session) {
     const MongoDBStore = ConnectMongodbSession(session);
     const store = new MongoDBStore({
       uri: 'mongodb://localhost:27017/mongodb_session_test',
       collection: 'mySessions'
     });
-
+    
     // Catch errors
-    store.on('error', function (error) {
+    store.on('error', function(error) {
       console.log(error);
     });
-  
+    
     return session({
       ...this.sessionConfig,
       ...{store: store},
@@ -179,10 +174,12 @@ module.exports = () => ({
   }
 })
 ```
+
 :::
 ::: xTab Typescript
+
 ```typescript
-import {XSessionConfig} from  "@xpresser/session/custom-types";
+import {XSessionConfig} from "@xpresser/session/custom-types";
 import ConnectMongodbSession = require('connect-mongodb-session');
 
 
@@ -208,7 +205,38 @@ export = (): XSessionConfig => ({
     }
 });
 ```
+
 :::
 ::::
 
-**TO BE CONTINUED...**
+### Defining Types For Session Values (Typescript)
+
+In order to prevent errors when compiling you have to extend `XSessionCustomData` interface. let's assume we have a
+variable `user` that references a `User` database model;
+
+```typescript
+// Assuming class user is:
+class User {
+    public name: string;
+    public email: string;
+    public password: string;
+}
+
+http.session.user = new User();
+```
+
+The last line above may throw an error depending on your strict settings because typescript knows `user` is not defined
+in `http.session` OR in type `XSessionCustomData`. You are just about to define it, so you have to tell typescript about
+this and what type `user` is.
+
+Add to **`xpresser.d.ts`**
+
+```typescript
+declare module "@xpresser/session/custom-types" {
+    interface XSessionCustomData {
+        user: User
+    }
+}
+```
+
+With the declaration above `http.session.user.email` should be accessible.
