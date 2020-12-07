@@ -4,7 +4,7 @@ heroImage: /images/logo-ts-white.png
 heroText: 
 tagline: Express yourself more using Typescript...
 actionText: Get Started →
-actionLink: /typescript/initialize-typescript
+actionLink: /typescript/initialize
 
 features:
   - title: Type Support.

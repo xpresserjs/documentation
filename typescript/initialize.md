@@ -113,6 +113,33 @@ routes file remains `routes.ts` after build because the value comes from the con
 `initializeTypescript` behind the scenes when in **node mode** checks if your routesFile config has a **.ts** extension
 and renames it to **.js** i.e setting it to the compiled routes file path.
 
+## Import type files
+
+Version `>=0.3.39` of xpresser ships with default type files `(*d.ts)` that should be imported to your project and added
+to your `tsconfig.json` using the command below.
+```sh
+xjs import xpresser types
+```
+
+The following files will be imported to your **backend/types** folder.
+
+```
+- index.d.ts  
+- modules.d.ts  
+- xpresser.d.ts  
+```
+
+Add to your `tsconfig.json`
+```json
+{
+  "compilerOptions": {
+    "types": [
+      "./backend/types"
+    ]
+  }
+}
+```
+
 ## Types you should know
 
 Below are common Types you should know.
