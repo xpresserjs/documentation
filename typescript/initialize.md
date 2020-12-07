@@ -115,8 +115,9 @@ and renames it to **.js** i.e setting it to the compiled routes file path.
 
 ## Import type files
 
-Version `>=0.3.39` of xpresser ships with default type files `(*d.ts)` that should be imported to your project and added
+Version `>=0.4.0` of xpresser ships with default type files `(*d.ts)` that should be imported to your project and added
 to your `tsconfig.json` using the command below.
+
 ```sh
 xjs import xpresser types
 ```
@@ -130,6 +131,7 @@ The following files will be imported to your **backend/types** folder.
 ```
 
 Add to your `tsconfig.json`
+
 ```json
 {
   "compilerOptions": {
@@ -139,6 +141,28 @@ Add to your `tsconfig.json`
   }
 }
 ```
+
+### index.d.ts
+
+This is the index file where other required types should be imported/referenced.
+<br/>
+**Note:** We recommend you don't declare types here, only make reference to other declaration files.
+
+### modules.d.ts
+
+In Typescript, when you require a module that doesn't have types you are required to declare these modules yourself
+depending on your **strict** settings. e.g:
+
+```typescript
+declare module "express-edge";
+```
+
+`module.d.ts` gives you a private space to declare these modules.
+
+### xpresser.d.ts
+
+All declarations related to extending xpresser, or any of it's plugins should be declared here. For example extending
+the `DollarSign` or `http` key in controller actions.
 
 ## Types you should know
 
