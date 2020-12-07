@@ -20,5 +20,5 @@
     "vuepress-plugin-tabs": "^0.3.0",
     "xpress-mongo": "^0.0.61"
   },
-  "version": "1.0.0"
+  "version": "1.1.0"
 }
