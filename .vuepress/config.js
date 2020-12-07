@@ -115,7 +115,7 @@ module.exports = {
           },
           {
             text: 'Sessions',
-            link: '/http/session.md',
+            link: '/http/sessions.md',
           },
         ],
       },
