@@ -114,7 +114,7 @@ module.exports = {
             link: '/middlewares/',
           },
           {
-            text: 'Session',
+            text: 'Sessions',
             link: '/http/session.md',
           },
         ],

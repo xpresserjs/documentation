@@ -1,4 +1,4 @@
-# Session Plugin
+# Sessions
 
 ##### Already installed? [Jump to Usage](#usage)
 
