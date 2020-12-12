@@ -148,6 +148,10 @@ module.exports = {
             text: '@xpresser/file-uploader',
             link: '/plugins/@xpresser/file-uploader/',
           },
+          {
+            text: '@xpresser/ngrok',
+            link: '/plugins/@xpresser/ngrok.md',
+          },
         ],
       },
     ],

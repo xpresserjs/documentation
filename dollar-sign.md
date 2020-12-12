@@ -74,13 +74,14 @@ const AppController = $.use.controller('AppController');
 ## Others
 ### $.store
 ##### Type: [**`ObjectCollection`**](https://www.npmjs.com/package/object-collection)
-A collection for storing data at anywhere in your project.
+A collection for storing/getting data anywhere in your project. <br/>
+**Note:** Plugins may also store data they feel you may need here.
 
 **Example**
 ```javascript
 $.store.set('foo', 'bar')
 
-// Some where else in your app.
+// Some where else in your project files.
 $.store.get('foo');
 // => 'bar'
 ```
