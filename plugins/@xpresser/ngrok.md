@@ -22,7 +22,7 @@ Yarn: **`yarn add @xpresser/ngrok --dev`**
 
 ```json
 [
-  "npm://@xpresser/session"
+  "npm://@xpresser/ngrok"
 ]
 ```
 
