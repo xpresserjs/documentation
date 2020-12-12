@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "node xpresser.js",
-    "docs:dev": "vuepress dev",
+    "docs:dev": "vuepress dev --port 3344",
     "docs:build": "vuepress build",
     "all": "git pull origin master && yarn && yarn run build && pm2 restart xpresser"
   },

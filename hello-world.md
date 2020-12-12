@@ -31,7 +31,9 @@ $.boot();
 
 :::
 
-::: xTab Typescript Create a file: **app.ts** and paste the codes below.
+::: xTab Typescript 
+
+Create a file: **app.ts** and paste the codes below.
 
 ```typescript
 //> 1
@@ -93,7 +95,9 @@ To get started we need 3 files to achieve same **Hello World**.
 ## Setup
 
 :::: xTabs Javascript|Typescript
-::: xTab Javascript Create Boot File: **app.js**
+::: xTab Javascript 
+
+Create Boot File: **app.js**
 
 ```javascript
 const xpresser = require('xpresser');
@@ -119,7 +123,9 @@ xpresser.init(config).boot();
 
 :::
 
-::: xTab Typescript Create Boot File: **app.ts**
+::: xTab Typescript 
+
+Create Boot File: **app.ts**
 
 ```typescript
 import xpresser = require("xpresser");

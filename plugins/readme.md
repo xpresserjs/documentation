@@ -19,6 +19,7 @@ These plugin names are scoped under the `@xpresser` namespace.
 | [@xpresser/auth](./@xpresser/auth/readme.md) | Auth plugin, includes login and register functions. | 
 | [@xpresser/env](https://npmjs.com/package/@xpresser/env) | Env Loader, with options to set required Keys. |
 | [@xpresser/file-uploader](./@xpresser/file-uploader/readme.md) | File Uploader plugin |
+| [@xpresser/ngrok](./@xpresser/ngrok.md) | Add [ngrok.io](htpps://ngrok.io) tunnel support to your project. |
 | [@xpresser/session](../http/sessions.md) | Official Session Plugin
 | [@xpresser/sql](https://npmjs.com/package/@xpresser/sql) | Sql plugin, using [Objection](https://npmjs.com/package/objection) as model.
 | [@xpresser/xpress-mongo](https://npmjs.com/package/@xpresser/xpress-mongo) | Mongodb plugin, using [xpress-mongo](../xpress-mongo/readme.md) as model.
