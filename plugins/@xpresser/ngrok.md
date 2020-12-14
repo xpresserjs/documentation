@@ -20,11 +20,28 @@ Yarn: **`yarn add @xpresser/ngrok --dev`**
 
 **Note:** This plugin should be before every other plugin so other plugins can access its modified {server.domain}.
 
+:::: xTabs xpresser>=0.5.0|xpresser<=0.4.9
+::: xTab 0
+
+```json
+{
+  "npm://@xpresser/ngrok": {
+    "env": "development"
+  }
+}
+```
+
+:::
+::: xTab 1
+
 ```json
 [
   "npm://@xpresser/ngrok"
 ]
 ```
+
+:::
+::::
 
 ### Add to use-xjs-cli.json extensions
 

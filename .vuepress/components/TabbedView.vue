@@ -12,8 +12,9 @@
     </div>
 
     <div class="content">
-      <template v-for="slot in computedTabsSlugs">
+      <template v-for="(slot, slotIndex) in computedTabsSlugs">
         <slot v-if="activeTab===slot" :name="slot"></slot>
+        <slot v-if="computedTabsSlugs.indexOf(activeTab) === slotIndex" :name="slotIndex"></slot>
       </template>
     </div>
   </section>
@@ -31,15 +32,6 @@ export default {
   data() {
     return {
       activeTab: null,
-      expectedSlots: ['js', 'ts', 'express', 'xpresser'],
-      langTabs: {
-        js: 'Javascript',
-        ts: 'Typescript',
-      },
-      frameworkTabs: {
-        xpresser: 'Xpresser',
-        express: 'Express',
-      },
     };
   },
 

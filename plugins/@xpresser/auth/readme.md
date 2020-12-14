@@ -27,11 +27,26 @@ yarn add @xpresser/auth
 ```
 
 Add to your `backend/plugins.json`
+:::: xTabs xpresser>=0.5.0|xpresser<=0.4.9
+::: xTab 0
+
+```json
+{
+  "npm://@xpresser/auth": true
+}
+```
+
+:::
+::: xTab 1
+
 ```json
 [
-    "npm://@xpresser/auth"
+  "npm://@xpresser/auth"
 ]
 ```
+
+:::
+::::
 
 ## Setup
 Import required files into your project using the `xjs import` command.

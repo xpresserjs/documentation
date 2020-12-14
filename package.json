@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "@xpresser/env": "^1.0.3",
+    "vue-embed-gist": "^1.1.0",
     "xpresser": "^0.3.28"
   },
   "devDependencies": {

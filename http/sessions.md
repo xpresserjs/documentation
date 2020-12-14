@@ -25,11 +25,26 @@ yarn add @xpresser/session
 
 Add plugin to your `plugins.json` file. if you don't have one, create one at `backend/plugins.json`.
 
+:::: xTabs xpresser>=0.5.0|xpresser<=0.4.9
+::: xTab 0
+
+```json
+{
+  "npm://@xpresser/session": true
+}
+```
+
+:::
+::: xTab 1
+
 ```json
 [
   "npm://@xpresser/session"
 ]
 ```
+
+:::
+::::
 
 Note: Plugin should come before other plugins that requires `session`
 
