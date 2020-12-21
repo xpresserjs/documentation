@@ -89,12 +89,16 @@ module.exports = {
             link: '/configuration/',
           },
           {
-            text: 'Xpresser Instance ($)',
-            link: '/dollar-sign',
+            text: 'Events',
+            link: '/events/'
           },
           {
             text: 'Repl',
             link: '/cli/repl.md',
+          },
+          {
+            text: 'Xpresser Instance ($)',
+            link: '/dollar-sign',
           },
         ],
       },
@@ -108,6 +112,10 @@ module.exports = {
           {
             text: 'Controllers',
             link: '/controllers/',
+          },
+          {
+            text: 'Request Engine (http)',
+            link: '/http/request-engine.md',
           },
           {
             text: 'Middlewares',

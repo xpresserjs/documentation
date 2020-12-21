@@ -86,8 +86,19 @@ pre .code-copy
   padding 0.8em;
   background-color: darken(#eeeeee, 5%)
 
-  //summary
-  //  color $link-green
+//summary
+//  color $link-green
+
+.language-shell
+  &.line-numbers-mode
+    pre
+      padding-left: 20px !important
+
+    .line-numbers-wrapper
+      display none !important
+
+  &.line-numbers-mode::after
+    display none !important
 
 
 @require 'dark.styl';
