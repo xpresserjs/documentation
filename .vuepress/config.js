@@ -7,6 +7,7 @@ module.exports = {
   ],
   
   plugins: [
+    ['fulltext-search'],
     '@vuepress/register-components',
     [
       'vuepress-plugin-code-copy',

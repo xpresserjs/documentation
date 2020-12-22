@@ -42,12 +42,39 @@ html.use-dark-theme
       color desaturate(lighten($bg-color, 80%), 50%)
 
     .suggestions
-      background-color desaturate(lighten($bg-color, 15%), 10%)
-      border 0
+      background-color $bg-color
+      border 1px solid fade-out($accentColor, 70%)
 
     .suggestion
       a
         color desaturate(lighten($bg-color, 80%), 50%)
+
+      .parent-page-title
+        font-size 18px
+        font-weight lighter
+        //color lighten($accentColor, 10%)
+        //background-color lighten($bg-color, 3%) !important
+        background-color darken($accentColor, 20%) !important
+
+      .page-title
+        background-color lighten($bg-color, 3%) !important
+        border-color desaturate(lighten($bg-color, 30%), 30%) !important
+        //color desaturate(navajowhite, 40%) !important
+        color lighten(gray, 60%)
+        font-weight lighter
+        //color navajowhite
+
+      .suggestion-content
+        color lighten(gray, 60%)
+        background-color $bg-color !important
+        border-color desaturate(lighten($bg-color, 30%), 30%) !important
+
+        .header
+          color lighten($accentColor, 10%)
+
+        //table
+        //  background-color red
+
 
       &.focused
         background-color desaturate(lighten($bg-color, 30%), 30%)
