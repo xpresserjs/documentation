@@ -34,6 +34,8 @@ Properties available on `http` methods are:
 
 ### req
 
+##### Type: `Xpresser.Http.Request`
+
 `http.req` object represents the HTTP request and has properties for the request query string, parameters, body, HTTP
 headers, and so on.
 
@@ -41,16 +43,22 @@ Read more about `req` on [expressjs.com](https://expressjs.com/en/api.html#req)
 
 ### res
 
+##### Type: `Xpresser.Http.Response`
+
 `http.res` object represents the HTTP response that an Express app sends when it gets an HTTP request. Read more
 about `res` on [expressjs.com](https://expressjs.com/en/api.html#res)
 
 ### params
+
+##### Type: `Record<string, any>`
 
 `http.params` is an object containing properties mapped to the [named route “parameters”](/router/#route-parameters).
 For example, if you have the route `/user/:name`, then the **name** property is available as `http.params.name`. <br/>
 This object defaults to {}.
 
 ### route
+
+##### Type: `{name: string, method: string, controller: string}`
 
 `http.route` holds the `name, method & controller` of the current request
 <br/> For example:
@@ -134,17 +142,21 @@ route.
 
 ### store
 
+##### Type: `ObjectCollection`
+
 `http.store` serves as a store for the current request. it is an instance `object-collection`
 
 ```javascript
 // In a middleware
-http.store.set("user", user);
+http.store.set("currentIp", "127.0.0.1");
 
 // In your controller or else where.
-const user = http.store.get("user");
+const user = http.store.get("currentIp");
 ```
 
 ### $query
+
+##### Type: `ObjectCollection`
 
 `http.$query` holds your current request **query** data as a collection. if you don't want it as a collection then you
 can use `http.req.query`
@@ -159,6 +171,8 @@ http.$query.pick(["utm_campaign", "utm_campaign_id"])
 
 ### $body
 
+##### Type: `ObjectCollection`
+
 `http.$body` holds your current request **body** data as a collection. if you don't want it as a collection then you can
 use `http.req.body`
 
@@ -171,6 +185,32 @@ http.$body.pick(["email", "password"])
 ```
 
 ## Methods
+
+### $(): DollarSign
+##### Type: `<K extends keyof DollarSign>(key: K) => DollarSign[K]`
+`http.$` function serves a helper method for you to access your **xpresser instance properties** at any time.
+But it doesn't return the instance.
+
+```javascript
+$.helpers.randomStr(10);
+// will be
+http.$("helpers").randomStr(10);
+
+$.events.emit("User.loggedIn");
+// will be
+http.$("events").emit("User.loggedIn")
+```
+
+### $instance()
+##### Type: `() => DollarSign`
+`http.$instance()` returns the current xpresser instance
+
+```javascript
+const $ = http.$instance();
+
+$.events.emit("User.loggedIn");
+```
+
 
 ### all()
 
@@ -187,11 +227,244 @@ console.log(data.name) // Alice in the Borderlan
 
 ### body()
 
-`http.body(key: string, $default?: any)` can be use to get a key from the current request body data or return default if
-not found.
+##### Type: `<T=unknown>(key: string, def?: T) => T`
+
+`http.body` function can be used to get a key from the current request body data or return default if not found.
+
+:::: xTabs Javascript|Typescript
+::: xTab Javascript
 
 ```javascript
 const message = http.body("message") // no defaults
 const status = http.body("status", "pending") // with default
 ```
+
+:::
+::: xTab Typescript In Typescript `http.body()` returns type: unknown, so you must set type to pass.
+
+```typescript
+const message = http.body<string>("message") // no defaults
+
+const status: string = http.body("status", "pending") // with default
+```
+
+:::
+::::
+
 This function should not be confused with `http.$body`, that is a collection while this deals with one key.
+
+### hasParam()
+
+##### Type: `(param: string) => boolean`
+
+`http.hasParam` function checks if a name route parameter exists in the current request
+
+```javascript
+// Route: /user/:userId/songs/:songId?
+
+// Get: /user/2/songs
+http.hasParam('userId') // true
+http.hasParam('songId') // false
+
+// Get: /user/2/songs/18
+http.hasParam('songId') // true
+
+// is equivalent to
+http.params.hasOwnProperty('songId');
+```
+
+### hasParams()
+
+##### Type: `(params: string[]) => boolean`
+
+Checks if multiple named route parameter exists in the current request
+
+```javascript
+// Route: /user/:userId/songs/:songId?
+
+// Get: /user/2/songs
+http.hasParams(['userId', 'songId']) // false
+
+// Get: /user/2/songs/18
+http.hasParams(['userId', 'songId']) // true
+```
+
+### next()
+
+#### Type: `() => void | any`
+
+`http.next` function is used to move to the next request middleware and is only available in middlewares
+
+```javascript
+const kidsOnlyMiddleware = {
+  
+  allow(http) {
+    return http.store.get("age") <= 10 ? // if age <= 10
+        http.next() // procced to next request middleware
+        : http.send({error: "Your too old"}); // Send error.
+  }
+}
+```
+
+### query()
+
+##### Type: `<T=unknown>(key: string, def?: T) => T`
+
+`http.query` function Can be used to get a key from the current request query data or return default if not found.
+
+:::: xTabs Javascript|Typescript
+::: xTab 0
+
+```javascript
+let page = http.query("page") // no defaults
+const perPage = http.query("perPage", 30) // with default
+```
+
+:::
+::: xTab 1
+
+```typescript
+const page = http.query<number>("message") // no defaults
+
+const perPage: number = http.query("perPage", 30) // with default
+```
+
+:::
+::::
+
+This function should not be confused with `http.$query`, that is a collection while this handles one key.
+
+### redirect()
+
+##### Type: `(path="/") => any`
+
+`http.redirect` function redirects the current request to another url.
+
+```javascript
+http.redirect() // redirects to `/`
+
+http.redirect("/auth/login") // redirects to `/auth/login`
+```
+
+### redirectBack()
+
+##### Type: `() => any`
+
+`http.redirectBack()` redirects the current request back to the url it came from. (Referrer)
+
+### redirectToRoute()
+
+##### Type: `(route: string, params?: any[], query?: object | false, includeUrl?: boolean) => any`
+
+`http.redirectToRoute` function redirects the current request to the route name specified.
+
+- **route:** Named route.
+- **params:** Url parameters array.
+- **query:** Url query object.
+- **includeUrl:** if true, your full server url will prefix the route.
+
+```javascript
+$.route.get("/auth/login", "Auth@login").name("login")
+$.route.get("/user/:userId/songs/:songId", "Song@mine").name("user.songs")
+
+// Redirect to `/auth/login`
+http.redirectToRoute("login");
+
+// Redirect to `/user/2/songs/4`
+http.redirectToRoute("user.songs", [2, 4]);
+
+// Redirect to `/user/2/songs/4?draft=true`
+http.redirectToRoute("user.songs", [2, 4], {draft: true});
+
+// Redirect to `http://localhost:3000/user/2/songs/4?draft=true`
+http.redirectToRoute("user.songs", [2, 4], {draft: true}, true)
+```
+
+### send()
+
+##### Type: `(body: any, status?: number) => Http.Response`
+
+`http.send` sends the HTTP response. The body parameter can be a Buffer object, a String, an object, Boolean, or an
+Array. For example:
+
+```javascript
+http.send(Buffer.from('whoop'))
+http.send({some: 'json'})
+http.send('<p>some html</p>')
+http.send('Sorry, we cannot find that!', 404)
+http.send({error: 'something blew up'}, 500)
+```
+
+### status()
+
+##### Type: `(status: number) => this`
+
+`http.status` Sets the HTTP status for the response. It is a chainable alias of
+Node’s [response.statusCode](https://nodejs.org/api/http.html#http_response_statuscode)
+
+```javascript
+http.status(400).send('Bad Request') // sets status and sends response
+```
+
+### try()
+
+##### Type: `<T=unknown>(fn: () => T) => T` Xpresser Version: `>= 0.6.5`
+
+Sometimes when handling request you come across actions that may cause errors, but you know you can proceed without
+them.
+`http.try` gives you the freedom to do stuffs like this using xpresser's `InXpresserError` class.
+
+```javascript
+http.try(() => {
+  // actions to try here
+  // logs error but does not stop process.
+});
+
+// Also accepts async function.
+http.try(async () => {
+  // actions to try here
+  // logs error but does not stop process.
+})
+```
+
+### tryOrCatch()
+
+##### Type: `<T=unknown>(fn: () => T, handleError?: (error: InXpresserError) => any) => T`
+
+Works just like [http.try](#try) but **throws** error if not handled. You can handle error by passing a function as the
+second argument.
+
+```javascript
+http.tryOrCatch(async () => {
+  // Try cretaing user
+  await User.new(http.$body.all());
+
+}, (e) => {
+  return http.send({error: e})
+});
+```
+
+### view()
+
+##### Type: `(file: string, data = {}, fullPath: boolean = false) => any`
+
+`http.view` function Renders a view and sends the rendered HTML string to the client. The view argument is a string that
+is the file path of the view file to render. This should be relative to the root of your views directory.
+
+If you want to load views outside your views directory, then provide **full path** to the file and enable the fullPath argument.
+
+```javascript
+/*
+-views
+-views/auth
+-views/auth/login.ejs
+-views/auth/signup.ejs
+-views/index.ejs
+-views/about.ejs
+ */
+
+http.view('index') // views/index.ejs
+http.view('about') // views/about.ejs
+http.view('auth/login') // views/auth/login.ejs
+http.view('auth/signup') // views/auth/signup.ejs
+```

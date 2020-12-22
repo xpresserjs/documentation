@@ -80,18 +80,27 @@ export default {
 @import "~bulma/sass/elements/box";
 @import "~bulma/sass/components/tabs";
 
-$linkColor: darken(#e95420, 5%);
+$linkColor: #e95420;
 $black: fade-out(black, 0.9);
 $bg-color: darken(whitesmoke, 5%);
 
 
 .tabs-box {
-  background-color: whitesmoke;
+  color: whitesmoke;
+  background-color: #282c34;
+  //background-color: whitesmoke;
   margin-top: 20px;
   padding: 0;
   border: solid 2px fade-out(black, 0.9);
   box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
   border-radius: 5px;
+
+  //.theme-default-content {
+  code {
+    background-color: lightgray;
+  }
+
+  //}
 
   .tabs > ul {
     padding-top: 5px;
@@ -109,7 +118,7 @@ $bg-color: darken(whitesmoke, 5%);
     }
 
     li > a {
-      color: lighten(black, 30%);
+      color: darken(white, 50%);
       //font-weight: bold;
       font-family: 'Fira Code', 'PT Sans', monospace;
       border-bottom-color: transparent;
@@ -125,6 +134,10 @@ $bg-color: darken(whitesmoke, 5%);
   .content {
     padding: 0 8px;
     margin-top: 0;
+  }
+
+  .box:not(:last-child), .tabs:not(:last-child) {
+    margin-bottom: 0;
   }
 }
 </style>
