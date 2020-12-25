@@ -1,4 +1,4 @@
-# Xpresser Router
+# Router
 
 [XpresserRouter](https://npmjs.com/package/@xpresser/router) provides an easy way to route your urls to functions or
 controller actions.
