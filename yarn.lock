@@ -945,6 +945,11 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.165.tgz#74d55d947452e2de0742bad65270433b63a8c30f"
   integrity sha512-tjSSOTHhI5mCHTy/OOXYIhi2Wt1qcbHmuXD1Ha7q70CgI/I71afO4XtLb/cVexki1oVYchpul/TOuu3Arcdxrg==
 
+"@types/lodash@^4.14.166":
+  version "4.14.166"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.166.tgz#07e7f2699a149219dbc3c35574f126ec8737688f"
+  integrity sha512-A3YT/c1oTlyvvW/GQqG86EyqWNrT/tisOIh2mW3YCgcx71TNjiTZA3zYZWA5BCmtsOTXjhliy4c4yEkErw6njA==
+
 "@types/mime@*":
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-2.0.3.tgz#c893b73721db73699943bfc3653b1deb7faa4a3a"
@@ -968,10 +973,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.10.tgz#5958a82e41863cfc71f2307b3748e3491ba03785"
   integrity sha512-J32dgx2hw8vXrSbu4ZlVhn1Nm3GbeCFNw2FWL8S5QKucHGY0cyNwjdQdO+KMBZ4wpmC7KhLCiNsdk1RFRIYUQQ==
 
-"@types/node@^14.14.11":
-  version "14.14.14"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.14.tgz#f7fd5f3cc8521301119f63910f0fb965c7d761ae"
-  integrity sha512-UHnOPWVWV1z+VV8k6L1HhG7UbGBgIdghqF3l9Ny9ApPghbjICXkUJSd/b9gOgQfjM1r+37cipdw/HJ3F6ICEnQ==
+"@types/node@^14.14.16":
+  version "14.14.16"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.16.tgz#3cc351f8d48101deadfed4c9e4f116048d437b4b"
+  integrity sha512-naXYePhweTi+BMv11TgioE2/FXU4fSl29HAH1ffxVciNsH3rYXjNP2yM8wqmSm7jS20gM8TIklKiTen+1iVncw==
 
 "@types/q@^1.5.1":
   version "1.5.4"
@@ -1419,10 +1424,10 @@
     dotenv "^8.2.0"
     dotenv-expand "^5.1.0"
 
-"@xpresser/router@^1.0.17":
-  version "1.0.17"
-  resolved "https://registry.yarnpkg.com/@xpresser/router/-/router-1.0.17.tgz#5007f910ebb370002e3892b1c390c754ca9bcf81"
-  integrity sha512-nkaKpYtoRwWQExqNRO2Oh3rLP5BFIhSVPjeAx7clhCoRyUb3n3Wsz80NH7Z7BlH4xuL02BPlPa+g9sycyfhBnA==
+"@xpresser/router@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@xpresser/router/-/router-1.1.0.tgz#fcc0497851b3017315c5a324e820465704ae5dad"
+  integrity sha512-LzmePgxi0jW/Wmm6ca1KoJO+tqriCLB+mrXO6d8EbmB8CD72fivvbkHGtknTf4S+uYXF2DR3XI4+Kpc8j7DAsA==
   dependencies:
     lodash.clone "^4.5.0"
     lodash.snakecase "^4.1.1"
@@ -8814,15 +8819,15 @@ xpress-mongo@^0.0.61:
     object-collection "^1.0.30"
     uuid "^8.3.1"
 
-xpresser@^0.6.5:
-  version "0.6.5"
-  resolved "https://registry.yarnpkg.com/xpresser/-/xpresser-0.6.5.tgz#a01724e7f761713e654c32d64c7b50e4f6644587"
-  integrity sha512-+fo8QF8rIvRtrBMFd7EjD/H9InN0e7lajGDZuavRice4e7arlhkhyRa2Hr5KBen70pP4OCMk4q8nLzVFT2WuUQ==
+xpresser@^0.6.8:
+  version "0.6.8"
+  resolved "https://registry.yarnpkg.com/xpresser/-/xpresser-0.6.8.tgz#eb0a1c566d4adddb0723f11eef029d4b322a1dcb"
+  integrity sha512-OFs6BG9/QKvR0Ed3ejSpsHp/+A92Uzsh+4Q/sxEGIHhoC6k74ub8dNtTMqXmJefOuYT+ZB9L3MqbbjWLcP5b7w==
   dependencies:
     "@types/express" "^4.17.9"
-    "@types/lodash" "^4.14.162"
-    "@types/node" "^14.14.11"
-    "@xpresser/router" "^1.0.17"
+    "@types/lodash" "^4.14.166"
+    "@types/node" "^14.14.16"
+    "@xpresser/router" "^1.1.0"
     body-parser "^1.19.0"
     build-url "^6.0.1"
     chalk "^4.1.0"

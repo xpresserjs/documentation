@@ -9,8 +9,8 @@
     "vue-embed-gist": "^1.1.0"
   },
   "devDependencies": {
-    "@xpresser/env": "^1.0.3",
     "@vuepress/plugin-register-components": "^1.7.1",
+    "@xpresser/env": "^1.0.3",
     "bulma": "^0.9.1",
     "markdown-it-container": "^3.0.0",
     "vue-tabs-component": "^1.5.0",
@@ -20,7 +20,7 @@
     "vuepress-plugin-fulltext-search": "^2.1.0",
     "vuepress-plugin-tabs": "^0.3.0",
     "xpress-mongo": "^0.0.61",
-    "xpresser": "^0.6.5"
+    "xpresser": "^0.6.8"
   },
   "version": "2.0.0"
 }

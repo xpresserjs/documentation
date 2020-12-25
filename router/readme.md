@@ -111,11 +111,15 @@ Using a Function works same way a controller action would but using the later wo
 your own readability.
 
 ### Routing to Files.
+
 The router provides a shorthand helper for routing static files.
+
 ```javascript
 router.sendFile('/*', 'public/404.html');
 ```
+
 The above is a shorthand for the code below.
+
 ```javascript
 router.get('/*', http => {
   const file = http.$('path').base('public/404.html');
@@ -212,7 +216,7 @@ class AccountController extends ControllerClass {
 ```
 
 Now we want all the requests to this controller to be on **example.com/account/{whatever}**, this is
-where `$.router.path` comes in handy.
+where `$.router.path` comes handy.
 
 #### Without Path
 
@@ -287,6 +291,16 @@ router.path('/account', () => {
 }).controller('Account');
 ```
 
+##### Generated Routes #1
+
+| Method | Url | Controller@action | 
+| ----- | -----| -----------------|
+| GET   | /account | AccountController@view
+| POST   | /account | AccountController@update
+| POST   | /account/change_password | AccountController@change_password
+| POST   | /account/send_code | AccountController@send_code
+| GET   | /account/verify | AccountController@verify
+
 **Note:** This only applies if your controller actions matches your url which most times is the case and can be used
 only by routes declared in `router.path()` children function.
 
@@ -360,6 +374,34 @@ router.path('/user/:id', () => {
 }).controller('Account')
 ``` 
 
+## Use Controller
+
+The `router` instance includes a `useController` method. This method groups routes to a controller using [path](#paths)
+
+```javascript
+router.useController("Post", () => {
+  
+  router.get("/posts", "all");
+  router.post("/posts", "create");
+  
+  router.path("/post/:postId", () => {
+    
+    router.get("=view");
+    route.post("=update");
+  
+  })
+});
+```
+
+##### Generated Routes #2
+
+| Method | Url | Controller@action
+| ----- | -----| -----------------
+| GET | /posts | PostController@all
+| POST | /posts | PostController@create
+| GET | /post/:postId | PostController@view
+| POST | /post/:postId | PostController@update
+
 ## View All Routes
 
 Xpresser provides a cli command that lists all routes for you and also includes mapped controllers.
@@ -431,8 +473,9 @@ http.params: { "userId": "34", "bookId": "8989" }
 ```
 
 To define routes with route parameters, simply specify the route parameters in the path of the route as shown below.
+
 ```javascript
-router.get('/users/:userId/books/:bookId', function (http) {
+router.get('/users/:userId/books/:bookId', function(http) {
   return http.send(http.params); // {"userId": "34", "bookId": "8989"}
 });
 ```
