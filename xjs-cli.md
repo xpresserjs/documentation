@@ -254,7 +254,7 @@ xjs routes [search] [query]
 ```
 
 ### stack
-Return **concatenated** commands of a stack without running it. This way you can run it yourself. [#Stacks](#stacks)
+Return **concatenated** commands of a stack without running it. This way you can run it yourself. [See Xjs-Cli Stacks](#stacks)
 ```sh
 xjs stack <name>
 
@@ -263,7 +263,7 @@ xjs stack myCommands | bash
 ```
 
 ### @stack
-Run **concatenated** commands of a stack using node `exec`. [#Stacks](#stacks)
+Run **concatenated** commands of a stack using node `exec`. [See Xjs-Cli Stacks](#stacks)
 ```sh
 xjs @stack <name>
 ```
@@ -377,8 +377,8 @@ xjs check-for-update
 ```
 
 ## Stacks
-The stack command is a utility command that helps you when run multiple bash commands. <br/> 
-For Example most times we want to delete the build directory before we rebuild or run series of commands, we end up running something like this
+The stack command is a utility command that helps you when running multiple bash commands. <br/> 
+For Example, most times we want to delete the build directory before we rebuild or run series of commands, we end up running something like this
 ```sh
 rm -rf ./build && some-other-command && npm run build
 ```
