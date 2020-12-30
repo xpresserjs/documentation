@@ -142,7 +142,7 @@ const config = {
 
 See: [Detailed explanation of all default configurations](./default.md)
 
-## Use.json
+## use.json
 
 When it comes to modifying or extending xpresser core files, the **use.json** comes in handy. The use.json simply tells
 xpresser path to files you want added to your project.
@@ -165,7 +165,7 @@ Contents of the use.json depends on your project and what you want todo.
 The declaration above tells xpresser to extend its core `RequestEngine` file with yours and to add a global middleware
 to your project.
 
-## Plugins.json
+## plugins.json
 
 The plugins.json contains a list of plugins added in your project.
 
@@ -245,12 +245,16 @@ There are some plugins that are meant for a particular environment. You can defi
 
 `@xpresser/file-uploader` will only load when in development mode. You can also use array for multiple environments like
 so:
+
 ```json
 {
   "npm://@xpresser/session": true,
   "npm://@xpresser/file-uploader": {
     "load": true,
-    "env": ["development", "test"]
+    "env": [
+      "development",
+      "test"
+    ]
   }
 }
 ```
