@@ -142,16 +142,20 @@ route.
 
 ### store
 
+Deprecated, Renamed to  [state](#state).
+
+### state
+
 ##### Type: `ObjectCollection`
 
-`http.store` serves as a store for the current request. it is an instance `object-collection`
+`http.state` serves as a state management for the current request. it is an instance `object-collection`
 
 ```javascript
 // In a middleware
-http.store.set("currentIp", "127.0.0.1");
+http.state.set("currentIp", "127.0.0.1");
 
 // In your controller or else where.
-const user = http.store.get("currentIp");
+const user = http.state.get("currentIp");
 ```
 
 ### $query
@@ -187,9 +191,11 @@ http.$body.pick(["email", "password"])
 ## Methods
 
 ### $(): DollarSign
+
 ##### Type: `<K extends keyof DollarSign>(key: K) => DollarSign[K]`
-`http.$` function serves a helper method for you to access your **xpresser instance properties** at any time.
-But it doesn't return the instance.
+
+`http.$` function serves a helper method for you to access your **xpresser instance properties** at any time. But it
+doesn't return the instance.
 
 ```javascript
 $.helpers.randomStr(10);
@@ -202,7 +208,9 @@ http.$("events").emit("User.loggedIn")
 ```
 
 ### $instance()
+
 ##### Type: `() => DollarSign`
+
 `http.$instance()` returns the current xpresser instance
 
 ```javascript
@@ -210,7 +218,6 @@ const $ = http.$instance();
 
 $.events.emit("User.loggedIn");
 ```
-
 
 ### all()
 
@@ -299,7 +306,7 @@ http.hasParams(['userId', 'songId']) // true
 const kidsOnlyMiddleware = {
   
   allow(http) {
-    return http.store.get("age") <= 10 ? // if age <= 10
+    return http.state.get("age") <= 10 ? // if age <= 10
         http.next() // procced to next request middleware
         : http.send({error: "Your too old"}); // Send error.
   }
@@ -451,7 +458,8 @@ http.tryOrCatch(async () => {
 `http.view` function Renders a view and sends the rendered HTML string to the client. The view argument is a string that
 is the file path of the view file to render. This should be relative to the root of your views directory.
 
-If you want to load views outside your views directory, then provide **full path** to the file and enable the fullPath argument.
+If you want to load views outside your views directory, then provide **full path** to the file and enable the fullPath
+argument.
 
 ```javascript
 /*
