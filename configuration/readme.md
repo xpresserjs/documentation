@@ -236,20 +236,20 @@ There are some plugins that are meant for a particular environment. You can defi
 ```json
 {
   "npm://@xpresser/session": true,
-  "npm://@xpresser/file-uploader": {
+  "npm://@xpresser/ngrok": {
     "load": true,
     "env": "development"
   }
 }
 ```
 
-`@xpresser/file-uploader` will only load when in development mode. You can also use array for multiple environments like
+`@xpresser/ngrok` will only load when in development mode. You can also use array for multiple environments like
 so:
 
 ```json
 {
   "npm://@xpresser/session": true,
-  "npm://@xpresser/file-uploader": {
+  "npm://@xpresser/ngrok": {
     "load": true,
     "env": [
       "development",
