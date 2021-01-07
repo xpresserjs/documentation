@@ -3,6 +3,10 @@
 [**xjs-cli**](https://www.npmjs.com/package/xjs-cli) is a command-line tool made for xpresser. 
 It provides helpful commands that can assist you in building your application faster. 
 
+## Requirements
+- `Node` version >=v10 
+- `Git` command line tool.
+
 ## Installation
 :::: xTabs Npm|Yarn
 ::: xTab Npm

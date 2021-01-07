@@ -10,12 +10,12 @@ features:
     details: Built with the best helpers to enable your team get projects done faster.
 
   - title: Simple Config.
-    details: All xpresser configurations are loaded from one file, or an object which can be accessed/modified in your app with ease.
+    details: All Xpresser's configurations are loaded from one file, or an object which can be accessed/modified in your app with ease.
 
   - title: Structured For Real world Apps.
     details: Xpresser gives you the best environment to structure your apps just the way you want and extend your apps using plugins.
 
-  - title: Database Freedom.
+  - title: Flexible Database System
     details: Xpresser does not handle database connections, you have the freedom to use whichever database works for you.
 
   - title: Cli Support & Extensible.
