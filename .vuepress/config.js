@@ -58,10 +58,6 @@ module.exports = {
   themeConfig: {
     nav: [
       {
-        text: 'Home',
-        link: '/',
-      },
-      {
         text: 'Typescript',
         link: '/typescript',
       },
@@ -163,6 +159,11 @@ module.exports = {
           },
         ],
       },
+      
+      {
+        text: 'Change logs',
+        link: '/change-logs/2021.md'
+      }
     ],
     sidebar: 'auto',
   },
