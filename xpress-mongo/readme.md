@@ -64,7 +64,7 @@ async function run() {
     
     // Query for a movie that has the title 'Back to the Future'
     const query = {title: 'Back to the Future'};
-    const movie = await Movie.findOne(query);
+    const movie = await Movies.findOne(query);
     
     console.log(movie);
   } finally {
