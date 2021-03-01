@@ -9,18 +9,18 @@
     "vue-embed-gist": "^1.1.0"
   },
   "devDependencies": {
-    "@vuepress/plugin-register-components": "^1.7.1",
+    "@vuepress/plugin-register-components": "^1.8.2",
     "@xpresser/env": "^1.0.3",
-    "bulma": "^0.9.1",
+    "bulma": "^0.9.2",
     "markdown-it-container": "^3.0.0",
     "vue-tabs-component": "^1.5.0",
-    "vuepress": "^1.7.1",
+    "vuepress": "^1.8.2",
     "vuepress-plugin-code-copy": "https://github.com/trapcodeio/vuepress-plugin-code-copy",
     "vuepress-plugin-element-tabs": "^0.2.8",
     "vuepress-plugin-fulltext-search": "^2.1.0",
     "vuepress-plugin-tabs": "^0.3.0",
-    "xpress-mongo": "^0.0.61",
-    "xpresser": "^0.6.8"
+    "xpress-mongo": "^0.4.0",
+    "xpresser": "^0.12.0"
   },
   "version": "2.0.0"
 }

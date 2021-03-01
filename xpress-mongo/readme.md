@@ -76,8 +76,7 @@ run().catch(console.dir)
 ```
 
 :::
-::: xTab mongodb 
-Example using default [mongodb](https://docs.mongodb.com/drivers/node/quick-start#set-up-your-project)
+::: xTab mongodb Example using default [mongodb](https://docs.mongodb.com/drivers/node/quick-start#set-up-your-project)
 driver which xpress-mongo is built on.
 
 ```javascript
@@ -172,7 +171,7 @@ async function run() {
 
 }
 
-run().catch(error => console.log(error))
+run().catch(console.log)
 ```
 
 Run the above code, check your database to see if a user was created. After that go through the codes.
@@ -220,11 +219,11 @@ const user = await User.new({
 // Buildup
 const user = new User();
 
+user.set('email', 'john@doe.com'); // set single field
 user.set({
   firstName: 'John',
   lastName: 'Doe'
-});
-user.set('email', 'john@doe.com');
+}); // set multple fields
 
 await user.save();
 ```
