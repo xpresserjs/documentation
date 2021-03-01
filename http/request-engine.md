@@ -54,7 +54,7 @@ about `res` on [expressjs.com](https://expressjs.com/en/api.html#res)
 
 `http.params` is an object containing properties mapped to the [named route “parameters”](/router/#route-parameters).
 For example, if you have the route `/user/:name`, then the **name** property is available as `http.params.name`. <br/>
-This object defaults to {}.
+This object defaults to `{}`.
 
 ### route
 
@@ -120,7 +120,7 @@ $.router.post('/about', 'Pages@about')
 ::: xTab 1
 
 ```javascript
-class FileController extends ControllerClass {
+class PagesController extends ControllerClass {
   
   boot(http) {
     if (http.route.controller === 'PagesController@about') {
@@ -148,14 +148,14 @@ Deprecated, Renamed to  [state](#state).
 
 ##### Type: `ObjectCollection`
 
-`http.state` serves as a state management for the current request. it is an instance `object-collection`
+`http.state` serves as a state management for the current request. it is an instance of `object-collection`
 
 ```javascript
 // In a middleware
 http.state.set("currentIp", "127.0.0.1");
 
 // In your controller or else where.
-const user = http.state.get("currentIp");
+const currentIp = http.state.get("currentIp");
 ```
 
 ### $query
@@ -258,8 +258,6 @@ const status: string = http.body("status", "pending") // with default
 :::
 ::::
 
-This function should not be confused with `http.$body`, that is a collection while this deals with one key.
-
 ### hasParam()
 
 ##### Type: `(param: string) => boolean`
@@ -339,7 +337,6 @@ const perPage: number = http.query("perPage", 30) // with default
 :::
 ::::
 
-This function should not be confused with `http.$query`, that is a collection while this handles one key.
 
 ### redirect()
 
