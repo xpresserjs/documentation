@@ -1,4 +1,7 @@
-# xpress-mongo
+# xpress-mongo Documentation
+
+[Npm](https://npmjs.org/package/xpress-mongo) | [Git](https://github.com/xpresserjs/xpress-mongo)
+| [Change Logs](../change-logs/2021-xm.md)
 
 **xpress-mongo** is a light mongodb model/helper library for nodejs that provides modeling for your documents while
 keeping you very close to mongodb native syntax which is always **Recommended**.
@@ -231,8 +234,8 @@ await user.save();
 ### Read document
 
 ```javascript
-// Find all, @returns Array
-const user = await User.find({verified: true});
+// Find all, @returns Arrays
+const users = await User.find({verified: true});
 
 // Find One, @returns Model instance
 const user = await User.findOne({email: 'john@doe.com'});
@@ -244,20 +247,13 @@ const user = await User.findById('ObjectID or ObjectID-string');
 console.log(user)
 ```
 
-```javascript
-User
-{
+```
+User {
   data: {
     _id: ObjectID,
-        email
-  :
-    "john@doe.com",
-        firstName
-  :
-    "John",
-        lastName
-  :
-    "Doe"
+    email: "john@doe.com",
+    firstName: "John",
+    lastName: "Doe"
   }
 }
 ```
