@@ -134,6 +134,10 @@ $bg-color: darken(whitesmoke, 5%);
   .content {
     padding: 0 8px;
     margin-top: 0;
+
+    strong {
+      color: navajowhite;
+    }
   }
 
   .box:not(:last-child), .tabs:not(:last-child) {

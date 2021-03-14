@@ -8951,10 +8951,10 @@ xdg-basedir@^4.0.0:
   resolved "https://registry.yarnpkg.com/xdg-basedir/-/xdg-basedir-4.0.0.tgz#4bc8d9984403696225ef83a1573cbbcb4e79db13"
   integrity sha512-PSNhEJDejZYV7h50BohL09Er9VaIefr2LMAf3OEmpCkjOi34eYyQYAXUTjEQtZJTKcF0E2UKTh+osDLsgNim9Q==
 
-xpress-mongo@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/xpress-mongo/-/xpress-mongo-0.4.0.tgz#0c990653d72855353b2f2dab0f3318f3b5b88264"
-  integrity sha512-7YHj1P0qCIa55DKhCF8uCkbRQD3zHq468NSp14igZi8pk/gRAoV8oExtm9U9V+MipebpuwxT0W+ZcNuDavJ8zg==
+xpress-mongo@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/xpress-mongo/-/xpress-mongo-0.5.0.tgz#d18161ed91505f6eac40a021404dfc7d677584c7"
+  integrity sha512-Ak74w5MiRxBC72y8IbMGq0w8Gp1XjD3br+fjjSFcMmx2tEjFuT4IbqO2lkNh7+6puJh2OGKYD8D89NyGpEngLA==
   dependencies:
     "@types/mongodb" "^3.6.3"
     "@types/node" "^14.14.25"
