@@ -3,7 +3,7 @@
 <img alt="Xpresser Repl" src="./../images/cli/repl.gif"/>
 </div>
 
-Tinker allows you to interact with your entire Xpresser application on the command line, including the current xpresser instance **`$`**. 
+Xpresser Repl allows you to interact with your entire Xpresser application on the command line, including the current xpresser instance **`$`**. 
 
 To enter the repl environment, run the command
 ```sh
