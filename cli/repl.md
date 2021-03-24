@@ -101,7 +101,7 @@ repl.addContext({
 repl.addContextFromFiles({
     User: 'backend/models/User.js',
     Mailer: 'backend/libs/Mailer.js'
-})
+});
 ```
 Key of file path will be used as the content key.
 
