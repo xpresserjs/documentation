@@ -162,7 +162,16 @@ module.exports = {
       
       {
         text: 'Change logs',
-        link: '/change-logs/2021.md'
+        items: [
+          {
+            text: "Xpresser",
+            link: '/change-logs/2021.md'
+          },
+          {
+            text: "Xpress-Mongo",
+            link: '/change-logs/2021-xm.md'
+          }
+        ]
       }
     ],
     sidebar: 'auto',
