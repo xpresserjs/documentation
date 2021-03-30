@@ -33,7 +33,7 @@ async function run() {
 
         constructor(){
             super();
-            this.useSchema(UserSchema);
+            this.$useSchema(UserSchema);
         }
 
         /**

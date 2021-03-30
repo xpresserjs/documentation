@@ -324,7 +324,7 @@ console.log(user.changes());
 
 ### delete() - `async`
 
-`this.delete()` is used to delete the current document from the collection.
+`this.delete()` deletes the current document from the collection.
 
 ```javascript
 const john = await Users.findOne({firstName: 'John'});
@@ -334,7 +334,7 @@ if (john) await john.delete();
 
 ### get()
 
-`this.get(key: string, $default: any)` is used to get fields value from the current document.
+`this.get(key: string, $default: any)` gets field value from the current document.
 
 ```javascript
 const john = await Users.findOne({firstName: 'John'});
@@ -344,6 +344,106 @@ john.get('lastName');
 
 // Set defualt value if key is not found.
 john.get('verified', false);
+```
+
+### has()
+
+`this.has(key: string, value: any | (() => any) = undefined): boolean` checks if a field exists or if its value matches
+the specified value.  <br/> If `value` is function, it will be called and its return value will be used to Compare
+against the fields value.
+
+:::: xTabs Has | Has Value | Example Data
+::: xTab 2
+
+```json
+[
+  {
+    "email": "john@doe.com",
+    "firstName": "John",
+    "lastName": "Doe",
+    "role": "admin",
+    "avatars": {
+      "main": "/crop/avatar.png",
+      "200": "/crop/avatar.200.png",
+      "500": "/crop/avatar.500.png"
+    }
+  }
+]
+```
+
+:::
+::: xTab 0
+
+```js
+const user = await User.findOne({email: "john@doe.com"})
+
+user.has("email") // true
+user.has("phone") // false
+
+user.has("avatars.700") // false
+user.has("avatars.main") // true
+```
+
+:::
+
+::: xTab 1
+
+```js
+const user = await User.findOne({email: "john@doe.com"})
+
+user.has("firstName") // true
+user.has("firstName", "Paul") // false
+user.has("firstName", "John") // true
+
+user.has("role", "user") // false
+user.has("role", "admin") // true
+
+// Passing a fubnction
+user.has("role", () => "admin") // true
+```
+
+:::
+::::
+
+### hasChanges()
+
+`this.hasChanges(): boolean` checks if the current document has unsaved changes
+
+```javascript
+const user = await User.findOne({email: "john@doe.com"})
+
+user.hasChanges() // false
+
+// Change Email
+user.set("email", "john@doe1.com");
+
+user.hasChanges() // true
+```
+
+### hasChanged()
+
+`this.hasChanged(keys: string | string[]): boolean` checks if a field has unsaved changes.
+
+```javascript
+// Data from update form
+const body = {
+  email: "john@doe1.com", 
+  firstName: "John", 
+  lastName: "Doe"
+}
+
+// Fetch User
+const user = await User.findOne({email: "john@doe.com"})
+
+// Update data
+user.set(body);
+
+if(user.hasChanged("email")){
+  // validate new email
+}
+
+// Then save
+await user.save()
 ```
 
 ### id()
@@ -597,12 +697,12 @@ await john.updateRaw({
 })
 ```
 
-### useSchema()
+### $useSchema()
 
-`this.useSchema(schema: {})` is used to register the model's schema, with schemas you get a validation check and auto
+`this.$useSchema(schema: {})` is used to register the model's schema, with schemas you get a validation check and auto
 generated fields.
 
-**Note:** `useSchema` must be in the constructor() but will be called for you if you have `static schema` set.
+**Note:** `$useSchema` must be in the constructor() but will be called for you if you have `static schema` set.
 
 ```javascript
 // Import Xpress-Mongo Schema builder.
@@ -620,7 +720,7 @@ const UserSchema = {
 class Users extends connection.model('users') {
   constructor() {
     super()
-    this.useSchema(UserSchema);
+    this.$useSchema(UserSchema);
   }
 }
 
@@ -633,7 +733,7 @@ module.exports = Users;
 , `this.save()` and `Model.new()`
 Throws error if validation fails.
 
-Eg. using the schema defined in [useSchema](#useschema)
+Eg. using the schema defined in [$useSchema](#$useSchema)
 
 ```javascript
 const user = await User.findById('5f43e78c9da24b1444d7c998');
