@@ -178,12 +178,19 @@ const PostSchema = {
 
 Set a field to type of `String`. Has no default value.
 
+**Note:** If an `array` is passed instead of a `string` [is.InArray()](#is-inarray) is used.
+
 ```javascript
 const UserSchema = {
   email: is.String(),
   // with default value
-  status: is.String('pending')
+  status: is.String('pending'),
+  // Array as option means strictly any of these
+  role: is.String(["admin", "subscriber", "editor"])
 }
+
+// Using array as option is same as
+is.InArray(["admin", "subscriber", "editor"])
 ```
 
 ### is.Types()
@@ -320,6 +327,27 @@ The required method sets if a particular field required or not.
 is.String().required()
 // set to false
 is.String().required(false)
+```
+
+### requiredIf()
+
+##### Args: `(fn: RequiredIf)`
+
+Sets field to required depending on the boolean value returned by the function passed.
+
+**Note:** Function passed gets model instance as first argument.
+
+```javascript
+const FileSchema = {
+  // Accept either "image" | "audio"
+  type: is.String(["image", "audio"]).required(),
+  
+  // Require duration only if file type is "audio"
+  duration: is.String().requiredIf(file => {
+    // check if current instance type is "audio"
+    return file.data.type === "audio"
+  })
+}
 ```
 
 **Note:** if schema has a default value, the schema validator will use the default value instead of throwing an error.
