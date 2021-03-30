@@ -350,8 +350,6 @@ const FileSchema = {
 }
 ```
 
-**Note:** if schema has a default value, the schema validator will use the default value instead of throwing an error.
-
 ### validator()
 
 Sets/Overrides the validator function/functions of the schema.
