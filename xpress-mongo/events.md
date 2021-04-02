@@ -1,6 +1,8 @@
 # Events & Getters
-
 **xpress-mongo** emits events on **Create, Update & Delete** queries ran by model instance functions.
+
+**NOTE**: Only use if your version **>=0.8.0**
+
 
 ## Model
 
