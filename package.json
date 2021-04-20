@@ -6,7 +6,7 @@
     "all": "git pull origin master && yarn && yarn run build && pm2 restart xpresser"
   },
   "dependencies": {
-    "vue-embed-gist": "^1.1.0"
+    "vue-embed-gist": "^1.2.0"
   },
   "devDependencies": {
     "@vuepress/plugin-register-components": "^1.8.2",
@@ -17,10 +17,10 @@
     "vuepress": "^1.8.2",
     "vuepress-plugin-code-copy": "https://github.com/trapcodeio/vuepress-plugin-code-copy",
     "vuepress-plugin-element-tabs": "^0.2.8",
-    "vuepress-plugin-fulltext-search": "^2.1.0",
+    "vuepress-plugin-fulltext-search": "^2.2.0",
     "vuepress-plugin-tabs": "^0.3.0",
-    "xpress-mongo": "^0.5.0",
-    "xpresser": "^0.12.0"
+    "xpress-mongo": "^0.9.0",
+    "xpresser": "^0.14.2"
   },
   "version": "2.0.0"
 }
