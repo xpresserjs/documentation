@@ -230,7 +230,7 @@ class Transaction extends model('transactions') {
   
   // Set Model Schema
   static schema = {
-    id: is.Uuid(4).required(),
+    id: is.Uuid(4, {/*..config..*/}).required(),
     amount: is.Number().required()
   }
 }

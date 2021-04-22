@@ -51,7 +51,7 @@ Use [.native()](#native) instead - `v0.0.40`
 
 ### on()
 
-`XMongoModel.on(event: string, run: function)` is used to listen **create, update or delete** events.
+`XMongoModel.on(event: string, run: function)` is used to listen for **create, created, update, watch or deleted** events.
 See [Model Events](./events.md).
 
 ```javascript
@@ -540,6 +540,13 @@ await user.save();
 
 `user.save()` will update the document using its _id
 
+**Note** The `save()` method does not return a model instance or document. It returns the default `mongodb` insert/update operation result.
+
+### saveAndReturn()
+This is similar to [save](#save) but returns the model instance.
+```javascript
+const user = await new User().set({name: 'John'}).saveAndReturn();
+```
 ### set()
 
 `this.set(key: string | {}, value: any)` is used to add or update fields and value to the model's data. This data does

@@ -1,13 +1,13 @@
 # Events & Getters
+
 **xpress-mongo** emits events on **Create, Update & Delete** queries ran by model instance functions.
 
 **NOTE**: Only use if your version **>=0.8.0**
 
-
 ## Model
 
-The code below shows a Model that has an `update` event registered to it. <br/>
-Examples made on this page will make reference ro this model.
+The snippet below shows a Model that has an `update` event registered to it. <br/>
+Examples made on this page will make reference to this model.
 
 ```javascript
 const {is} = require('xpress-mongo');
@@ -34,27 +34,57 @@ User.on('update', (user) => {
 
 ## Events
 
+Events tagged as `Before` events runs synchronously before the database call is made while `After` events runs
+asynchronously after the database call in the background.
+
+#### Before (sync)
+
 - [create](#create)
 - [update](#update)
-- [delete](#delete)
+
+#### After (asynchronous)
+
+- [created](#delete)
+- [deleted](#delete)
 - [watch](#watch)
 
 ### create
 
-This event runs **before** every new document is created.
+Runs synchronously **before** every new document is created.
 
 ```javascript
-User.on('create', TodoFunction);
+/**
+ * DECLARATION
+ */
+User.on('create', user => {
+  // Set name to upper case
+  user.set('name', user.data.name.toUpperCase());
+  
+  // Set Default avatar
+  user.data.avatar = '/path/to/defualt_avatar.png';
+});
 
-const user = {name: 'John Doe'};
+/**
+ * IMPLEMENTAION
+ */
+let user = {name: 'John Doe'};
 
-await User.new(user); // TodoFunction is called
+user = await User.new(user); // Event is called
 // OR
-await new User().set(user).save(); // TodoFunction is called
+user = await new User().set(user).saveAndReturn(); // Event is called
+
+/**
+ User {
+  name: "JOHN DOE",
+  avatar: "/path/to/defualt_avatar.png",
+  updatedAt: "2021-04-21T11:20:31.051Z",
+  createdAt: "2021-04-21T11:20:31.051Z"
+ }
+ */
 ```
 
 The create event also supports targeting fields using the **dot** operator. <br/>
-if value returned `!== undefined`, xpress-mongo will set the value of the targeted field to the value returned
+if value returned `!== undefined`, xpress-mongo will set the value of the targeted field to the value returned.
 
 ```javascript
 /**
@@ -62,12 +92,15 @@ if value returned `!== undefined`, xpress-mongo will set the value of the target
  * because a defined value is returned.
  */
 User.on('create.avatar', (user) => {
-  return user.get('avatar', '/images/default.png');
-})
-
-// The above is same thing as
-User.on('create.avatar', (user) => {
   if (!user.data.avatar) return '/images/default.png';
+})
+```
+
+### created
+This event fires in the **background** whenever you add a new document.
+```javascript
+User.on("created", user => {
+  console.log(`User: ${user.data.name} has just signed up!`)
 })
 ```
 
@@ -101,14 +134,14 @@ User.on('update.updatedAt', (user) => {
 Notice the use of `.hasChanges()`, this is because all update event functions are called even when you have not made any
 real changes.
 
-### delete
+### deleted
 
 This event **runs in background after** a document is deleted. <br/>
 **Note:** The delete event **does not** support using **dot** operator on fields.
 
 ```javascript
 // This event deletes user avatar every time a user is deleted.
-User.on('delete', (user) => {
+User.on('deleted', (user) => {
   try {
     fs.unlinkSync(user.data.avatar);
   } catch (e) {
@@ -132,12 +165,12 @@ delete** event, it runs in the background.
 /** This event crops user avatar in the backround
  * every time the value of avatar is changed in any document. */
 User.on('watch.avatar', user => {
-  cropNewAvatar(user.data.avatar).catch(console.log);
+  cropNewAvatar(user.data.avatar)
 });
 
-await user.update({avatar: 'new avatar name'}); // function is called
+await user.update({avatar: 'new/avatar/file/path.png'}); // function is called
 // OR
-await user.set({avatar: 'new avatar name'}).save(); // function is called
+await user.set({avatar: 'new/avatar/file/path.png'}).save(); // function is called
 ```
 
 ## Getters
