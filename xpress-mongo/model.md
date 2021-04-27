@@ -152,7 +152,7 @@ For Example
 ```javascript
 const users = await Users.fromArray(native => native.find())
 // `native` is same as `Model.native()` i.e Mongodb native query builder.
-// Now you can access model functions
+// Now you can access model instance functions
 if (users.length) {
   console.log(users[0].fullName()) // John Doe
 }
@@ -162,8 +162,7 @@ This also makes it easy to convert native **aggregate** results.
 
 ```javascript
 const users = await Users.fromArray(native => native.aggregate([]))
-// `native` is same as `Model.native()` i.e Mongodb native query builder.
-// Now you can access model functions
+
 if (users.length) {
   console.log(users[0].fullName()) // John Doe
 }
