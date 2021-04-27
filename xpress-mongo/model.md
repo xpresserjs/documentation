@@ -51,8 +51,8 @@ Use [.native()](#native) instead - `v0.0.40`
 
 ### on()
 
-`XMongoModel.on(event: string, run: function)` is used to listen for **create, created, update, watch or deleted** events.
-See [Model Events](./events.md).
+`XMongoModel.on(event: string, run: function)` is used to listen for **create, created, update, watch or deleted**
+events. See [Model Events](./events.md).
 
 ```javascript
 Model.on('update', modelInstance => {
@@ -125,7 +125,8 @@ await user.update({
 
 ### fromArray()
 
-`XMongoModel.fromArray(list: any[])` is used to convert arrays of raw data to an array of instance models.
+`XMongoModel.fromArray(list: any[] | NativeQueryFn )` is used to convert arrays of raw data to an array of instance
+models.
 <br/>
 For example when using `XMongoModel.find()` the results returned is a clean array not an array of model instances.
 <br/>
@@ -141,6 +142,34 @@ await users[0].update({
 });
 ```
 
+#### From Query Result
+
+The `fromArray` method can also make a database call if a `function` that returns a **mongodb native query** is passed
+instead of an array, The query returned will be executed, and the result will be converted to model instances.
+
+For Example
+
+```javascript
+const users = await Users.fromArray(native => native.find())
+// `native` is same as `Model.native()` i.e Mongodb native query builder.
+// Now you can access model functions
+if (users.length) {
+  console.log(users[0].fullName()) // John Doe
+}
+```
+
+This also makes it easy to convert native **aggregate** results.
+
+```javascript
+const users = await Users.fromArray(native => native.aggregate([]))
+// `native` is same as `Model.native()` i.e Mongodb native query builder.
+// Now you can access model functions
+if (users.length) {
+  console.log(users[0].fullName()) // John Doe
+}
+```
+
+NOTE: `fromArray` only supports queries that returns an array. E.g `find` `aggregate`
 ### id()
 
 `XMongoModel.id(id: string)` converts the string passed to a mongodb ObjectID
@@ -162,7 +191,7 @@ if (Users.isValidId('5f43e78c9da24b1444d7c998'))
 ### find() - `async`
 
 `XMongoModel.find(query: {}, options?: {}, raw?: false)`
-This method is used to find documents in a collection, this does not return results as model instances
+This method is used to find documents in a collection and does not return results as model instances
 
 ```javascript
 // Find all users with `age` greater than or equals to `18`
@@ -427,8 +456,8 @@ user.hasChanges() // true
 ```javascript
 // Data from update form
 const body = {
-  email: "john@doe1.com", 
-  firstName: "John", 
+  email: "john@doe1.com",
+  firstName: "John",
   lastName: "Doe"
 }
 
@@ -438,7 +467,7 @@ const user = await User.findOne({email: "john@doe.com"})
 // Update data
 user.set(body);
 
-if(user.hasChanged("email")){
+if (user.hasChanged("email")) {
   // validate new email
 }
 
@@ -540,13 +569,17 @@ await user.save();
 
 `user.save()` will update the document using its _id
 
-**Note** The `save()` method does not return a model instance or document. It returns the default `mongodb` insert/update operation result.
+**Note** The `save()` method does not return a model instance or document. It returns the default `mongodb`
+insert/update operation result.
 
 ### saveAndReturn()
+
 This is similar to [save](#save) but returns the model instance.
+
 ```javascript
 const user = await new User().set({name: 'John'}).saveAndReturn();
 ```
+
 ### set()
 
 `this.set(key: string | {}, value: any)` is used to add or update fields and value to the model's data. This data does
