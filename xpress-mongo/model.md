@@ -571,7 +571,7 @@ await user.save();
 **Note** The `save()` method does not return a model instance or document. It returns the default `mongodb`
 insert/update operation result.
 
-### saveAndReturn()
+### saveAndReturn() - async
 
 This is similar to [save](#save) but returns the model instance.
 
