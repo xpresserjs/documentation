@@ -6,10 +6,14 @@ export default {
         {type: 'next', name: 'Model', url: '/xpress-mongo/model.html'}
     ],
     '/xpress-mongo/events': [
-        {type: 'prev', name: 'Schema', url: '/xpress-mongo/schema.html'}
+        {type: 'prev', name: 'Using Joi Schema', url: '/xpress-mongo/joi-schema.html'}
     ],
     '/xpress-mongo/schema': [
         {name: 'Model', url: '/xpress-mongo/model.html'},
+        {name: 'Using Joi Schema', url: '/xpress-mongo/joi-schema.html'}
+    ],
+    '/xpress-mongo/joi-schema': [
+        {name: 'Schema', url: '/xpress-mongo/schema.html'},
         {name: 'Events', url: '/xpress-mongo/events.html'}
     ],
     '/xpress-mongo/model': [

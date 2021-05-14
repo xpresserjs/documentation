@@ -1,6 +1,6 @@
 # xpress-mongo Schema
 
-Mongodb is a schemaless database, so you have the choice to use without schema. The schema xpress-mongo provides does
+Mongodb is a schemaless database, so you have the choice to use without a schema. The schema xpress-mongo provides does
 not force any type unless defined. it serves a structure for your models and gives you an insight of what your data
 should look like in the database.
 

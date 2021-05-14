@@ -1,4 +1,4 @@
-# xpress-mongo Documentation
+# xpress-mongo - Documentation
 
 [Npm](https://npmjs.org/package/xpress-mongo) | [Git](https://github.com/xpresserjs/xpress-mongo)
 | [Change Logs](../change-logs/2021-xm.md)
@@ -20,9 +20,10 @@ The `.native()` model instance method allows you run raw mongodb native queries.
 
 ## Menu
 
-- [Installation](./installation.md)
+- [Installation](#installation)
 - [Model](./model.md)
 - [Schema](./schema.md)
+- [Joi Schema](./joi.md)
 - [Events](./events.md)
 
 ## Installation
@@ -222,11 +223,14 @@ const user = await User.new({
 // Buildup
 const user = new User();
 
-user.set('email', 'john@doe.com'); // set single field
+// set single field
+user.set('email', 'john@doe.com');
+
+// set multple fields
 user.set({
   firstName: 'John',
   lastName: 'Doe'
-}); // set multple fields
+});
 
 await user.save();
 ```

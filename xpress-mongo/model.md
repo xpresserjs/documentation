@@ -169,6 +169,7 @@ if (users.length) {
 ```
 
 NOTE: `fromArray` only supports queries that returns an array. E.g `find` `aggregate`
+
 ### id()
 
 `XMongoModel.id(id: string)` converts the string passed to a mongodb ObjectID
@@ -769,10 +770,9 @@ module.exports = Users;
 ### validate()
 
 `this.validate()` is used internally to validate model's data against model schema whenever you call `this.update()`
-, `this.save()` and `Model.new()`
-Throws error if validation fails.
+, `this.save()` and `Model.new()`. Throws error if validation fails.
 
-Eg. using the schema defined in [$useSchema](#$useSchema)
+Eg: using the schema defined in [$useSchema](#$useSchema)
 
 ```javascript
 const user = await User.findById('5f43e78c9da24b1444d7c998');
