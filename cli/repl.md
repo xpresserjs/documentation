@@ -10,7 +10,7 @@ To enter the repl environment, run the command
 xjs repl
 ```
 
-This command checks for a file named `repl.js` and if not found it provides an option to automatically create the need file for you.
+This command checks for a file named `repl.js` and if not found it provides an option to automatically create the needed file for you.
 
 ## repl.js
 Your repl file is where the `XpresserRepl` class is called, and the node repl server is booted.
