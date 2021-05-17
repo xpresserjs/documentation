@@ -23,7 +23,7 @@ The `.native()` model instance method allows you run raw mongodb native queries.
 - [Installation](#installation)
 - [Model](./model.md)
 - [Schema](./schema.md)
-- [Joi Schema](./joi.md)
+- [Joi Schema](./joi-schema.md)
 - [Events](./events.md)
 
 ## Installation

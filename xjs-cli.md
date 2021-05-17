@@ -236,9 +236,9 @@ xjs start
 ```
 
 By default, the `development` init config will be used.
-To start script in production **xjs-cli** uses [forever](https://www.npmjs.com/package/forever) to start your main file.
+To start script in production **xjs-cli** uses [pm2](https://www.npmjs.com/package/pm2) to start your main file.
 
-Run `xjs install-prod-tools` to install forever on your machine.
+Run `xjs install-prod-tools` to install pm2 on your machine.
 ```sh
 xjs start --prod
 ``` 

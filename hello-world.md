@@ -31,7 +31,7 @@ $.boot();
 
 :::
 
-::: xTab Typescript 
+::: xTab Typescript
 
 Create a file: **app.ts** and paste the codes below.
 
@@ -47,7 +47,7 @@ const $ = xpresser.init({
     server: {port: 2000}
 });
 
-// Enable for Xpresser
+// Initialize typecript.
 $.initializeTypescript(__filename);
 
 //> 3
@@ -92,10 +92,10 @@ To get started we need 3 files to achieve same **Hello World**.
 2. **Routes File:** where routes are defined.
 3. **Controller File:** where actions to request are handled.
 
-## Setup
+## Setup MVC Structure
 
 :::: xTabs Javascript|Typescript
-::: xTab Javascript 
+::: xTab Javascript
 
 Create Boot File: **app.js**
 
@@ -123,7 +123,7 @@ xpresser.init(config).boot();
 
 :::
 
-::: xTab Typescript 
+::: xTab Typescript
 
 Create Boot File: **app.ts**
 
@@ -139,7 +139,7 @@ const config = {
         // Path to Controllers Folder
         controllers: 'controllers',
         // Routes File
-        routesFile: 'routes.js'
+        routesFile: 'routes.ts'
     },
     server: {port: 2000}
 };
@@ -158,23 +158,46 @@ case we don't need that since we have specified a `routesFile` in our config.
 
 See [Configuration](./configuration/readme.md) for more info.
 
-Create Routes file: **routes.js**
+### Routing
+Create Routes file: **routes.(js|ts)**
 
 `paths.routesFile` if defined in **config**, will be required by xpresser when booting up and all routes defined in it
 will be registered.
 
+:::: xTabs Javascript|Typescript
+::: xTab Javascript
+
 ```javascript
+const router = require("xpresser").getInstanceRouter();
+
 // "/"  => {index} method in AppController
-$.router.get('/', 'AppController@index');
+router.get('/', 'AppController@index');
 
 // "/about" => {about} method in AppController
-$.router.get('/about', 'AppController@about');
+router.get('/about', 'AppController@about');
 ```
 
-Remember inside your project **`$`** is xpresser's global variable and `$.router` is an instance of [**
-XpresserRouter**](../router/readme.md).
+:::
+::: xTab Typescript
 
-Create Controller: **AppController**
+```ts
+import {getInstanceRouter} from "xpresser";
+
+const router = getInstanceRouter()
+// "/"  => {index} method in AppController
+router.get('/', 'AppController@index');
+
+// "/about" => {about} method in AppController
+router.get('/about', 'AppController@about');
+```
+
+:::
+::::
+
+Read more on routing: [
+XpresserRouter](../router/readme.md).
+
+Create Controller: **AppController.(js|ts)**
 :::: xTabs Javascript|Typescript|xjs-cli
 ::: xTab Javascript
 
@@ -225,24 +248,13 @@ see [How to initialize xjs-cli](./xjs-cli.md#init-file)
 ::::
 
 ### Run
-
-:::: xTabs Javascript|Typescript
-::: xTab Javascript
-
 ```sh
-nodemon app.js
+# Javascript
+node app.js
+
+# Typescript
+ts-node app.ts
 ```
-
-:::
-
-::: xTab Typescript
-
-```sh
-ts-node-dev --respawn --transpile-only app.ts
-```
-
-:::
-::::
 
 Visit [http://localhost:2000](http://localhost:2000) on your browser, you should see **Hello World** and `/about` should
 show **About Page**

@@ -6,28 +6,234 @@ is [`XMongoModel`](https://github.com/xpresserjs/xpress-mongo/blob/master/src/XM
 
 ## Creating a Model
 
-To create a model all you need todo is extend the model returned when calling `connection.model(collection)`
+A xpress-mongo Model is simply a Class that extends `XmongoModel` and is linked to a collection.
+
+### Basic Model
+
+:::: xTabs JS|TS
+::: xTab 0
 
 ```javascript
-// Class User now represents collection `users`
+const {XMongoModel} = require("xpress-mongo");
+const connection = require("./your_connection")
+
+// Make model by extending Base Model "XMongoModel"
+class User extends XMongoModel {}
+
+// Link User model to "users" collection.
+connection.link(User, "users");
+
+// Export Model
+module.exports = User;
+```
+
+:::
+::: xTab 1
+
+```typescript
+import {XMongoModel} from "xpress-mongo";
+import connection from "./your_connection";
+
+// Make model by extending Base Model "XMongoModel"
+class User extends XMongoModel {
+}
+
+// Link User model to "users" collection.
+connection.link(User, "users");
+
+// Export Model
+export = User;
+```
+
+:::
+::::
+
+**Note:** A model will not be able to make database calls until it is **linked** to a collection.
+
+A Model can also be linked to a collection by extending the auto-generated Model returned by
+calling `connection.model("collection")`. See Advanced Model example below.
+
+### Advanced Model
+
+:::: xTabs JS|TS|TS (Strictly Typed)
+::: xTab 0
+
+```javascript
+import {is} from "xpress-mongo";
+import connection from "./your_connection";
+
+// Class User now extends model generated for `users`
 class User extends connection.model('users') {
-  // Model methods here
+  
+  // Declare schema (optional)
+  static schema = {
+    firstName: is.String(),
+    lastName: is.String(),
+  }
+  
+  // Define custom model methods
   fullName() {
-    // Database data is stored in `this.data`
+    // Model's data is stored in `this.data`
     return this.data.firstName + ' ' + this.data.lastName;
   }
 }
 
-const user = new User().set({
-  firstName: 'John',
-  lastName: 'Doe'
-}).set('lastName', 'Doe');
-
-console.log(user.fullName())
-// => "John Doe"
-
-user.save().catch(e => throw e)
+module.exports = User;
 ```
+
+:::
+::: xTab 1
+
+```typescript
+import {is} from "xpress-mongo";
+import connection from "./your_connection";
+
+// Class User now extends model generated for `users`
+class User extends connection.model('users') {
+
+    // Declare schema (optional)
+    static schema = {
+        firstName: is.String(),
+        lastName: is.String(),
+    }
+
+    // Define custom model methods
+    fullName() {
+        // Model's data is stored in `this.data`
+        return this.data.firstName + ' ' + this.data.lastName;
+    }
+}
+
+export = User;
+```
+
+:::
+::: xTab 2
+
+```typescript
+import {is, XMongoDataType, XMongoTypedModel, XMongoSchema} from "xpress-mongo";
+import connection from "./your_connection";
+
+// Model Data type interface
+interface UserDataType {
+    firstName: string;
+    lastName: string;
+}
+
+// XMongoTypedModel is the strictly typed version of XMongoModel
+class User extends XMongoTypedModel<UserDataType> {
+
+    // Declare schema (optional)
+    static schema: XMongoSchema<UserDataType> = {
+        firstName: is.String(),
+        lastName: is.String(),
+    }
+
+    // Define custom model methods
+    fullName() {
+        // Model's data is stored in `this.data`
+        return this.data.firstName + ' ' + this.data.lastName;
+    }
+}
+
+// Link to collection
+connection.link(User, "user");
+
+// Export Model
+export = User;
+```
+
+:::
+::::
+
+### Strict
+
+##### Property: `static strict` - Type: `boolean | {removeNonSchemaFields: boolean}`
+
+By default, xpress-mongo allows **fields** not defined in schema to be added to your database if they exist. For
+example:
+
+```javascript
+class User extends XMongoModel {
+  static schema = {
+    firstName: is.String(),
+    lastName: is.String(),
+  }
+}
+
+// Add new document
+const user = await User.new({
+  email: "hello@example.com",
+  firstName: "John",
+  lastName: "Doe",
+});
+
+console.log(user.data)
+// {
+//   email: "hello@example.com",
+//   firstName: "John",
+//   lastName: "Doe",
+// }
+```
+
+`email` will be added to the database even when it does not exist in the schema. To prevent this, a static `strict`
+property must be declared in the model like so:
+
+```javascript
+class User extends XMongoModel {
+  // Enable Strict
+  static strict = true;
+  
+  static schema = {
+    firstName: is.String(),
+    lastName: is.String(),
+  }
+}
+
+// Add new document
+const user = await User.new({
+  email: "hello@example.com",
+  firstName: "John",
+  lastName: "Doe",
+});
+
+// Error: STRICT: "email" is not defined in schema.
+```
+
+If `strict` is enabled, xpress-mongo will throw an error anytime a field not defined in the schema is being **validated,
+saved or updated.**
+
+#### Remove Non Schema Fields
+
+Instead of throwing an error when a field not defined in schema is found, we can tell xpress-mongo to remove the unknown
+fields for us by setting strict to `{ removeNonSchemaFields: true }`
+
+```javascript
+class User extends XMongoModel {
+  // Enable strict
+  static strict = {removeNonSchemaFields: true};
+  
+  static schema = {
+    firstName: is.String(),
+    lastName: is.String(),
+  };
+}
+
+// Add new document
+const user = await User.new({
+  email: "hello@example.com",
+  firstName: "John",
+  lastName: "Doe",
+});
+
+console.log(user.data)
+// {
+//   firstName: "John",
+//   lastName: "Doe",
+// }
+```
+
+`email` will be ignored and removed from data because it is not defined in schema.
 
 ## Static Methods
 

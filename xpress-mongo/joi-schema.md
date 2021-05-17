@@ -90,7 +90,7 @@ const UserSchema = {
 ## Performance
 The default schema is faster because it only runs data type checks.
 
-The Joi schema is slower in terms of performance and this is expected because it does more than just data type checks.
+The Joi schema is slower and this is expected because it does more than just data type checks.
 Time difference is not noticeable unless you are updating/creating **millions** of documents.
 
 
