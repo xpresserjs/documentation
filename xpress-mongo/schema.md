@@ -151,7 +151,7 @@ Set a field to type of `Object`. Has default value of `() => {}`.
 
 ```javascript
 const UserSchema = {
-  phones: is.Object(),
+  deviceId: is.Object(),
   // with default value
   address: is.Object(() => ({
     city: null,

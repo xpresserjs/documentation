@@ -294,6 +294,19 @@ http.hasParams(['userId', 'songId']) // false
 http.hasParams(['userId', 'songId']) // true
 ```
 
+### json()
+##### Type: `(body: any, status?: number) => Http.Response`
+
+Sends a JSON response. This method sends a response (with the correct content-type) that is the parameter converted to a JSON string using JSON.stringify().
+
+The parameter can be any JSON type, including object, array, string, Boolean, number, or null, and you can also use it to convert other values to JSON.
+
+```javascript
+http.json(null)
+http.json({ user: 'tobi' })
+http.json({ error: 'message' }, 500)
+```
+
 ### next()
 
 #### Type: `() => void | any`
