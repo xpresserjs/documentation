@@ -219,6 +219,19 @@ const $ = http.$instance();
 $.events.emit("User.loggedIn");
 ```
 
+### addToBoot
+##### Type: `(key: string, value: any) => this`
+
+`http.addToBoot` function is a shortcut for add data to the **"boot"** object in `http.state`
+
+```javascript
+http.addToBoot("authId", 100034);
+// is same as
+http.state.set("boot.authId", 100034);
+```
+**Note:** Boot data is automatically loaded in all controllers unless boot method exists;
+
+
 ### all()
 
 `http.all()` returns both query and body data. if there is conflict in key names, the body key will be entertained.
