@@ -242,7 +242,11 @@ await user.update({
 
 ### fromArray()
 
-`XMongoModel.fromArray(list: any[] | NativeQueryFn )` is used to convert arrays of raw data to an array of instance
+::: warning version >= **1.1.1** does not allow passing a query function to `.fromArray` anymore. Use `.fromQuery`
+instead.
+:::
+
+`XMongoModel.fromArray(list: any[], mutate: boolean)` is used to convert arrays of raw data to an array of instance
 models.
 <br/>
 For example when using `XMongoModel.find()` the results returned is a clean array not an array of model instances.
@@ -259,15 +263,25 @@ await users[0].update({
 });
 ```
 
-#### From Query Result
-
-The `fromArray` method can also make a database call if a `function` that returns a **mongodb native query** is passed
-instead of an array, The query returned will be executed, and the result will be converted to model instances.
-
-For Example
+**Note:** if second argument i.e. `mutate` is true, the array passed will be mutated. For example
 
 ```javascript
-const users = await Users.fromArray(native => native.find())
+const rawList = await Users.find({});
+Users.fromArray(rawList, true); // users will be mutated
+
+// Updates the first document
+await rawList[0].update({
+  age: 20
+});
+```
+
+### fromQuery() - async
+
+The `fromQuery` method unlike `fromArray` runs the query for you and returns an array of models. It expects a query function as the first argument.
+
+For Example
+```javascript
+const users = await Users.fromQuery(native => native.find())
 // `native` is same as `Model.native()` i.e Mongodb native query builder.
 // Now you can access model instance functions
 if (users.length) {
@@ -278,14 +292,14 @@ if (users.length) {
 This also makes it easy to convert native **aggregate** results.
 
 ```javascript
-const users = await Users.fromArray(native => native.aggregate([]))
+const users = await Users.fromQuery(native => native.aggregate([]))
 
 if (users.length) {
   console.log(users[0].fullName()) // John Doe
 }
 ```
 
-NOTE: `fromArray` only supports queries that returns an array. E.g `find` `aggregate`
+NOTE: `fromQuery` only supports queries that returns an array. E.g `find`, `aggregate` e.t.c
 
 ### id()
 
