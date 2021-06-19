@@ -18,3 +18,6 @@ features:
 
 footer: MIT Licensed | Copyright © 2018-present TrapCode.io
 ---
+
+## Play with XpresserJs
+<codesandbox lang="ts"/>

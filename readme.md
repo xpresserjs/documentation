@@ -29,7 +29,7 @@ footer: MIT Licensed | Copyright © 2018-present TrapCode
 ---
 
 ## Play with XpresserJs
-<codesandbox/>
+<codesandbox lang="js"/>
 
 
 
