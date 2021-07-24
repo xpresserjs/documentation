@@ -21,7 +21,8 @@ yarn add @xpresser/file-uploader
 
 ### Add to plugins.json
 
-Add `npm://@xpresser/file-uploader` to your `plugins.json`, if you don't have one create a new one in your base folder.
+Add `npm://@xpresser/file-uploader` to your `plugins.json`, if you don't have one create a new one in your `backend`
+folder.
 
 :::: xTabs xpresser>=0.5.0|xpresser<=0.4.9
 ::: xTab 0
@@ -45,7 +46,9 @@ Add `npm://@xpresser/file-uploader` to your `plugins.json`, if you don't have on
 ::::
 
 ### Typescript
+
 Add the code below to your `xpresser.d.ts` file.
+
 ```typescript
 import "@xpresser/file-uploader/xpresser";
 ```
@@ -57,8 +60,8 @@ In your view
 ```html
 
 <form action="/upload" enctype="multipart/form-data" method="POST">
-    <input type="file" name="avatar"/>
-    <input type="submit" value="Upload  your avatar"/>
+  <input type="file" name="avatar"/>
+  <input type="submit" value="Upload  your avatar"/>
 </form>
 ```
 
@@ -100,8 +103,8 @@ In your view
 ```html
 
 <form action="/multiple_upload" enctype="multipart/form-data" method="POST">
-    Select images: <input type="file" accept="image/*" name="images" multiple>
-    <button type="submit">Upload your images</button>
+  Select images: <input type="file" accept="image/*" name="images" multiple>
+  <button type="submit">Upload your images</button>
 </form>
 ```
 
