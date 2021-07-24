@@ -44,6 +44,12 @@ Add `npm://@xpresser/file-uploader` to your `plugins.json`, if you don't have on
 :::
 ::::
 
+### Typescript
+Add the code below to your `xpresser.d.ts` file.
+```typescript
+import "@xpresser/file-uploader/xpresser";
+```
+
 ## Single File Upload
 
 In your view
