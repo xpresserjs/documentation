@@ -285,13 +285,14 @@ The `UploadedFile` class is returned when a single file is uploaded.
 |-----------|-----------|----------------
 | **input** | `string`  | Name of the input field.
 | **name** | `string`  | Name of the uploaded file.
+| **path** | `string?`  | Path to saved file.
 | **tmpPath** | `string`  | Path to file's temporary location.
 | **encoding** | `string` | Encoding of the uploaded file.
 | **mimetype** | `string` | Mimetype of the uploaded file.
 | **size** | `number` | Size of uploaded file in bytes.
 | **body** | `object` | The body of the request.
 
-### file.error()
+### error()
 
 This method checks if the current file has an error. If there is no error, it returns `false` else it returns an object
 of the type below.
@@ -314,7 +315,7 @@ if (file.error()) {
 Note: Error is cached and only computed once per request. So calling `file.error()` multiple times refers to the same
 cached value.
 
-### file.extension()
+### extension()
 
 Returns the extension of the uploaded file
 
@@ -326,15 +327,15 @@ const file = await http.file("document", {
 console.log(file.extension()); // "pdf"
 ```
 
-### file.dotExtension()
+### dotExtension()
 
 Same function as `file.extension()` but is prefixed with dot '.'
 
 ```javascript
-console.log(file.extension()); // ".pdf"
+console.log(file.dotExtension()); // ".pdf"
 ```
 
-### file.extensionMatch()
+### extensionMatch()
 
 Checks if file extension matches the string provided or is included array provided.
 
@@ -347,7 +348,7 @@ console.log(file.extensionMatch("jpg")); // false
 console.log(file.extensionMatch(["pdf", "jpg"])); // true
 ```
 
-### file.dotExtensionMatch()
+### dotExtensionMatch()
 
 Same function as `file.extensionMatch()` but with dot '.' prefixed.
 
@@ -360,25 +361,173 @@ console.log(file.dotExtensionMatch(".jpg")); // false
 console.log(file.dotExtensionMatch([".pdf", ".jpg"])); // true
 ```
 
-### file.saveTo()
+### sizeToString()
 
-Save uploaded file to file storage path provided. if a function is passed instead of a string it will be called and the
-string returned will be used (Returns `boolean`)
+This method returns string representation of the `file.size` value.
+
+Sizes: `["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"]`
+
+```javascript
+file.sizeToString() // 30KB
+```
+
+### saveTo()
+
+Save uploaded file to storage folder provided.
 
 ```javascript
 const file = await http.file("document", {
   extensions: ["pdf"]
 });
 
+// Save to folder.
 await file.saveTo("full/path/to/storage", {
   name: "optional-filename",
-  overwrite: true, 
-  prependExtension: false, 
+  overwrite: true,
+  prependExtension: false,
 });
 ```
+
+#### OPTIONS
 
 - **name:** Filename, if not defined, original file name will be used.
 - **overwrite:** Default: `true`, if set to `false` an error will be thrown if the file already exists.
 - **prependExtension:** Default: `false`, if set to `true`, the file's extension will be added to filename
 
+### isSaved()
+
+This function checks if an uploaded file is saved to the folder specified when using `file.saveTo()`.
+
+```javascript
+// Save to folder.
+await file.saveTo("full/path/to/storage", {
+  name: "optional-filename",
+  overwrite: true,
+  prependExtension: false,
+});
+
+if (file.isSaved()) {
+  // Maybe store path to db
+  await Db.create(file.path)
+}
+```
+
+### saveError()
+
+This method checks returns the `file.saveTo()` error if any.
+
+```javascript
+// Save File
+await file.saveTo('path/to/folder');
+
+// check for save error()
+if (!file.isSaved()) {
+  return http.res.send(file.saveError());
+}
+```
+
+### discard()
+
+Should in any case you no longer want to save uploaded file. You can `discard` it.
+<br> This function will `try` to delete the uploaded file from the **temporary** location where it is stored.
+
 ## UploadedFiles (class)
+
+#### Properties
+
+| Property  | Type      | Description
+|-----------|-----------|----------------
+| **input** | `string`  | Name of the input field, (Each file will also have its own input)
+| **body** | `object` | The body of the request.
+| **files** | `UploadedFile[]` | Array of uploaded files.
+
+### saveFiles()
+
+This method loops through files **without** error and saves them to the **path** provided.
+
+Note: It expects same arguments as UploadedFile's  `saveTo()` method.
+
+```javascript
+const files = await http.files(["images", "docs"]);
+
+await files.saveFiles("path/to/folder", {overwrite: true})
+```
+
+#### Providing specific paths for each file.
+
+To provide specific `path` or `options` for each file, pass a function to both arguments. This function will be called
+during the loop and the current looped file will be passed as an argument.
+
+```javascript
+const files = await http.files(["images", "docs"]);
+
+await files.saveFiles(
+    file => `uploads/${file.extension()}`,
+    file => ({overwrite: file.input === 'images'})
+)
+```
+
+Using the example above, `pdf` files will be saved to `uploads/pdf` and other extensions will be saved to their
+respective folders as well.
+
+### hasFiles()
+
+Checks if there are any uploaded files. Returns `boolean`
+
+```javascript
+files.hasFiles()
+// Is equivalent to
+files.files.length > 0
+```
+
+### hasFilesWithErrors()
+
+Checks if any uploaded file has Error. Returns `boolean`
+
+```javascript
+const files = await http.files(["images", "docs"]);
+
+if (files.hasFilesWithErrors()) {
+  // do something
+}
+```
+
+### hasFilesWithoutErrors()
+
+Checks if uploaded files has any file **without** Error. Returns `boolean`
+
+```javascript
+const files = await http.files(["images", "docs"]);
+
+if (files.hasFilesWithoutErrors()) {
+  // do something
+}
+```
+
+### filesWithError()
+
+Returns an array of uploaded files  **with** Error.
+
+```javascript
+const files = await http.files(["images", "docs"]);
+
+// loop files
+files.filesWithError().forEach(file => {
+  // log error message
+  console.log(file.error().message)
+})
+```
+
+### filesWithoutError()
+
+Returns an array of uploaded files **without** Error.
+
+```javascript
+const files = await http.files(["images", "docs"]);
+
+// loop files
+for (const file of files.filesWithoutError()) {
+  // Save file.
+  await file.saveTo(`uploads/${file.extension()}`)
+}
+```
