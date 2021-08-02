@@ -432,6 +432,8 @@ Should in any case you no longer want to save uploaded file. You can `discard` i
 <br> This function will `try` to delete the uploaded file from the **temporary** location where it is stored.
 
 ## UploadedFiles (class)
+The `UploadedFile` class is returned when multiple files are uploaded.
+
 
 #### Properties
 
