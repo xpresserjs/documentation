@@ -116,7 +116,21 @@ By default, all events run in background **immediately** and not waited for. You
 ```javascript
 $.events.emitAfter(3000, "someEvent") // starts after 3 seconds
 ```
+
 **Note:** Durations are in milliseconds
+
+### Emit with a Callback
+
+If you want to run a function after an event has completed, you can use the `$.events.emitWithCallback(event, arguments, callback)`
+method.
+
+```typescript
+$.events.define('someEvent', () => "DONE!");
+
+$.events.emitWithCallback('someEvent', [arguments], (returned) => {
+  // returned === "DONE!"
+})
+```
 
 ### Emit from Controller Actions
 

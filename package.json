@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@vuepress/plugin-register-components": "^1.8.2",
-    "@xpresser/env": "^1.0.3",
+    "@xpresser/env": "^1.1.0",
     "bulma": "^0.9.3",
     "markdown-it-container": "^3.0.0",
     "vue-tabs-component": "^1.5.0",
@@ -19,8 +19,8 @@
     "vuepress-plugin-element-tabs": "^0.2.8",
     "vuepress-plugin-fulltext-search": "^2.2.1",
     "vuepress-plugin-tabs": "^0.3.0",
-    "xpress-mongo": "^1.4.1",
-    "xpresser": "^0.19.4"
+    "xpress-mongo": "^1.5.1",
+    "xpresser": "^0.21.0"
   },
   "version": "2.0.0"
 }
