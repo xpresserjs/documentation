@@ -220,6 +220,7 @@ $.events.emit("User.loggedIn");
 ```
 
 ### addToBoot
+
 ##### Type: `(key: string, value: any) => this`
 
 `http.addToBoot` function is a shortcut for add data to the **"boot"** object in `http.state`
@@ -229,8 +230,8 @@ http.addToBoot("authId", 100034);
 // is same as
 http.state.set("boot.authId", 100034);
 ```
-**Note:** Boot data is automatically loaded in all controllers unless boot method exists;
 
+**Note:** Boot data is automatically loaded in all controllers unless boot method exists;
 
 ### all()
 
@@ -308,16 +309,19 @@ http.hasParams(['userId', 'songId']) // true
 ```
 
 ### json()
+
 ##### Type: `(body: any, status?: number) => Http.Response`
 
-Sends a JSON response. This method sends a response (with the correct content-type) that is the parameter converted to a JSON string using JSON.stringify().
+Sends a JSON response. This method sends a response (with the correct content-type) that is the parameter converted to a
+JSON string using JSON.stringify().
 
-The parameter can be any JSON type, including object, array, string, Boolean, number, or null, and you can also use it to convert other values to JSON.
+The parameter can be any JSON type, including object, array, string, Boolean, number, or null, and you can also use it
+to convert other values to JSON.
 
 ```javascript
 http.json(null)
-http.json({ user: 'tobi' })
-http.json({ error: 'message' }, 500)
+http.json({user: 'tobi'})
+http.json({error: 'message'}, 500)
 ```
 
 ### next()
@@ -362,7 +366,6 @@ const perPage: number = http.query("perPage", 30) // with default
 
 :::
 ::::
-
 
 ### redirect()
 
@@ -481,7 +484,7 @@ http.tryOrCatch(async () => {
 `http.view` function Renders a view and sends the rendered HTML string to the client. The view argument is a string that
 is the file path of the view file to render. This should be relative to the root of your views directory.
 
-If you want to load views outside your views directory, then provide **full path** to the file and enable the fullPath
+If you want to load views outside your view directory, then provide **full path** to the file and enable the fullPath
 argument.
 
 ```javascript
@@ -498,4 +501,87 @@ http.view('index') // views/index.ejs
 http.view('about') // views/about.ejs
 http.view('auth/login') // views/auth/login.ejs
 http.view('auth/signup') // views/auth/signup.ejs
+```
+
+## Extend Request Engine
+
+The default `RequestEngine` can be modified or extended to provide custom functionality for your project/application.
+
+The first step to extending the default `RequestEngine` is by creating a `RequestEngine.(js|ts)` file. This file will
+export a function that will be executed by xpresser on boot
+
+:::: xTabs Javascript|Typescript
+::: xTab 0
+
+```javascript
+// Import default RequestEngine
+const RequestEngine = require("xpresser/dist/src/RequestEngine");
+
+// Your Custom Request Engine
+class MyRequestEngine extends RequestEngine {
+  
+  // Example method
+  badRequest(error) {
+    return this.status(400).send({error});
+  }
+
+}
+
+// Export a function that returns your extended class.
+module.exports = () => MyRequestEngine;
+```
+
+:::
+::: xTab 1
+
+```typescript
+// Import default RequestEngine
+const RequestEngine =
+    require("xpresser/dist/src/RequestEngine") as typeof import("xpresser/src/RequestEngine");
+
+// Your Custom Request Engine
+class MyRequestEngine extends RequestEngine {
+    // Example method
+    badRequest(error: string) {
+        return this.status(400).json({error});
+    }
+}
+
+// Add type support.
+declare module "xpresser/types/http" {
+    interface Http extends MyRequestEngine {
+    }
+}
+
+// Export a function that returns your extended class.
+export = () => MyRequestEngine;
+```
+
+:::
+::::
+
+Next, add the path to your custom `RequestEngine` (without file extension) to your
+project's [use.json](../configuration/readme.md#use-json) file.
+
+```json
+{
+  "extends": {
+    "RequestEngine": [
+      "backend://RequestEngine"
+    ]
+  }
+}
+```
+
+Now you can use the custom `badRequest` method in your controller like so
+
+```javascript
+// Controller Action
+const AppController = {
+  
+  login(http) {
+    return http.badRequest("No username and password found!");
+  }
+  
+}
 ```
