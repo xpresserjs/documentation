@@ -507,18 +507,21 @@ http.view('auth/signup') // views/auth/signup.ejs
 
 The default `RequestEngine` can be modified or extended to provide custom functionality for your project/application.
 
-The first step to extending the default `RequestEngine` is by creating a `RequestEngine.(js|ts)` file. This file will
-export a function that will be executed by xpresser on boot
+The first step to extending the default `RequestEngine` is by creating a `RequestEngine.(js|ts)` file. This file should
+export your custom `RequestEngine` class.
 
-:::: xTabs Javascript|Typescript
+Note: **new** syntax works for xpresser version **0.25.1** and above while **old** syntax works for any version of
+xpresser. The new syntax makes it easier for typescript to understand your code.
+
+:::: xTabs Js (new)|Ts (new)|Js (old)|Ts (old)
 ::: xTab 0
 
 ```javascript
-// Import default RequestEngine
-const RequestEngine = require("xpresser/dist/src/RequestEngine");
+const {getInstance} = require("xpresser");
+const $ = getInstance();
 
 // Your Custom Request Engine
-class MyRequestEngine extends RequestEngine {
+class MyRequestEngine extends $.extendedRequestEngine() {
   
   // Example method
   badRequest(error) {
@@ -527,20 +530,20 @@ class MyRequestEngine extends RequestEngine {
 
 }
 
-// Export a function that returns your extended class.
-module.exports = () => MyRequestEngine;
+// Export extended class.
+module.exports = MyRequestEngine;
 ```
 
 :::
 ::: xTab 1
 
 ```typescript
-// Import default RequestEngine
-const RequestEngine =
-    require("xpresser/dist/src/RequestEngine") as typeof import("xpresser/src/RequestEngine");
+import {getInstance} from "xpresser";
+
+const $ = getInstance();
 
 // Your Custom Request Engine
-class MyRequestEngine extends RequestEngine {
+class MyRequestEngine extends $.extendedRequestEngine() {
     // Example method
     badRequest(error: string) {
         return this.status(400).json({error});
@@ -553,8 +556,51 @@ declare module "xpresser/types/http" {
     }
 }
 
-// Export a function that returns your extended class.
-export = () => MyRequestEngine;
+// Export extended class.
+export = MyRequestEngine;
+```
+
+:::
+::: xTab 2
+
+```javascript
+// Export function that extends default RequestEngine.
+module.exports = (ExtendedRequestEngine) => {
+  return class extends ExtendedRequestEngine {
+    
+    // Example method
+    badRequest(error) {
+      return this.status(400).send({error});
+    }
+  
+  }
+}
+```
+
+:::
+::: xTab 3
+
+```typescript
+import type RequestEngine from "xpresser/src/RequestEngine";
+
+// Export function that extends default RequestEngine.
+export = (ExtendedRequestEngine: typeof RequestEngine) => {
+    return class extends ExtendedRequestEngine {
+
+        // Example method
+        badRequest(error: string) {
+            return this.status(400).send({error});
+        }
+
+    }
+}
+
+// Add type support.
+declare module "xpresser/types/http" {
+    interface Http {
+        badRequest(error: string): any;
+    }
+}
 ```
 
 :::
@@ -582,6 +628,6 @@ const AppController = {
   login(http) {
     return http.badRequest("No username and password found!");
   }
-  
+
 }
 ```
