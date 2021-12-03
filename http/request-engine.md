@@ -513,7 +513,7 @@ export your custom `RequestEngine` class.
 Note: **new** syntax works for xpresser version **0.25.1** and above while **old** syntax works for any version of
 xpresser. The new syntax makes it easier for typescript to understand your code.
 
-:::: xTabs Js (new)|Ts (new)|Js (old)|Ts (old)
+:::: xTabs Javascript|Typescript|Javascript (old)|Typescript (old)
 ::: xTab 0
 
 ```javascript
@@ -550,14 +550,14 @@ class MyRequestEngine extends $.extendedRequestEngine() {
     }
 }
 
+// Export extended class.
+export = MyRequestEngine;
+
 // Add type support.
 declare module "xpresser/types/http" {
     interface Http extends MyRequestEngine {
     }
 }
-
-// Export extended class.
-export = MyRequestEngine;
 ```
 
 :::
