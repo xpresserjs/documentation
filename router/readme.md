@@ -174,7 +174,7 @@ will be rendered as
 ```html
 
 <form action="/auth/login">
-    ...
+  ...
 </form>
 ```
 
@@ -303,6 +303,29 @@ router.path('/account', () => {
 
 **Note:** This only applies if your controller actions matches your url which most times is the case and can be used
 only by routes declared in `router.path()` children function.
+
+### Controller Actions Case 
+
+**Note: Require xpresser `>=0.25.4`**
+
+When using `@` or `=` in the path, XpresserRouter will automatically convert the action name to `snake` case.
+
+This behavior can be controlled by the [{server.router.pathCase}](../configuration/default.md#server-router-pathcase) configuration.
+
+```typescript
+$.router.path("/user", (r) => {
+    r.post('@sendResetEmail');
+    r.post('@accountSettings');
+})
+
+// if {server.router.pathCase} is `snake` will be converted to:
+"/user/send_reset_email"
+"/user/account_settings"
+
+//  if {server.router.pathCase} is `kebab` will be converted to:
+"/user/send-reset-email"
+"/user/account-settings"
+```
 
 ### Named Routes
 

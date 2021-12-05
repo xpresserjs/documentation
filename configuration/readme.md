@@ -161,6 +161,11 @@ const Config = {
       dataKey: 'data',
       proceedKey: 'proceed',
       messageKey: '_say'
+    },
+  
+  
+    router: {
+      pathCase: "snake"
     }
   },
   
