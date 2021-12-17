@@ -304,13 +304,14 @@ router.path('/account', () => {
 **Note:** This only applies if your controller actions matches your url which most times is the case and can be used
 only by routes declared in `router.path()` children function.
 
-### Controller Actions Case 
+### Controller Actions Case
 
 **Note: Require xpresser `>=0.25.4`**
 
 When using `@` or `=` in the path, XpresserRouter will automatically convert the action name to `snake` case.
 
-This behavior can be controlled by the [{server.router.pathCase}](../configuration/default.md#server-router-pathcase) configuration.
+This behavior can be controlled by the [{server.router.pathCase}](../configuration/default.md#server-router-pathcase)
+configuration.
 
 ```typescript
 $.router.path("/user", (r) => {
@@ -334,7 +335,7 @@ path e.g
 
 ```javascript
 router.path('/account', () => {
-  router.get('@view').name('account.view');
+  router.get('@view').name('account.view')s;
   router.post('@update').name('account.update');
   router.post('@change_password').name('account.change_password');
   router.post('@send_code').name('account.send_code');

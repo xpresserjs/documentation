@@ -157,6 +157,10 @@ module.exports = {
             text: '@xpresser/ngrok',
             link: '/plugins/@xpresser/ngrok.md',
           },
+          {
+            text: '@xpresser/params-loader',
+            link: '/plugins/@xpresser/params-loader.md',
+          },
         ],
       },
       
