@@ -38,6 +38,7 @@ With the `params-loader` plugin we can generate a middleware that will load para
 to `http.state`
 
 ### Middleware Process
+- Check if param is defined or return `notFound`
 - if `load` function is defined:
   - Call it, if it throws an error, return `loadError` else hold result.
   - Check if `load` result value is undefined and return `notFound`
@@ -137,13 +138,13 @@ Below is a table that shows the options of each param and their descriptions.
 
 ### Param Options
 
-| Option      | Required | Description                                                                    |
-|-------------|----------|--------------------------------------------------------------------------------|
-| `notFound`  | **NO**   | if param value has a `falsy` value after `load`, this function will be called. |
-| `as`        | **NO**   | Custom name of the param to be saved to `http.state`                           |
-| `addToBoot` | **NO**   | Add param to the boot state using `http.addToBoot()`                           |
-| `load`      | **NO**   | Function to load the param.                                                    |
-| `loadError` | **NO**   | Function to handle error if `load` expects an error to be  thrown.             |
+| Option      | Required | Description                                                                                                                              |
+|-------------|----------|------------------------------------------------------------------------------------------------------------------------------------------|
+| `notFound`  | **NO**   | if param is not found in `http.params` **OR** Param exists but has a `falsy` value before or after `load`, this function will be called. |
+| `as`        | **NO**   | Custom name of the param to be saved to `http.state`                                                                                     |
+| `addToBoot` | **NO**   | Add param to the boot state using `http.addToBoot()`                                                                                     |
+| `load`      | **NO**   | Function to load the param.                                                                                                              |
+| `loadError` | **NO**   | Function to handle error if `load` expects an error to be  thrown.                                                                       |
 
 
 ### Type Definition
