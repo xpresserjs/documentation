@@ -1,8 +1,9 @@
 # Xpresser Params Loader
 [GIT](https://github.com/xpresserjs/params-loader) |
-[NPM](https://www.npmjs.com/package/@xpresser/params-loader"")
+[NPM](https://www.npmjs.com/package/@xpresser/params-loader) |
+[DEMO](#demo)
 
-This plugin provides an easy middleware generator for requiring/loading url params
+This plugin provides a middleware generator for **requiring/loading** url params
 
 ##### Already installed? [Jump to Usage](#define-params)
 
@@ -134,7 +135,7 @@ Below is a table that shows the options of each param and their descriptions.
 
 | Option      | Required | Description                                                                                                                              |
 |-------------|----------|------------------------------------------------------------------------------------------------------------------------------------------|
-| `notFound`  | **YES**  | if param is not found in `http.params` **OR** Param exists but has a `falsy` value before or after `load`, this function will be called. |
+| `notFound`  | **NO**   | if param is not found in `http.params` **OR** Param exists but has a `falsy` value before or after `load`, this function will be called. |
 | `as`        | **NO**   | Custom name of the param to be saved to `http.state`                                                                                     |
 | `addToBoot` | **NO**   | Add param to the boot state using `http.addToBoot()`                                                                                     |
 | `load`      | **NO**   | Function to load the param.                                                                                                              |
@@ -278,3 +279,7 @@ async function fileId(http) {
   return http.next();
 } 
 ```
+
+## Demo
+
+<codesandbox lang="params-loader"/>
