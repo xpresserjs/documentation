@@ -23,6 +23,12 @@ folder.
 }
 ```
 
+### Add Types
+Add this to your `xpresser.d.ts` file.
+```typescript
+import "@xpresser/params-loader/CustomRequestEngine";
+```
+
 ## About
 
 Most urls in every large application includes parameters (params for short). For example:
