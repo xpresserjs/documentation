@@ -7,28 +7,6 @@ This plugin provides a middleware generator for **requiring/loading** url params
 
 ##### Already installed? [Jump to Usage](#define-params)
 
-## Installation
-```shell
-npm install @xpresser/params-loader
-# Or
-yarn add @xpresser/params-loader
-```
-
-### Plugins.json
-Add `npm://@xpresser/params` to your `plugins.json`, if you don't have one then create a new one in your `backend`
-folder.
-```json
-{
-   "npm://@xpresser/params-loader": true 
-}
-```
-
-### Add Types
-Add this to your `xpresser.d.ts` file.
-```typescript
-import "@xpresser/params-loader/CustomRequestEngine";
-```
-
 ## About
 
 Most urls in every large application includes parameters (params for short). For example:
@@ -60,13 +38,33 @@ With the `params-loader` plugin we can generate a middleware that will load para
 to `http.state`
 
 ### Middleware Process
-
-- Check if param is defined or return `notFound`
 - if `load` function is defined:
   - Call it, if it throws an error, return `loadError` else hold result.
   - Check if `load` result value is undefined and return `notFound`
   - Save `load` result to  `http.state`
 - Save `param` original value to  `http.state`.
+
+## Installation
+```shell
+npm install @xpresser/params-loader
+# Or
+yarn add @xpresser/params-loader
+```
+
+### Plugins.json
+Add `npm://@xpresser/params` to your `plugins.json`, if you don't have one then create a new one in your `backend`
+folder.
+```json
+{
+   "npm://@xpresser/params-loader": true 
+}
+```
+
+### Add Types
+Add this to your `xpresser.d.ts` file.
+```typescript
+import "@xpresser/params-loader/CustomRequestEngine";
+```
 
 ## Define Params
 
@@ -139,13 +137,13 @@ Below is a table that shows the options of each param and their descriptions.
 
 ### Param Options
 
-| Option      | Required | Description                                                                                                                              |
-|-------------|----------|------------------------------------------------------------------------------------------------------------------------------------------|
-| `notFound`  | **NO**   | if param is not found in `http.params` **OR** Param exists but has a `falsy` value before or after `load`, this function will be called. |
-| `as`        | **NO**   | Custom name of the param to be saved to `http.state`                                                                                     |
-| `addToBoot` | **NO**   | Add param to the boot state using `http.addToBoot()`                                                                                     |
-| `load`      | **NO**   | Function to load the param.                                                                                                              |
-| `loadError` | **NO**   | Function to handle error if `load` expects an error to be  thrown.                                                                       |
+| Option      | Required | Description                                                                    |
+|-------------|----------|--------------------------------------------------------------------------------|
+| `notFound`  | **NO**   | if param value has a `falsy` value after `load`, this function will be called. |
+| `as`        | **NO**   | Custom name of the param to be saved to `http.state`                           |
+| `addToBoot` | **NO**   | Add param to the boot state using `http.addToBoot()`                           |
+| `load`      | **NO**   | Function to load the param.                                                    |
+| `loadError` | **NO**   | Function to handle error if `load` expects an error to be  thrown.             |
 
 
 ### Type Definition
@@ -153,7 +151,7 @@ Below is a table that shows the options of each param and their descriptions.
 import {Http} from "xpresser/types/http";
 
 type Options = {
-    notFound: (http: Http, value: any) => any;
+    notFound?: (http: Http, value: any) => any;
     as?: string;
     addToBoot?: boolean;
     load?: (value: any, http: Http) => any;
