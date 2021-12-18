@@ -170,10 +170,6 @@ The `Param.username` middleware will be applied to all routes with prefix `/user
 ### Via Controller
 ```typescript
 const AppController = {
-    /**
-     * This simply means 
-     * 
-     */
     middleware: {
         "Params.username": ["getUser"],
         "Params.postId": ["getPost"]
