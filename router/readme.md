@@ -503,3 +503,24 @@ router.get('/users/:userId/books/:bookId', function(http) {
   return http.send(http.params); // {"userId": "34", "bookId": "8989"}
 });
 ```
+
+## Routes after plugins
+By default, xpresser registers your defined routes first before plugin routes. This makes it possible to overwrite any plugin route if need be.
+
+To define routes after plugins routes you need to declare the routes after plugin function. for example
+```js
+const {getInstanceRouter} = require("xpresser"); 
+
+const router = getInstanceRouter()
+
+router.get("/", () => "Index Page");
+
+// Declare routes after plugins function
+router.routesAfterPlugins = function () {
+  
+  // Define routes after plugins
+  router.get("/*", (http) => {
+    return  http.status(404).send("404 error");
+  });
+};
+```
