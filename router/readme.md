@@ -293,13 +293,13 @@ router.path('/account', () => {
 
 ##### Generated Routes #1
 
-| Method | Url | Controller@action | 
-| ----- | -----| -----------------|
-| GET   | /account | AccountController@view
-| POST   | /account | AccountController@update
-| POST   | /account/change_password | AccountController@change_password
-| POST   | /account/send_code | AccountController@send_code
-| GET   | /account/verify | AccountController@verify
+| Method | Url                      | Controller@action                 | 
+|--------|--------------------------|-----------------------------------|
+| GET    | /account                 | AccountController@view            |    
+| POST   | /account                 | AccountController@update          |  
+| POST   | /account/change_password | AccountController@change_password |
+| POST   | /account/send_code       | AccountController@send_code       |
+| GET    | /account/verify          | AccountController@verify          |
 
 **Note:** This only applies if your controller actions matches your url which most times is the case and can be used
 only by routes declared in `router.path()` children function.
@@ -335,7 +335,7 @@ path e.g
 
 ```javascript
 router.path('/account', () => {
-  router.get('@view').name('account.view')s;
+  router.get('@view').name('account.view');
   router.post('@update').name('account.update');
   router.post('@change_password').name('account.change_password');
   router.post('@send_code').name('account.send_code');
@@ -378,13 +378,13 @@ router.path('/account', () => {
 
 With these simple looking codes, your end result will be:
 
-| Method | Url | Controller@action | Name
-| ----- | -----| -----------------| -----
-| GET   | /account | AccountController@view | account.view
-| POST   | /account | AccountController@update | account.update
-| POST   | /account/change_password | AccountController@change_password | account.change_password
-| POST   | /account/send_code | AccountController@send_code | account.send_code
-| GET   | /account/verify | AccountController@verify | account.verify
+| Method | Url                      | Controller@action                 | Name                    |
+|--------|--------------------------|-----------------------------------|-------------------------|
+| GET    | /account                 | AccountController@view            | account.view            |
+| POST   | /account                 | AccountController@update          | account.update          |
+| POST   | /account/change_password | AccountController@change_password | account.change_password |
+| POST   | /account/send_code       | AccountController@send_code       | account.send_code       |
+| GET    | /account/verify          | AccountController@verify          | account.verify          |
 
 ### External Controller
 
@@ -419,12 +419,12 @@ router.useController("Post", () => {
 
 ##### Generated Routes #2
 
-| Method | Url | Controller@action
-| ----- | -----| -----------------
-| GET | /posts | PostController@all
-| POST | /posts | PostController@create
-| GET | /post/:postId | PostController@view
-| POST | /post/:postId | PostController@update
+| Method | Url           | Controller@action     |
+|--------|---------------|-----------------------|
+| GET    | /posts        | PostController@all    |
+| POST   | /posts        | PostController@create | 
+| GET    | /post/:postId | PostController@view   |
+| POST   | /post/:postId | PostController@update |
 
 ## View All Routes
 

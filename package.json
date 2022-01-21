@@ -5,9 +5,6 @@
     "docs:build": "vuepress build",
     "all": "git pull origin master && yarn && yarn run build && pm2 restart xpresser"
   },
-  "dependencies": {
-    "vue-embed-gist": "^1.2.0"
-  },
   "devDependencies": {
     "@vuepress/plugin-register-components": "^1.8.2",
     "@xpresser/env": "^1.1.0",
