@@ -6,9 +6,9 @@ Name of your project/application.
 
 ### env
 
-Equivalent to NODE_ENV, holds your current environment.
+Equivalent to `NODE_ENV`, holds your current environment.
 
-options: **development, production, staging** or your **custom** environment
+Options: **development, production, staging** or your **custom** environment
 
 ## Debug
 
@@ -17,6 +17,7 @@ options: **development, production, staging** or your **custom** environment
 If true, debugging is enabled.
 
 ### debug.requests
+**Note:** Requires xpresser version `>=0.26.8`
 
 This object holds the configuration for debugging requests.
 ```js
@@ -34,12 +35,12 @@ This object holds the configuration for debugging requests.
 ```
 
 ### debug.requests.enabled
-**`Default: true`**
+`Default: true`
 
 Enable/Disable debugging requests.
 
 ### debug.requests.colored
-Default: `"mute"` 
+`Default: "mute"` 
 
 Accepts: <br>
 `true` - Colored output. <br>
@@ -58,7 +59,7 @@ This object holds the config for selecting what to show in the debug log.
 ```
 
 ### debug.requests.showAll
-Default: `false`
+`Default: false`
 
 Show all the request log data. When set to `true`, the `show` object is ignored.
 
