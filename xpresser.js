@@ -4,7 +4,19 @@ const isDev = env.NODE_ENV !== 'production';
 
 const config = {
     name: 'Xpresser Docs',
-    env: env.NODE_ENV,
+    env: env.NODE_ENV || 'development',
+
+    debug: {
+      requests: {
+          colored: true,
+          showAll: true,
+          ignore: [
+              "/assets/",
+              // exclude .js and .css files
+              /\.(js|css|svg)$/
+          ],
+      }
+    },
 
     server: {
         domain: env.APP_DOMAIN,

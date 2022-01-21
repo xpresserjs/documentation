@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node xpresser.js",
+    "start:server": "nodemon xpresser.js",
     "docs:dev": "vuepress dev --port 3344",
     "docs:build": "vuepress build",
     "all": "git pull origin master && yarn && yarn run build && pm2 restart xpresser"
@@ -10,6 +10,7 @@
     "@xpresser/env": "^1.1.3",
     "bulma": "^0.9.3",
     "markdown-it-container": "^3.0.0",
+    "nodemon": "^2.0.15",
     "vue-tabs-component": "^1.5.0",
     "vuepress": "^1.9.7",
     "vuepress-plugin-code-copy": "https://github.com/trapcodeio/vuepress-plugin-code-copy",
@@ -17,7 +18,7 @@
     "vuepress-plugin-fulltext-search": "^2.2.1",
     "vuepress-plugin-tabs": "^0.3.0",
     "xpress-mongo": "^2.4.1",
-    "xpresser": "^0.26.8"
+    "xpresser": "^0.26.9"
   },
   "version": "2.0.0",
   "dependencies": {}

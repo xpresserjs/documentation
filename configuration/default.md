@@ -30,7 +30,9 @@ This object holds the configuration for debugging requests.
         time: false,
         statusCode: true,
         statusMessage: false
-    }
+    },
+    ignore: [],
+    ignoreFn: () => false
 })
 ```
 
