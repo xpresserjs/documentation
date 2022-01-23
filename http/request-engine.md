@@ -261,7 +261,9 @@ const status = http.body("status", "pending") // with default
 ```
 
 :::
-::: xTab Typescript In Typescript `http.body()` returns type: unknown, so you must set type to pass.
+::: xTab Typescript 
+
+In Typescript `http.body()` returns type: unknown, so you must set type to pass.
 
 ```typescript
 const message = http.body<string>("message") // no defaults
