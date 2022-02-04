@@ -9,7 +9,7 @@ keeping you very close to mongodb native syntax which is always **Recommended**.
 For Example.
 
 ```javascript
-modelInstance.native().findOne({}) // Mongodb native query
+Model.native().findOne({}) // Mongodb native query
 ```
 
 The `.native()` model instance method allows you run raw mongodb native queries.
@@ -121,63 +121,65 @@ run().catch(console.dir);
 create a file **xmongo.js**
 
 ```javascript
-const {Client} = require('xpress-mongo');
+const { Client, XMongoModel } = require("xpress-mongo");
 
-async function run() {
-  // Initialise connection
-  const connection = Client('mongodb://127.0.0.1:27017', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  });
-  
-  try {
-    // Try Connecting
-    await connection.connect();
-    // Set Database name
-    connection.useDb('xmongo');
-    
-    console.log('Connected to mongodb')
-  } catch (e) {
-    throw e;
-  }
-  
-  // Your Model extends a class for your collection
-  class User extends connection.model('users') {
-    
+// Your Model extends a class for your collection
+// Should probably exist in a separate file
+class User extends XMongoModel {
+    static collectionName = "users";
+
     /**
      * Returns the full name of the user.
      * @return {string}
      */
     fullName() {
-      return this.data.firstName + ' ' + this.data.lastName
+        return this.data.firstName + " " + this.data.lastName;
     }
-  }
-  
-  // Find one user in users collection
-  let user = await User.findOne({});
-  
-  // If user is found
-  if (user) {
-    // Log user and full name
-    console.log(user);
-    return console.log(`Fullname: ${user.fullName()}`)
-  }
-  
-  console.log('No user found, creating one....');
-  
-  // Create new user
-  user = await User.new({
-    firstName: 'John',
-    lastName: 'Doe'
-  })
-  
-  // Log user data and full name
-  console.log(user);
-  return console.log(`FirstName: ${user.fullName()}`)
-
 }
 
-run().catch(console.log)
+async function run() {
+    // Initialise connection
+    const connection = Client("mongodb://127.0.0.1:27017", {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    });
+
+    try {
+        // Try Connecting
+        await connection.connect();
+        // Set Database name
+        connection.useDb("xmongo");
+
+        console.log("Connected to mongodb");
+    } catch (e) {
+        throw e;
+    }
+
+    connection.linkModel(User);
+
+    // Find one user in users collection
+    let user = await User.findOne({});
+
+    // If user is found
+    if (user) {
+        // Log user and full name
+        console.log(user);
+        console.log(`Fullname: ${user.fullName()}`);
+    } else {
+        console.log("No user found, creating one....");
+        // Create new user
+        user = await User.new({
+            firstName: "John",
+            lastName: "Doe"
+        });
+
+        // Log user data and full name
+        console.log(user);
+        console.log(`FirstName: ${user.fullName()}`);
+    }
+}
+
+run().catch(console.log);
 ```
 
 Run the above code, check your database to see if a user was created. After that go through the codes.
