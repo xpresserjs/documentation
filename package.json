@@ -17,8 +17,8 @@
     "vuepress-plugin-element-tabs": "^0.2.8",
     "vuepress-plugin-fulltext-search": "^2.2.1",
     "vuepress-plugin-tabs": "^0.3.0",
-    "xpress-mongo": "^2.4.1",
-    "xpresser": "^0.26.9"
+    "xpress-mongo": "^2.7.0",
+    "xpresser": "^0.26.11"
   },
   "version": "2.0.0",
   "dependencies": {}

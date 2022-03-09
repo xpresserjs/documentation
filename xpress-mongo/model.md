@@ -372,6 +372,31 @@ const john = await Users.findOne({firstName: 'John'});
 const user = await Users.findById('5f43e78c9da24b1444d7c998')
 ```
 
+### sum() - `async`
+
+`XmongoModel.sum(field: string, match?: {})` is used to sum up a field, with option to filter results using `match`.
+
+```javascript
+const worth = await Transactions.sum('balance');
+const income = await Transactions.sum('balance', {type: 'credit'});
+// `worth` will be the sum of all transactions
+// `income` will be the sum of all credit transactions
+```
+
+### sumMany() - `async`
+
+`XmongoModel.sumMany(fields: string[] | Record<string, string>, match?: {})` sums up multiple fields.
+
+```javascript
+await Transactions.sumMany(['balance', 'owing']);
+// { balance: number, owing: number}
+await Transactions.sumMany({
+    totalBalance: 'balance',
+    totalDebt: 'owing'
+});
+// { totalBalance: number, totalDebt: number}
+```
+
 ### count() - `async`
 
 `XMongoModel.count(query?: {})` is used to count documents that matches the query passed. if no query is passed, it
