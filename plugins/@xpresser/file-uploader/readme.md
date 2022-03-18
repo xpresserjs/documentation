@@ -315,6 +315,20 @@ if (file.error()) {
 Note: Error is cached and only computed once per request. So calling `file.error()` multiple times refers to the same
 cached value.
 
+### nameWithoutExtension()
+Return the file name i.e `file.name` without its extension.
+
+```typescript
+const file = await http.file("avatar", {
+    extensions: ["png", "jpg"]
+});
+
+// Assuming file name is
+// photo-image.2022.03.01.png
+
+console.log(file.nameWithoutExtension()); // "photo-image.2022.03.01"
+```
+
 ### extension()
 
 Returns the extension of the uploaded file
