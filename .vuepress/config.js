@@ -161,6 +161,10 @@ module.exports = {
             text: '@xpresser/params-loader',
             link: '/plugins/@xpresser/params-loader.md',
           },
+          {
+            text: '@xpresser/meilisearch',
+            link: '/plugins/@xpresser/meilisearch.md',
+          }
         ],
       },
       
