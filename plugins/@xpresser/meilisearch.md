@@ -100,21 +100,22 @@ A search model is a class that extends the `MeiliSearchModel` class.
 ### Define Search Model
 
 ```ts
-import { defineSearchModel } from '@xpresser/meilisearch';
+import { defineSearchModel } from "@xpresser/meilisearch";
+import { Index } from "meilisearch";
 
-const UsersSearchModel = defineSearchModel({
+export const CustomSearchModel = defineSearchModel({
     // The name of the model.
-    name: "Users",
+    name: "Custom",
 
     // (Optional) The name of the model's table/index.
     // If not provided, the lower cased name of the model will be used.
-    index: "users",
+    index: "custom",
 
     /**
      * (Optional) Modify/Customize index
      * @param index
      */
-    init(index: Index): Promise<void>{
+    async init(index: Index): Promise<void> {
         // do something with the index
         // maybe set the index's settings
     },
@@ -122,9 +123,9 @@ const UsersSearchModel = defineSearchModel({
     /**
      * Provide the data to be indexed.
      */
-    data(index: Index): Promise<T[]>{
+    async data<T>(index: Index): Promise<T[]> {
         // return an array of objects to be indexed
-        return [];
+        return [] as T[];
     }
 });
 ```
