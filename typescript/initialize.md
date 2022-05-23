@@ -28,7 +28,7 @@ xjs new xpresser-ts-app
 ### Plain app.ts file
 
 ```typescript
-import xpresser = require("xpresser");
+import {init} from "xpresser";
 
 const $ = xpresser.init({/* configurations */})
 
